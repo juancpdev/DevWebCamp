@@ -1,0 +1,82 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.formulario {
+    margin: 5rem 0;
+
+    &__campo {
+        position: relative;
+        margin: 3rem 0;
+        transition: all .3s;
+    }
+    
+    &__label {
+        position: absolute;
+        top: 50%;
+        left: .5rem;
+        transform: translateY(-50%);
+        pointer-events: none;
+        transition: .3s;
+        color: v.$gris-claro;
+        font-weight: 100;
+    }
+
+    &__input {
+        border: none;
+        padding: 1rem;
+        width: 100%;
+        height: 5rem;
+        background: transparent;
+        border: none;
+        outline: none;
+        padding: 0 3.5rem 0 .5rem;
+        border-bottom: .2rem solid rgba(128, 128, 128, 0.445);
+        border-radius: .5rem;
+        transition: all .3s;
+        color: white;
+        font-weight: 100;
+
+        
+    // Estilos para el estado de autocompletado
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus {
+        background-color: transparent !important; // Anula el color de fondo
+        color: white !important; // Establece el color del texto, si es necesario
+        transition: background-color 5000s ease-in-out 0s; // Esto es un truco para superar la transición predeterminada que algunos navegadores imponen
+    }
+
+        &:focus {
+            border-bottom-color: white;
+        }
+    }
+
+    &__input:focus ~ &__label,
+    &__input:not(:placeholder-shown) ~ &__label {
+        top: -.5rem;
+        color: white;
+        font-weight: 900;
+    }
+
+    &__icono {
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: v.$gris-claro;
+        transition: all .3s;
+    }
+
+    &__input:focus ~ &__icono {
+        color: white
+    }
+
+    &__contenedor {
+        &--boton {
+            @include m.boton(v.$azul, v.$blanco);
+            width: 100%;
+            border-radius: 2rem;
+            margin-top: 1rem;
+        }
+    }
+}

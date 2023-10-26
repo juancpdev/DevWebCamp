@@ -1,0 +1,25 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.acciones {
+    text-align: center;
+    color: white;
+
+    &__enlace {
+        color: rgb(145, 145, 145);
+        transition: all .3s;
+        
+        &:hover {
+            color: v.$azul;
+        }
+    }
+
+    &__texto {
+        display: flex;
+        flex-direction: column;
+
+        @include m.tablet {
+            display: block;
+        }
+    }
+}

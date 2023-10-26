@@ -1,0 +1,49 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.auth {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1)), url("/build/img/fondo.webp");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-height: 100vh;
+    padding: 5rem 0;
+
+        // Centrado vertical para dispositivos con pantallas altas
+        @media (max-width: 768px) and (min-height: 700px) {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+    @include m.tablet {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__login {
+        background-color: rgba(5, 29, 66, 0.644);
+        box-shadow: 0 0 20px 5px rgba(16, 3, 53, 0.61);
+        padding: 5rem;
+        border-radius: 2rem;
+        width: 90%;
+        margin: 0 auto;
+
+        @include m.tablet {
+            width: min(90%, 45rem);
+        }
+    }
+    &__heading {
+        margin: 0;
+        color: white;
+    }
+
+    &__texto {
+        text-align: center;
+        color: white;
+        font-weight: 100;
+    }
+}
