@@ -13,8 +13,8 @@
                 name="nombre"
                 placeholder=""
                 >
-                <i class="formulario__icono fa-solid fa-user"></i>
                 <label class="formulario__label" for="nombre">Nombre</label>
+                <i class="formulario__icono fa-solid fa-user"></i>
             </div>
             
             <div class="formulario__campo">
@@ -25,8 +25,8 @@
                 name="apellido"
                 placeholder=""
                 >
-                <i class="formulario__icono fa-solid fa-user"></i>
                 <label class="formulario__label" for="apellido">Apellido</label>
+                <i class="formulario__icono fa-solid fa-user"></i>
             </div>
 
             <div class="formulario__campo">
@@ -37,8 +37,8 @@
                 name="email"
                 placeholder=""
                 >
-                <i class="formulario__icono fa-solid fa-envelope"></i>
                 <label class="formulario__label" for="email">Email</label>
+                <i class="formulario__icono fa-solid fa-envelope"></i>
             </div>
 
             <div class="formulario__campo">
@@ -49,8 +49,8 @@
                 name="password"
                 placeholder=""
                 >
-                <i class="formulario__icono fa-solid fa-lock"></i>
                 <label class="formulario__label" for="password">Password</label>
+                <i class="formulario__icono fa-solid fa-lock"></i>
             </div>
 
             <div class="formulario__campo">
@@ -61,8 +61,8 @@
                 name="password2"
                 placeholder=""
                 >
-                <i class="formulario__icono fa-solid fa-lock"></i>
                 <label class="formulario__label" for="password2">Repetir Password</label>
+                <i class="formulario__icono fa-solid fa-lock"></i>
             </div>
 
             <div class="formulario__contenedor">

@@ -21,6 +21,10 @@
         font-weight: 100;
     }
 
+    &__label--active {
+        top: -.5rem;
+    }
+    
     &__input {
         border: none;
         padding: 1rem;
@@ -35,21 +39,23 @@
         transition: all .3s;
         color: white;
         font-weight: 100;
-
+    }
         
     // Estilos para el estado de autocompletado
-    &:-webkit-autofill,
-    &:-webkit-autofill:hover,
-    &:-webkit-autofill:focus {
+    &__input:-webkit-autofill,
+    &__input:-webkit-autofill:hover,
+    &__input:-webkit-autofill:focus,
+    &__input:-webkit-autofill:active {
         background-color: transparent !important; // Anula el color de fondo
-        color: white !important; // Establece el color del texto, si es necesario
-        transition: background-color 5000s ease-in-out 0s; // Esto es un truco para superar la transición predeterminada que algunos navegadores imponen
+        color: white !important; // Establece el color del texto
+        -webkit-text-fill-color: white !important; // Establece el color del texto para WebKit
+        transition: background-color 5000s ease-in-out 0s; // Truco para superar la transición predeterminada
     }
 
-        &:focus {
-            border-bottom-color: white;
-        }
+    &__input:focus {
+        border-bottom-color: white;
     }
+
 
     &__input:focus ~ &__label,
     &__input:not(:placeholder-shown) ~ &__label {
