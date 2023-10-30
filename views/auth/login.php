@@ -1,3 +1,5 @@
+<?php include_once __DIR__ . "./templates/header.php" ?>
+
 <main class="auth">
     <section class="auth__login">
         <h2 class="auth__heading"><?php echo $titulo?></h2>
