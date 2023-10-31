@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
@@ -514,12 +515,26 @@ h3 {
 }
 
 .header {
-  min-height: 50rem;
+  position: relative;
+  z-index: 1;
+  background-color: rgb(0, 0, 0);
+  padding-top: 1rem;
+  padding-bottom: 6rem;
+}
+.header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-image: url(../img/grafico.svg), url(../img/grafico.svg), linear-gradient(to right, #1a1b15, rgba(26, 27, 21, 0.5)), -webkit-image-set(url(../img/header.webp) 1x, url(../img/header.jpg) 1x);
   background-image: url(../img/grafico.svg), url(../img/grafico.svg), linear-gradient(to right, #1a1b15, rgba(26, 27, 21, 0.5)), image-set(url(../img/header.webp) 1x, url(../img/header.jpg) 1x);
   background-repeat: no-repeat;
   background-size: 40rem, 40rem, cover, cover;
   background-position: top left, bottom right, center center, center center;
+  filter: blur(10px); /* Ajusta el valor según el nivel de desenfoque que desees */
+  z-index: -1;
 }
 .header__contenedor {
   width: min(95%, 120rem);
@@ -540,6 +555,19 @@ h3 {
 .header__enlaces {
   font-size: 1.3rem;
   color: #FFFFFF;
+  position: relative;
+}
+.header__enlaces::after {
+  content: "|"; /* Contenido del pseudoelemento (la línea vertical) */
+  position: absolute;
+  right: -12px; /* Ajusta la posición de la línea vertical */
+  top: 50%;
+  transform: translateY(-50%); /* Centra verticalmente la línea */
+  color: #FFFFFF; /* Color de la línea vertical */
+  pointer-events: none;
+}
+.header__enlaces:last-child::after {
+  content: none; /* Elimina la línea vertical después del último enlace */
 }
 .header__contenido {
   display: flex;
@@ -553,7 +581,7 @@ h3 {
   }
 }
 .header__titulo {
-  font-size: clamp(2rem, -0.8rem + 10vw, 8rem);
+  font-size: clamp(3rem, -0.8rem + 10vw, 8rem);
   background: linear-gradient(to right, #007df4, #00c8c2);
   -webkit-background-clip: text;
           background-clip: text;
@@ -579,10 +607,83 @@ h3 {
   transition-duration: 0.3s;
   text-align: center;
   display: inline-block;
+  font-size: 1.3rem;
+  border-radius: 2rem;
   text-transform: uppercase;
+  margin: 1rem 0;
 }
 .header__boton:hover {
   background-color: #009591;
   cursor: pointer;
+}
+@media (min-width: 768px) {
+  .header__boton {
+    font-size: 1.8rem;
+  }
+}
+
+.barra {
+  background-color: #007df4;
+  color: #FFFFFF;
+  padding: 4rem;
+  height: 100%;
+}
+@media (min-width: 1024px) {
+  .barra {
+    padding: 0;
+    height: 6rem;
+  }
+}
+.barra__contenido {
+  display: flex;
+  flex-direction: column;
+  padding: 0 4rem;
+  align-items: center;
+  gap: 5rem;
+}
+@media (min-width: 1024px) {
+  .barra__contenido {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+.barra__logo {
+  margin: 0;
+  font-size: 3rem;
+}
+
+.navegacion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+@media (min-width: 1024px) {
+  .navegacion {
+    flex-direction: row;
+  }
+}
+.navegacion__enlace {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 4rem;
+  padding: 0 0.5rem;
+  color: #FFFFFF;
+  font-weight: 900;
+  text-transform: uppercase;
+  width: 100%;
+  font-size: 1.6rem;
+}
+.navegacion__enlace:hover {
+  background-color: #FFFFFF;
+  color: #007df4;
+}
+@media (min-width: 1024px) {
+  .navegacion__enlace {
+    height: 6rem;
+    width: auto;
+  }
 }
 /*# sourceMappingURL=app.css.map */

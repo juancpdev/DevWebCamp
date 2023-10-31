@@ -1,0 +1,33 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.barra {
+    background-color: v.$azul;
+    color: v.$blanco;
+    padding: 4rem;
+    height: 100%;
+    @include m.desktop {
+        padding: 0;
+        height: 6rem;
+    }
+
+    &__contenido {
+        display: flex;
+        flex-direction: column;
+        padding: 0 4rem;
+        align-items: center;
+        gap: 5rem;
+
+        @include m.desktop {
+            width: 100%;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
+
+    &__logo {
+        margin: 0;
+        font-size: 3rem;
+
+    }
+}

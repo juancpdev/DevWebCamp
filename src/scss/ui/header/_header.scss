@@ -2,11 +2,26 @@
 @use 'base/variables' as v;
 
 .header {
-    min-height: 50rem;
-    background-image: url(../img/grafico.svg), url(../img/grafico.svg), linear-gradient(to right, rgba(v.$negro, 1), rgba(v.$negro, .5) ), image-set( url(../img/header.webp) 1x, url(../img/header.jpg) 1x);
-    background-repeat: no-repeat;
-    background-size: 40rem, 40rem, cover, cover;
-    background-position: top left, bottom right, center center, center center;
+    position: relative;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 1);
+    padding-top: 1rem;
+    padding-bottom: 6rem;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url(../img/grafico.svg), url(../img/grafico.svg), linear-gradient(to right, rgba(v.$negro, 1), rgba(v.$negro, .5) ), image-set( url(../img/header.webp) 1x, url(../img/header.jpg) 1x);
+        background-repeat: no-repeat;
+        background-size: 40rem, 40rem, cover, cover;
+        background-position: top left, bottom right, center center, center center;
+        filter: blur(10px); /* Ajusta el valor según el nivel de desenfoque que desees */
+        z-index: -1;
+    }
 
     &__contenedor {
         @include m.contenedor;
@@ -26,6 +41,21 @@
     &__enlaces {
         font-size: 1.3rem;
         color: v.$blanco;
+        position: relative;
+        
+        &::after {
+            content: "|"; /* Contenido del pseudoelemento (la línea vertical) */
+            position: absolute;
+            right: -12px; /* Ajusta la posición de la línea vertical */
+            top: 50%;
+            transform: translateY(-50%); /* Centra verticalmente la línea */
+            color: v.$blanco; /* Color de la línea vertical */
+            pointer-events: none;
+        }
+
+        &:last-child::after {
+        content: none; /* Elimina la línea vertical después del último enlace */
+        }
     }
 
     &__contenido {
@@ -40,7 +70,7 @@
     }
 
     &__titulo {
-        @include m.texto-fluido(2rem, 8rem);
+        @include m.texto-fluido(3rem, 8rem);
         @include m.texto-degradado(v.$azul, v.$secundario);
     }
 
@@ -57,6 +87,13 @@
 
     &__boton {
         @include m.boton(v.$secundario, v.$blanco);
+        font-size: 1.3rem;
+        border-radius: 2rem;
         text-transform: uppercase;
+        margin: 1rem 0;
+
+        @include m.tablet {
+            font-size: 1.8rem;
+        }
     }
 }
