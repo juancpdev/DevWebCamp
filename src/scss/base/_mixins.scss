@@ -77,3 +77,41 @@
     background-clip: text;
     color: transparent;
 }
+
+@mixin menu-social($color, $size) {
+
+    &__enlace {
+        color: $color;
+        transition: all .3s ease-in-out;
+        &::before {
+            font-size: $size;
+            display: inline-block;
+            font-style: normal;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+            font-family: "Font Awesome 6 Brands";
+
+        }
+
+        &[href*="https://www.facebook.com"]::before {
+            content: "\f39e";
+        }
+        &[href*="https://www.instagram.com"]::before {
+            content: "\f16d";
+        }
+        &[href*="https://github.com"]::before {
+            content: "\f09b";
+        }
+        &[href*="https://www.linkedin.com/in"]::before {
+            content: "\f08c";
+        }
+        &[href*="https://www.youtube.com"]::before {
+            content: "\f167";
+        }
+
+        &:hover {
+            color: rgb(158, 158, 158);
+            transform: scale(.95);
+        }
+    }
+}
