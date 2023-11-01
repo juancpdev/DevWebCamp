@@ -35,14 +35,14 @@
 
             @include m.tablet {
                 text-align: start;
-                font-size: 1.8rem;
+                font-size: 1.7rem;
             }
         }
     }
 
     &__derechos {
         background-color: darken(v.$azul, 15%);
-        padding: .5rem 0;
+        padding: .1rem 0;
         p {
             text-align: center;
 
