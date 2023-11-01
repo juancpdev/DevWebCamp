@@ -17,22 +17,23 @@
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.7);
-    
-    &__content {
-        background-color: #fff;
-        margin: 15% auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 70%;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    }
-    
+    background-color: rgba(0, 0, 0, .8);
+
+    opacity: 0;
+    transition: opacity 0.2s ease;
+
     &__close {
-        float: right;
-        cursor: pointer;
+        position: absolute;
+        right: 0;
+        top: 0;
+        margin: 2rem 2rem 0 0;
+        i {
+            color: v.$blanco;
+            cursor: pointer;
+        }
     }
 }
+
 
 .auth {
     background-repeat: no-repeat;
@@ -56,13 +57,14 @@
         align-items: center;
     }
 
-    &__login {
-        background-color: rgba(5, 29, 66, 0.644);
-        box-shadow: 0 0 20px 5px rgba(16, 3, 53, 0.61);
+    &__modal {
+        background: linear-gradient(to right, v.$azul, darken(v.$azul, 15%));
+        box-shadow: 0 0 10px 5px darken(v.$azul, 20%);
         padding: 5rem;
         border-radius: 2rem;
         width: 90%;
         margin: 0 auto;
+        position: relative;
 
         @include m.tablet {
             width: min(90%, 45rem);
@@ -77,5 +79,27 @@
         text-align: center;
         color: white;
         font-weight: 100;
+    }
+}
+
+@keyframes modalOpen {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes modalClose {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100%);
+        opacity: 0;
     }
 }

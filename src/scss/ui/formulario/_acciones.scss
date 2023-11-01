@@ -6,11 +6,11 @@
     color: white;
 
     &__enlace {
-        color: rgb(145, 145, 145);
+        color: v.$blanco;
         transition: all .3s;
-        
+        font-weight: bold;
         &:hover {
-            color: v.$azul;
+            color: darken(v.$blanco, 30%);
         }
     }
 

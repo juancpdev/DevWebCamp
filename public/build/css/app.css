@@ -375,18 +375,18 @@ h3 {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.7);
-}
-.modal__content {
-  background-color: #fff;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 70%;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  transition: opacity 0.2s ease;
 }
 .modal__close {
-  float: right;
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 2rem 2rem 0 0;
+}
+.modal__close i {
+  color: #FFFFFF;
   cursor: pointer;
 }
 
@@ -413,16 +413,17 @@ h3 {
     align-items: center;
   }
 }
-.auth__login {
-  background-color: rgba(5, 29, 66, 0.644);
-  box-shadow: 0 0 20px 5px rgba(16, 3, 53, 0.61);
+.auth__modal {
+  background: linear-gradient(to right, #007df4, #0056a8);
+  box-shadow: 0 0 10px 5px #00498e;
   padding: 5rem;
   border-radius: 2rem;
   width: 90%;
   margin: 0 auto;
+  position: relative;
 }
 @media (min-width: 768px) {
-  .auth__login {
+  .auth__modal {
     width: min(90%, 45rem);
   }
 }
@@ -436,6 +437,26 @@ h3 {
   font-weight: 100;
 }
 
+@keyframes modalOpen {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes modalClose {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
 .formulario {
   margin: 5rem 0;
 }
@@ -451,7 +472,7 @@ h3 {
   transform: translateY(-50%);
   pointer-events: none;
   transition: 0.3s;
-  color: rgb(155, 155, 155);
+  color: #b3b3b3;
   font-weight: 100;
 }
 .formulario__label--active {
@@ -466,13 +487,13 @@ h3 {
   border: none;
   outline: none;
   padding: 0 3.5rem 0 0.5rem;
-  border-bottom: 0.2rem solid rgba(128, 128, 128, 0.445);
+  border-bottom: 0.2rem solid #999999;
   border-radius: 0.5rem;
   transition: all 0.3s;
   color: white;
   font-weight: 100;
 }
-.formulario__input:-webkit-autofill, .formulario__input:-webkit-autofill:hover, .formulario__input:-webkit-autofill:focus, .formulario__input:-webkit-autofill:active {
+.formulario__input:-webkit-autofill, .formulario__input:-webkit-autofill:hover, .formulario__input:-webkit-autofill:focus, .formulario__input:-webkit-autofill:active, .formulario__input:-webkit-autofill:visited {
   background-color: transparent !important;
   color: white !important;
   -webkit-text-fill-color: white !important;
@@ -497,14 +518,14 @@ h3 {
   right: 1rem;
   top: 50%;
   transform: translateY(-50%);
-  color: rgb(155, 155, 155);
+  color: #b3b3b3;
   transition: all 0.3s;
 }
 .formulario__input:focus ~ .formulario__icono {
   color: white;
 }
 .formulario__contenedor--boton {
-  background-color: #007df4;
+  background-color: #00498e;
   padding: 1rem 4rem;
   color: #FFFFFF;
   font-size: 1.8rem;
@@ -519,7 +540,7 @@ h3 {
   margin-top: 1rem;
 }
 .formulario__contenedor--boton:hover {
-  background-color: #0063c1;
+  background-color: #002f5b;
   cursor: pointer;
 }
 
@@ -528,11 +549,12 @@ h3 {
   color: white;
 }
 .acciones__enlace {
-  color: rgb(145, 145, 145);
+  color: #FFFFFF;
   transition: all 0.3s;
+  font-weight: bold;
 }
 .acciones__enlace:hover {
-  color: #007df4;
+  color: #b3b3b3;
 }
 .acciones__texto {
   display: flex;

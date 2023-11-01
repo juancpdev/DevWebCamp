@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     autocompletadoFormulario();
     modalAuth();
-    cambiarModal();
 })
 
 function autocompletadoFormulario() {
@@ -25,57 +24,87 @@ function autocompletadoFormulario() {
 }
 
 function modalAuth() {
+    const fondoNegro = document.querySelectorAll(".auth");
+
     const modalLogin = document.querySelector("#login");
     const modalRegistro = document.querySelector("#registro");
     const modalOlvide = document.querySelector("#olvide");
 
-    const abrirModalLoginBtns = document.querySelectorAll(".login");
-    const abrirRegistroModalBtns = document.querySelectorAll(".registro");
-    const abrirOlvideModalBtns = document.querySelectorAll(".olvide");
+    const btnLogin = document.querySelectorAll(".login");
+    const btnRegistro = document.querySelectorAll(".registro");
+    const btnOlvide = document.querySelectorAll(".olvide");
 
     const cerrarModalBtns = document.querySelectorAll(".modal__close");
 
-    abrirModalLoginBtns.forEach(btn => {
+    btnLogin.forEach(btn => {
         btn.addEventListener("click", function(e) {
             e.preventDefault();
-            modalLogin.style.display = "block";
-            modalRegistro.style.display = "none";
-            modalOlvide.style.display = "none";
+
+            // Agrega esta línea para restablecer el formulario dentro del otro modal
+            modalRegistro.querySelector("form").reset();
+            modalOlvide.querySelector("form").reset();
+            modalAnimacion(modalLogin, modalRegistro, modalOlvide);
         });
     });
 
-    abrirRegistroModalBtns.forEach(btn => {
+    btnRegistro.forEach(btn => {
         btn.addEventListener("click", function(e) {
             e.preventDefault();
-            modalRegistro.style.display = "block";
-            modalLogin.style.display = "none";
-            modalOlvide.style.display = "none";
+
+            // Agrega esta línea para restablecer el formulario dentro del otro modal
+            modalLogin.querySelector("form").reset();
+            modalOlvide.querySelector("form").reset();
+            modalAnimacion(modalRegistro, modalLogin, modalOlvide);
         });
     });
 
-    abrirOlvideModalBtns.forEach(btn => {
+    btnOlvide.forEach(btn => {
         btn.addEventListener("click", function(e) {
             e.preventDefault();
-            modalOlvide.style.display = "block";
-            modalLogin.style.display = "none";
-            modalRegistro.style.display = "none";
+
+            // Agrega esta línea para restablecer el formulario dentro del otro modal
+            modalLogin.querySelector("form").reset();
+            modalRegistro.querySelector("form").reset();
+            modalAnimacion(modalOlvide, modalRegistro, modalLogin);
         });
     });
 
     cerrarModalBtns.forEach(btn => {
         btn.addEventListener("click", function() {
-            this.parentElement.parentElement.style.display = "none";
+            const modal = this.closest(".modal");
+            // Cambia la opacidad a 0 con una transición
+            modal.style.opacity = "0";
+            setTimeout(() => {
+                modal.style.display = "none";
+                document.body.style.overflow = "auto";
+                modal.querySelector("form").reset();
+            }, 200);
         });
     });
 
     window.addEventListener("click", function(event) {
-        if (event.target === modalLogin || event.target === modalRegistro) {
-            event.target.style.display = "none";
-        }
+        fondoNegro.forEach(fondo => {
+            if (event.target === fondo) {
+                event.target.parentElement.style = "none";
+                document.body.style.overflow = "auto"; // Permite el desplazamiento de nuevo
+            }
+        })
     });
 }
 
+function noScroll() {
+    document.body.style.overflow = "hidden"; // Evita el desplazamiento
+}
 
-function cambiarModal() {
+function modalAnimacion(modal, modal2, modal3) {
+    modal.style.display = "block";
+    modal2.style.display = "none";
+    modal3.style.display = "none";
     
+    // Cambia la opacidad a 1 con una transición
+    setTimeout(() => {
+        modal.style.opacity = "1";
+    }, 0);
+
+    noScroll();
 }
