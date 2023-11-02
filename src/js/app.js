@@ -34,35 +34,9 @@ function modalAuth() {
     const btnOlvide = document.querySelectorAll(".olvide");
     const btnCerrar = document.querySelectorAll(".modal__close");
 
-    btnLogin.forEach(btn => {
-        btn.addEventListener("click", function(e) {
-            e.preventDefault();
-
-            // Agrega esta línea para restablecer el formulario dentro del otro modal
-            reiniciarFormu(modalRegistro, modalOlvide);
-            modalAnimacion(modalLogin, modalRegistro, modalOlvide);
-        });
-    });
-
-    btnRegistro.forEach(btn => {
-        btn.addEventListener("click", function(e) {
-            e.preventDefault();
-
-            // Agrega esta línea para restablecer el formulario dentro del otro modal
-            reiniciarFormu(modalLogin, modalOlvide);
-            modalAnimacion(modalRegistro, modalLogin, modalOlvide);
-        });
-    });
-
-    btnOlvide.forEach(btn => {
-        btn.addEventListener("click", function(e) {
-            e.preventDefault();
-
-            // Agrega esta línea para restablecer el formulario dentro del otro modal
-            reiniciarFormu(modalLogin, modalRegistro);
-            modalAnimacion(modalOlvide, modalRegistro, modalLogin);
-        });
-    });
+    abrirModal(btnLogin, modalLogin, modalRegistro, modalOlvide);
+    abrirModal(btnRegistro, modalRegistro, modalLogin, modalOlvide);
+    abrirModal(btnOlvide, modalOlvide, modalLogin, modalRegistro);
 
     btnCerrar.forEach(btn => {
         btn.addEventListener("click", function() {
@@ -94,10 +68,18 @@ function modalAuth() {
     });
 }
 
-function reiniciarFormu(modal1, modal2) {
-    // Agrega esta línea para restablecer el formulario dentro del otro modal
-    modal1.querySelector("form").reset();
-    modal2.querySelector("form").reset();
+function abrirModal(botonActual, modalActual, modal1, modal2) {
+    botonActual.forEach(btn => {
+        btn.addEventListener("click", function(e) {
+            e.preventDefault();
+
+            cambiarModal();
+
+            // Agrega esta línea para restablecer el formulario dentro del otro modal
+            reiniciarFormu(modal1, modal2);
+            modalAnimacion(modalActual, modal1, modal2);
+        });
+    });
 }
 
 function modalAnimacion(modal, modal2, modal3) {
@@ -108,13 +90,9 @@ function modalAnimacion(modal, modal2, modal3) {
     document.body.style.overflow = "hidden"; // Evita el desplazamiento
 
     setTimeout(() => {
-        const auth = document.querySelectorAll(".auth__modal");
-        auth.forEach(formu => {
-            formu.classList.add("animar");
-        })
-    }, 0);
+        modal.children[0].children[0].classList.toggle("animar");
+    }, 50);
 }
-
 
 function cerrarModal() {
     setTimeout(() => {
@@ -123,4 +101,25 @@ function cerrarModal() {
             formu.classList.remove("animar");
         })
     }, 0);
+}
+
+
+function cambiarModal() {
+    const acciones = document.querySelectorAll(".acciones__enlace");
+    const auth = document.querySelectorAll(".auth__modal");
+    
+    acciones.forEach(accion => {
+        accion.addEventListener("click", function(e) {
+            auth.forEach(modal => {
+                modal.classList.remove("animar");
+            })
+        });
+    });
+
+}
+
+function reiniciarFormu(modal1, modal2) {
+    // Agrega esta línea para restablecer el formulario dentro del otro modal
+    modal1.querySelector("form").reset();
+    modal2.querySelector("form").reset();
 }
