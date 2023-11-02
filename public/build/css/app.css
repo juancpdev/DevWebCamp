@@ -376,8 +376,6 @@ h3 {
   height: 100%;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.8);
-  opacity: 0;
-  transition: opacity 0.2s ease;
 }
 .modal__close {
   position: absolute;
@@ -421,6 +419,9 @@ h3 {
   width: 90%;
   margin: 0 auto;
   position: relative;
+  transform: translateY(-100rem);
+  opacity: 0.5;
+  transition: all 0.3s;
 }
 @media (min-width: 768px) {
   .auth__modal {
@@ -437,26 +438,11 @@ h3 {
   font-weight: 100;
 }
 
-@keyframes modalOpen {
-  0% {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
+.animar {
+  transform: translateY(0);
+  opacity: 1;
 }
-@keyframes modalClose {
-  0% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-}
+
 .formulario {
   margin: 5rem 0;
 }
