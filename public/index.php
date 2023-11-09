@@ -10,22 +10,13 @@ $router = new Router();
 // Pag Principal (DEMO)
 $router->get('/', [AuthController::class, 'demo']);
 
-// Login
-// $router->get('/login', [AuthController::class, 'login']);
-$router->post('/login', [AuthController::class, 'login']);
-$router->post('/logout', [AuthController::class, 'logout']);
+// API Auth
+$router->post('/api/usuarios/registro', [AuthController::class, 'registro']);
+$router->post('/api/usuarios/login', [AuthController::class, 'login']);
+$router->post('/api/usuarios/olvidePassword', [AuthController::class, 'olvide']);
+$router->post('/api/usuarios/recuperar', [AuthController::class, 'recuperar']);
 
-// Crear Cuenta
-// $router->get('/registro', [AuthController::class, 'registro']);
-$router->post('/registro', [AuthController::class, 'registro']);
 
-// Formulario de olvide mi password
-// $router->get('/olvide', [AuthController::class, 'olvide']);
-$router->post('/olvide', [AuthController::class, 'olvide']);
-
-// Colocar el nuevo password
-$router->get('/reestablecer', [AuthController::class, 'reestablecer']);
-$router->post('/reestablecer', [AuthController::class, 'reestablecer']);
 
 // Confirmación de Cuenta
 $router->get('/mensaje', [AuthController::class, 'mensaje']);

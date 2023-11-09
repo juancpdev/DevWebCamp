@@ -1,6 +1,39 @@
 @use 'base/mixins' as m;
 @use 'base/variables' as v;
 
+/* Estilo para el contenedor de alertas */
+#alertas-container {
+    text-transform: uppercase;
+    font-size: 1.3rem;
+
+    .alert-danger {
+    margin: 3rem 0;
+        
+        ul {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            padding: 0;
+            li {
+                list-style: none;
+                background-color: rgba(255, 0, 0, 0.527);
+                border-left: .5rem solid v.$rojo;
+                border-radius: 2rem;
+                color: v.$blanco;
+                padding: .8rem 1rem;
+            }
+        }
+    }
+}
+
+.swal2-popup { 
+    font-size: 1.2rem !important;
+
+    @include m.tablet {
+        font-size: 1.5rem !important;
+    }
+}
+
 #login, #registro, #olvide {
     display: none;
 }
@@ -58,7 +91,7 @@
     &__modal {
         background: linear-gradient(to right, v.$azul, darken(v.$azul, 15%));
         box-shadow: 0 0 10px 5px darken(v.$azul, 20%);
-        padding: 5rem;
+        padding: 5rem 3rem;
         border-radius: 2rem;
         width: 90%;
         margin: 0 auto;
@@ -69,6 +102,7 @@
 
         @include m.tablet {
             width: min(90%, 45rem);
+            padding: 5rem;
         }
     }
     &__heading {

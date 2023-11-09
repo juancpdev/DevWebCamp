@@ -6,11 +6,11 @@ document.addEventListener("DOMContentLoaded", function() {
 function autocompletadoFormulario() {
     // Selecciona todos los inputs
     const inputs = document.querySelectorAll('.formulario__input');
-
+    
     inputs.forEach(input => {
         input.addEventListener('input', function() {
             const label = this.nextElementSibling; // Suponiendo que el label siempre viene después del input
-            
+       
             // Si el input tiene contenido, mueve el label hacia arriba
             if (this.value) {
                 label.classList.add('formulario__label--active');
@@ -95,6 +95,8 @@ function modalAnimacion(modal, modal2, modal3) {
 }
 
 function cerrarModal() {
+    limpiarAlertas();
+    limpiarLabels();
     setTimeout(() => {
         const auth = document.querySelectorAll(".auth__modal");
         auth.forEach(formu => {
@@ -105,6 +107,8 @@ function cerrarModal() {
 
 
 function cambiarModal() {
+    limpiarAlertas();
+    limpiarLabels();
     const acciones = document.querySelectorAll(".acciones__enlace");
     const auth = document.querySelectorAll(".auth__modal");
     
@@ -123,3 +127,18 @@ function reiniciarFormu(modal1, modal2) {
     modal1.querySelector("form").reset();
     modal2.querySelector("form").reset();
 }
+
+function limpiarLabels() {
+    // Seleccionar solo los labels dentro del formulario de registro
+    const labels = document.querySelectorAll('#registro .formulario__label');
+
+    labels.forEach(label => {
+        label.classList.remove("formulario__label--active");
+    })
+}
+
+function limpiarAlertas() {
+    const alertasContainer = document.getElementById('alertas-container');
+    alertasContainer.innerHTML = ''; // Limpia el contenido anterior
+}
+

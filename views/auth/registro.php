@@ -8,7 +8,9 @@
             <h2 class="auth__heading">Crear Cuenta</h2>
             <p class="auth__texto">Registrate en DevWevCamp</p>
 
-            <form class="formulario">
+            <div id="alertas-container"></div>
+
+            <form class="formulario" method="POST">
 
                 <div class="formulario__campo">
                     <input 

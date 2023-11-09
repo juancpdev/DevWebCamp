@@ -7,9 +7,8 @@ use Model\Usuario;
 use MVC\Router;
 
 class AuthController {
+    
     public static function demo(Router $router) {
-
-        
         // Render a la vista 
         $router->render('auth/demo', [
             'titulo' => 'Principal'
@@ -25,10 +24,10 @@ class AuthController {
             $usuario = new Usuario($_POST);
 
             $alertas = $usuario->validarLogin();
-            
             if(empty($alertas)) {
                 // Verificar quel el usuario exista
                 $usuario = Usuario::where('email', $usuario->email);
+
                 if(!$usuario || !$usuario->confirmado ) {
                     Usuario::setAlerta('error', 'El Usuario No Existe o no esta confirmado');
                 } else {
@@ -68,9 +67,10 @@ class AuthController {
        
     }
 
-    public static function registro(Router $router) {
+    public static function registro() {
         $alertas = [];
         $usuario = new Usuario;
+        $usuario->sincronizar($_POST);
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -78,12 +78,18 @@ class AuthController {
             
             $alertas = $usuario->validar_cuenta();
 
-            if(empty($alertas)) {
+            if (empty($alertas)) {
                 $existeUsuario = Usuario::where('email', $usuario->email);
 
                 if($existeUsuario) {
                     Usuario::setAlerta('error', 'El Usuario ya esta registrado');
                     $alertas = Usuario::getAlertas();
+
+                $respuesta = [
+                    'tipo' => 'error',
+                    'alertas' => $alertas
+                ];
+                echo json_encode($respuesta);
                 } else {
                     // Hashear el password
                     $usuario->hashPassword();
@@ -95,26 +101,27 @@ class AuthController {
                     $usuario->crearToken();
 
                     // Crear un nuevo usuario
-                    $resultado =  $usuario->guardar();
+                    $usuario->guardar();
 
                     // Enviar email
                     $email = new Email($usuario->email, $usuario->nombre, $usuario->token);
                     $email->enviarConfirmacion();
-                    
 
-                    if($resultado) {
-                        header('Location: /mensaje');
-                    }
+                    $respuesta = [
+                        'tipo' => 'exito',
+                        'datos' => $usuario
+                    ];
+                    echo json_encode($respuesta);
                 }
+            } else {
+                $respuesta = [
+                    'tipo' => 'error',
+                    'alertas' => $alertas
+                ];
+                echo json_encode($respuesta);
             }
+            
         }
-
-        // Render a la vista
-        $router->render('auth/registro', [
-            'titulo' => 'Crear Cuenta',
-            'usuario' => $usuario, 
-            'alertas' => $alertas
-        ]);
     }
 
     public static function olvide(Router $router) {

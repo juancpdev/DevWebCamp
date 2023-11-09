@@ -8,7 +8,7 @@
             <h2 class="auth__heading">Iniciar Sesión</h2>
             <p class="auth__texto">Inicia Sesión en DevWevCamp</p>
 
-            <form class="formulario">
+            <form class="formulario" method="POST">
 
                 <div class="formulario__campo">
                     <input 
