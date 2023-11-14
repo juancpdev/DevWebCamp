@@ -138,9 +138,26 @@ function limpiarLabels() {
 }
 
 function limpiarAlertas() {
-    const alertas = document.querySelectorAll('.error');
-    alertas.forEach(alerta => {
-        alerta.innerHTML = "";
-    })
+        // Itera sobre todos los campos y limpia las alertas y estilos previos
+        ['Nombre', 'Apellido', 'Email', 'Password', 'Password2'].forEach((campo) => {
+            const alertaElemento = document.getElementById('alerta' + campo + 'Registro');
+            const inputCampo = document.getElementById(campo.toLowerCase() + 'Registro');
+            const iconoCampo = document.getElementById(campo.toLowerCase() + 'RegistroIcono');
+
+            if (alertaElemento) {
+                alertaElemento.textContent = '';
+                alertaElemento.classList.remove("error");
+            }
+    
+            if (inputCampo) {
+                inputCampo.classList.remove("error-input");
+            }
+
+            if (iconoCampo) {
+                iconoCampo.classList.remove("error-icono");
+            }
+
+
+        });
 }
 

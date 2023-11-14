@@ -1,6 +1,9 @@
 (function() {
 
     async function manejarFormularioRegistro(formulario) {
+        const spinner = document.querySelector(".spinner-contenedor");
+        spinner.style.display = 'flex'; // Muestra el spinner
+
         const datos = new FormData();
         datos.append("nombre", formulario.elements['nombre'].value);
         datos.append("apellido", formulario.elements['apellido'].value);
@@ -53,23 +56,39 @@
         } catch (error) {
             // Manejar el caso en que no se reciba una respuesta JSON válida
             console.error("Error al analizar la respuesta JSON del servidor");
-        }
+        } finally {
+            spinner.style.display = 'none'; // Oculta el spinner cuando la acción se completa
+          }
     }
 
     function mostrarAlertas(alertas) {
-        // Itera sobre todos los campos y limpia las alertas previas
+        // Itera sobre todos los campos y limpia las alertas y estilos previos
         ['Nombre', 'Apellido', 'Email', 'Password', 'Password2'].forEach((campo) => {
             const alertaElemento = document.getElementById('alerta' + campo + 'Registro');
+            const inputCampo = document.getElementById(campo.toLowerCase() + 'Registro');
+            const iconoCampo = document.getElementById(campo.toLowerCase() + 'RegistroIcono');
+
             if (alertaElemento) {
                 alertaElemento.textContent = '';
+                alertaElemento.classList.remove("error");
             }
+    
+            if (inputCampo) {
+                inputCampo.classList.remove("error-input");
+            }
+
+            if (iconoCampo) {
+                iconoCampo.classList.remove("error-icono");
+            }
+
+
         });
     
         if (alertas && alertas.length > 0) {
             alertas.forEach((alerta) => {
                 // Asigna un identificador específico para cada campo
                 let campoId = "";
-                
+    
                 // Identifica el campo según el contenido de la alerta
                 if (alerta.includes('Nombre')) {
                     campoId = 'Nombre';
@@ -84,16 +103,32 @@
                 } else if (alerta.includes('registrado')) {
                     campoId = 'Email2';
                 }
-
+    
                 // Construye el ID completo del elemento donde se mostrará la alerta
                 const alertaElemento = document.getElementById('alerta' + campoId + 'Registro');
+                const inputCampo = document.getElementById(campoId.toLowerCase() + 'Registro');
+                const iconoCampo = document.getElementById(campoId.toLowerCase() + 'RegistroIcono');
 
                 if (alertaElemento) {
                     alertaElemento.textContent = alerta;
+                    setTimeout(() => {
+                        alertaElemento.classList.add("error");
+                    }, 0);
                 }
+    
+                if (inputCampo) {
+                    inputCampo.classList.add("error-input");
+                }
+
+                if (iconoCampo) {
+                    iconoCampo.classList.add("error-icono");
+                }
+            
             });
         }
     }
+    
+
     
     
     async function manejarFormularioLogin(formulario) {

@@ -1,6 +1,7 @@
 <div id="registro" class="modal">
     
     <div class="auth">
+        
         <section class="auth__modal">
             <div id="cerrar-modal" class="modal__close">
                 <i class="fa-solid fa-x"></i>
@@ -21,8 +22,8 @@
                     placeholder=""
                     >
                     <label class="formulario__label" for="nombreRegistro">Nombre</label>
-                    <i class="formulario__icono fa-solid fa-user"></i>
-                    <p class="error" id="alertaNombreRegistro"></p>
+                    <i class="formulario__icono fa-solid fa-user" id="nombreRegistroIcono"></i>
+                    <p class="alerta" id="alertaNombreRegistro"></p>
                 </div>
                 
                 <div class="formulario__campo">
@@ -34,8 +35,8 @@
                     placeholder=""
                     >
                     <label class="formulario__label" for="apellidoRegistro">Apellido</label>
-                    <i class="formulario__icono fa-solid fa-user"></i>
-                    <p class="error" id="alertaApellidoRegistro"></p>
+                    <i class="formulario__icono fa-solid fa-user" id="apellidoRegistroIcono"></i>
+                    <p class="alerta" id="alertaApellidoRegistro"></p>
                 </div>
 
                 <div class="formulario__campo">
@@ -47,9 +48,9 @@
                     placeholder=""
                     >
                     <label class="formulario__label" for="emailRegistro">Email</label>
-                    <i class="formulario__icono fa-solid fa-envelope"></i>
-                    <p class="error" id="alertaEmailRegistro"></p>
-                    <p class="error" id="alertaEmail2Registro"></p>
+                    <i class="formulario__icono fa-solid fa-envelope" id="emailRegistroIcono"></i>
+                    <p class="alerta" id="alertaEmailRegistro"></p>
+                    <p class="alerta" id="alertaEmail2Registro"></p>
                 </div>
 
                 <div class="formulario__campo">
@@ -61,8 +62,8 @@
                     placeholder=""
                     >
                     <label class="formulario__label" for="passwordRegistro">Password</label>
-                    <i class="formulario__icono fa-solid fa-lock"></i>
-                    <p class="error" id="alertaPasswordRegistro"></p>
+                    <i class="formulario__icono fa-solid fa-lock" id="passwordRegistroIcono"></i>
+                    <p class="alerta" id="alertaPasswordRegistro"></p>
                 </div>
 
                 <div class="formulario__campo">
@@ -74,8 +75,8 @@
                     placeholder=""
                     >
                     <label class="formulario__label" for="password2Registro">Repetir Password</label>
-                    <i class="formulario__icono fa-solid fa-lock"></i>
-                    <p class="error" id="alertaPassword2Registro"></p>
+                    <i class="formulario__icono fa-solid fa-lock" id="password2RegistroIcono"></i>
+                    <p class="alerta" id="alertaPassword2Registro"></p>
                 </div>
 
                 <div class="formulario__contenedor">
@@ -90,5 +91,16 @@
                 <a class="acciones__enlace olvide">¿Olvidaste tu contraseña?</a>
             </div>
         </section>
+            <!-- Spinner -->
+    <div class="spinner-contenedor">
+        <div class="sk-chase" id="spinner">
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+        </div>
+    </div>
     </div>
 </div>
