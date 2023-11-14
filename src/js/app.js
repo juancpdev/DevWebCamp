@@ -138,7 +138,9 @@ function limpiarLabels() {
 }
 
 function limpiarAlertas() {
-    const alertasContainer = document.getElementById('alertas-container');
-    alertasContainer.innerHTML = ''; // Limpia el contenido anterior
+    const alertas = document.querySelectorAll('.error');
+    alertas.forEach(alerta => {
+        alerta.innerHTML = "";
+    })
 }
 

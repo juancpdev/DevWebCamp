@@ -59,14 +59,11 @@ class Usuario extends ActiveRecord {
         if(!$this->email) {
             self::$alertas['error'][] = 'El Email es Obligatorio';
         }
-        if(!$this->password) {
-            self::$alertas['error'][] = 'El Password no puede ir vacio';
-        }
-        if(strlen($this->password) < 6) {
+        if((strlen($this->password) < 6) || (!$this->password)) {
             self::$alertas['error'][] = 'El password debe ser mayor a 6';
         }
         if($this->password !== $this->password2) {
-            self::$alertas['error'][] = 'Los password son diferentes';
+            self::$alertas['error'][] = 'Los password no coinciden';
         }
         return self::$alertas;
     }

@@ -22,6 +22,7 @@
                     >
                     <label class="formulario__label" for="nombreRegistro">Nombre</label>
                     <i class="formulario__icono fa-solid fa-user"></i>
+                    <p class="error" id="alertaNombreRegistro"></p>
                 </div>
                 
                 <div class="formulario__campo">
@@ -34,6 +35,7 @@
                     >
                     <label class="formulario__label" for="apellidoRegistro">Apellido</label>
                     <i class="formulario__icono fa-solid fa-user"></i>
+                    <p class="error" id="alertaApellidoRegistro"></p>
                 </div>
 
                 <div class="formulario__campo">
@@ -46,6 +48,8 @@
                     >
                     <label class="formulario__label" for="emailRegistro">Email</label>
                     <i class="formulario__icono fa-solid fa-envelope"></i>
+                    <p class="error" id="alertaEmailRegistro"></p>
+                    <p class="error" id="alertaEmail2Registro"></p>
                 </div>
 
                 <div class="formulario__campo">
@@ -58,6 +62,7 @@
                     >
                     <label class="formulario__label" for="passwordRegistro">Password</label>
                     <i class="formulario__icono fa-solid fa-lock"></i>
+                    <p class="error" id="alertaPasswordRegistro"></p>
                 </div>
 
                 <div class="formulario__campo">
@@ -70,6 +75,7 @@
                     >
                     <label class="formulario__label" for="password2Registro">Repetir Password</label>
                     <i class="formulario__icono fa-solid fa-lock"></i>
+                    <p class="error" id="alertaPassword2Registro"></p>
                 </div>
 
                 <div class="formulario__contenedor">

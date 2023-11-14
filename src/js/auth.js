@@ -1,12 +1,4 @@
 (function() {
-    // Variables para almacenar los valores originales de los campos
-    let nombreOriginal = '';
-    let apellidoOriginal = '';
-    let emailOriginal = '';
-    let passOriginal = '';
-    let pass2Original = '';
-
-
 
     async function manejarFormularioRegistro(formulario) {
         const datos = new FormData();
@@ -28,7 +20,7 @@
                nombreOriginal = formulario.elements['nombre'].value;
                apellidoOriginal = formulario.elements['apellido'].value;
                emailOriginal = formulario.elements['email'].value;
-
+                
                // Limpia el campo de contraseña
                formulario.elements['password'].value = '';
                formulario.elements['password2'].value = '';
@@ -38,11 +30,11 @@
 
             } else if (resultado.tipo === 'exito') {
                 // Restablece los valores originales de los campos
-                formulario.elements['nombre'].value = nombreOriginal;
-                formulario.elements['apellido'].value = apellidoOriginal;
-                formulario.elements['email'].value = emailOriginal;
-                formulario.elements['password'].value = passOriginal;
-                formulario.elements['password2'].value = pass2Original;
+                formulario.elements['nombre'].value = '';
+                formulario.elements['apellido'].value = '';
+                formulario.elements['email'].value = '';
+                formulario.elements['password'].value = '';
+                formulario.elements['password2'].value = '';
 
                 // Manejar éxito
                 console.log(resultado.datos);
@@ -56,6 +48,7 @@
 
                 // Alerta de éxito
                 usuarioCreado();
+                
             }
         } catch (error) {
             // Manejar el caso en que no se reciba una respuesta JSON válida
@@ -64,29 +57,45 @@
     }
 
     function mostrarAlertas(alertas) {
-        const alertasContainer = document.getElementById('alertas-container');
-        alertasContainer.innerHTML = ''; // Limpia el contenido anterior
-
+        // Itera sobre todos los campos y limpia las alertas previas
+        ['Nombre', 'Apellido', 'Email', 'Password', 'Password2'].forEach((campo) => {
+            const alertaElemento = document.getElementById('alerta' + campo + 'Registro');
+            if (alertaElemento) {
+                alertaElemento.textContent = '';
+            }
+        });
+    
         if (alertas && alertas.length > 0) {
-            setTimeout(() => {
-                const alertasDiv = document.createElement('div');
-                alertasDiv.classList.add('alert', 'alert-danger');
+            alertas.forEach((alerta) => {
+                // Asigna un identificador específico para cada campo
+                let campoId = "";
+                
+                // Identifica el campo según el contenido de la alerta
+                if (alerta.includes('Nombre')) {
+                    campoId = 'Nombre';
+                } else if (alerta.includes('Apellido')) {
+                    campoId = 'Apellido';
+                } else if (alerta.includes('Email')) {
+                    campoId = 'Email';
+                } else if (alerta.includes('mayor')) {
+                    campoId = 'Password';
+                } else if (alerta.includes('coinciden')) {
+                    campoId = 'Password2';
+                } else if (alerta.includes('registrado')) {
+                    campoId = 'Email2';
+                }
 
-                const ul = document.createElement('ul');
-                alertas.forEach(alerta => {
-                    const li = document.createElement('li');
-                    li.textContent = alerta;
-                    ul.appendChild(li);
-                });
+                // Construye el ID completo del elemento donde se mostrará la alerta
+                const alertaElemento = document.getElementById('alerta' + campoId + 'Registro');
 
-                alertasDiv.appendChild(ul);
-                alertasContainer.appendChild(alertasDiv);
-            }, 200);
+                if (alertaElemento) {
+                    alertaElemento.textContent = alerta;
+                }
+            });
         }
     }
-
     
-
+    
     async function manejarFormularioLogin(formulario) {
         const datos = new FormData();
         datos.append("email", formulario.elements['email'].value);
@@ -136,7 +145,6 @@
         event.preventDefault();
         manejarFormularioOlvidePassword(formularioOlvidePassword);
     });
-
 
     
     window.resetearFormulario = function () {

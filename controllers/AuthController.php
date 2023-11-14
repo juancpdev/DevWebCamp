@@ -82,7 +82,7 @@ class AuthController {
                 $existeUsuario = Usuario::where('email', $usuario->email);
 
                 if($existeUsuario) {
-                    Usuario::setAlerta('error', 'El Usuario ya esta registrado');
+                    Usuario::setAlerta('error', 'El Email ya se encuentra registrado');
                     $alertas = Usuario::getAlertas();
 
                 $respuesta = [
