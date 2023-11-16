@@ -1,8 +1,10 @@
 (function() {
 
     async function manejarFormularioRegistro(formulario) {
-        const spinner = document.querySelector(".spinner-contenedor");
-        spinner.style.display = 'flex'; // Muestra el spinner
+        const spinners = document.querySelectorAll(".spinner-contenedor");
+        spinners.forEach(spinner => {
+            spinner.style.display = 'flex'; // Muestra el spinner
+        })
 
         const datos = new FormData();
         datos.append("nombre", formulario.elements['nombre'].value);
@@ -20,16 +22,16 @@
             const resultado = await respuesta.json();
             if (resultado.tipo === 'error') {
                // Guarda los valores originales de los campos
-               nombreOriginal = formulario.elements['nombre'].value;
-               apellidoOriginal = formulario.elements['apellido'].value;
-               emailOriginal = formulario.elements['email'].value;
+               formulario.elements['nombre'].value;
+               formulario.elements['apellido'].value;
+               formulario.elements['email'].value;
                 
                // Limpia el campo de contraseña
                formulario.elements['password'].value = '';
                formulario.elements['password2'].value = '';
 
                // Mostrar alertas
-               mostrarAlertas(resultado.alertas.error);
+               mostrarAlertas(resultado.alertas.error, "Registro");
 
             } else if (resultado.tipo === 'exito') {
                 // Restablece los valores originales de los campos
@@ -38,9 +40,6 @@
                 formulario.elements['email'].value = '';
                 formulario.elements['password'].value = '';
                 formulario.elements['password2'].value = '';
-
-                // Manejar éxito
-                console.log(resultado.datos);
 
                 // Cerrar Modal
                 cerrarModal();
@@ -57,16 +56,115 @@
             // Manejar el caso en que no se reciba una respuesta JSON válida
             console.error("Error al analizar la respuesta JSON del servidor");
         } finally {
-            spinner.style.display = 'none'; // Oculta el spinner cuando la acción se completa
-          }
+            const spinners = document.querySelectorAll(".spinner-contenedor");
+            spinners.forEach(spinner => {
+                spinner.style.display = 'none'; // Oculta el spinner cuando la acción se completa
+            })
+        }
     }
 
-    function mostrarAlertas(alertas) {
+    
+    
+    async function manejarFormularioLogin(formulario) {
+        const datos = new FormData();
+        datos.append("email", formulario.elements['email'].value);
+        datos.append("password", formulario.elements['password'].value);
+    
+        const respuesta = await fetch('/api/usuarios/login', {
+            method: 'POST',
+            body: datos
+        });
+        
+    
+        try {
+            const resultado = await respuesta.json();
+
+            if (resultado.tipo === 'error') {
+                // Guarda los valores originales de los campos  
+                formulario.elements['email'].value;
+
+                // Limpia el campo de contraseña
+                formulario.elements['password'].value = '';
+    
+                // Muestra alertas de error
+                mostrarAlertas(resultado.alertas.error, "Login");
+
+            } else if (resultado.tipo === 'exito') {
+                // Restablece los valores originales del formulario
+                formulario.elements['email'].value = '';
+                formulario.elements['password'].value = '';
+    
+                // Cierra el modal
+                cerrarModal();
+                const modales = document.querySelectorAll(".modal");
+                modales.forEach(modal => {
+                    modal.style.display = "none";
+                });
+    
+                // Muestra una alerta de éxito (puedes personalizar esto según tu necesidad)
+                window.location.href = "/";
+            }
+        } catch (error) {
+            console.error("Error al analizar la respuesta JSON del servidor");
+        }
+    }
+
+    async function manejarFormularioOlvidePassword(formulario) {
+        const spinners = document.querySelectorAll(".spinner-contenedor");
+        spinners.forEach(spinner => {
+            spinner.style.display = 'flex'; // Muestra el spinner
+        })
+
+        const datos = new FormData();
+        datos.append("email", formulario.elements['email'].value);
+
+        const respuesta = await fetch('/api/usuarios/olvidePassword', {
+            method: 'POST',
+            body: datos
+        });
+        
+        try {
+            const resultado = await respuesta.json();
+
+
+            if (resultado.tipo === 'error') {
+                // Guarda los valores originales de los campos  
+                formulario.elements['email'].value;
+    
+                // Muestra alertas de error
+                mostrarAlertas(resultado.alertas.error, "Olvide");
+
+            } else if (resultado.tipo === 'exito') {
+                // Restablece los valores originales del formulario
+
+                formulario.elements['email'].value = '';
+    
+                // Cerrar Modal
+                cerrarModal();
+                const modales = document.querySelectorAll(".modal");
+                modales.forEach(modal => {
+                    modal.style.display = "none";
+                })
+
+                // Alerta de éxito
+                alertaRestablecer();
+            }
+        } catch (error) {
+            console.error("Error al analizar la respuesta JSON del servidor");
+        } finally {
+            const spinners = document.querySelectorAll(".spinner-contenedor");
+            spinners.forEach(spinner => {
+                spinner.style.display = 'none'; // Oculta el spinner cuando la acción se completa
+            })
+        }
+    }
+
+    function mostrarAlertas(alertas, tipo) {
         // Itera sobre todos los campos y limpia las alertas y estilos previos
-        ['Nombre', 'Apellido', 'Email', 'Password', 'Password2'].forEach((campo) => {
-            const alertaElemento = document.getElementById('alerta' + campo + 'Registro');
-            const inputCampo = document.getElementById(campo.toLowerCase() + 'Registro');
-            const iconoCampo = document.getElementById(campo.toLowerCase() + 'RegistroIcono');
+        ['Nombre', 'Apellido', 'Email', 'Email2', 'Password', 'Password2'].forEach((campo) => {
+            const alertaElemento = document.getElementById('alerta' + campo + tipo);
+            const inputCampo = document.getElementById(campo.toLowerCase() + tipo);
+            const iconoCampo = document.getElementById(campo.toLowerCase() + tipo + 'Icono');
 
             if (alertaElemento) {
                 alertaElemento.textContent = '';
@@ -89,7 +187,7 @@
                 // Asigna un identificador específico para cada campo
                 let campoId = "";
     
-                // Identifica el campo según el contenido de la alerta
+                // Identifica el campo según el contenido de la alerta 
                 if (alerta.includes('Nombre')) {
                     campoId = 'Nombre';
                 } else if (alerta.includes('Apellido')) {
@@ -102,12 +200,16 @@
                     campoId = 'Password2';
                 } else if (alerta.includes('registrado')) {
                     campoId = 'Email2';
+                } else if (alerta.includes('Incorrecto')) {
+                    campoId = 'Password2';
+                } else if (alerta.includes('confirmado')) {
+                    campoId = 'Email2';
                 }
     
                 // Construye el ID completo del elemento donde se mostrará la alerta
-                const alertaElemento = document.getElementById('alerta' + campoId + 'Registro');
-                const inputCampo = document.getElementById(campoId.toLowerCase() + 'Registro');
-                const iconoCampo = document.getElementById(campoId.toLowerCase() + 'RegistroIcono');
+                const alertaElemento = document.getElementById('alerta' + campoId + tipo);
+                const inputCampo = document.getElementById(campoId.toLowerCase() + tipo);
+                const iconoCampo = document.getElementById(campoId.toLowerCase() + tipo + 'Icono');
 
                 if (alertaElemento) {
                     alertaElemento.textContent = alerta;
@@ -126,40 +228,6 @@
             
             });
         }
-    }
-    
-
-    
-    
-    async function manejarFormularioLogin(formulario) {
-        const datos = new FormData();
-        datos.append("email", formulario.elements['email'].value);
-        datos.append("password", formulario.elements['password'].value);
-
-        const respuesta = await fetch('/api/usuarios/login', {
-            method: 'POST',
-            body: datos
-        });
-        
-        const resultado = await respuesta.json();
-
-        // Maneja la respuesta del servidor
-        // ...
-    }
-
-    async function manejarFormularioOlvidePassword(formulario) {
-        const datos = new FormData();
-        datos.append("email", formulario.elements['email'].value);
-
-        const respuesta = await fetch('/api/usuarios/olvidePassword', {
-            method: 'POST',
-            body: datos
-        });
-        
-        const resultado = await respuesta.json();
-
-        // Maneja la respuesta del servidor
-        // ...
     }
 
     const formularioRegistro = document.querySelector('#registro .formulario');
@@ -193,6 +261,19 @@
             icon: 'success',
             title: 'Usuario Registrado',
             text: 'Verifica tu mail para confirmar la cuenta',
+            confirmButtonText: 'OK',
+            willClose: () => {
+                // Esta función se ejecutará cuando se cierre el cuadro de diálogo
+                document.body.style.overflow = "auto";
+            }
+        })
+    }
+
+    function alertaRestablecer() {
+        Swal.fire({
+            icon: 'success',
+            title: 'Verifica tu email',
+            text: 'Verifica tu mail para cambiar el password',
             confirmButtonText: 'OK',
             willClose: () => {
                 // Esta función se ejecutará cuando se cierre el cuadro de diálogo

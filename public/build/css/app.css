@@ -330,6 +330,23 @@ img {
   height: auto;
 }
 
+.contenedor {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+@media (min-width: 768px) {
+  .contenedor {
+    width: 95%;
+  }
+}
+
+.contenedor-sm {
+  max-width: 70rem;
+  margin: 0 auto;
+  padding: 0 3rem;
+}
+
 h1, h2, h3 {
   font-family: "Outfit", sans-serif;
   font-weight: 900;
@@ -358,36 +375,6 @@ h3 {
   margin: 2rem 0;
   margin: 6rem 0 3rem 0;
   text-align: center;
-}
-
-.alerta {
-  color: rgb(255, 0, 0);
-  margin: 0;
-  font-size: 1.5rem;
-  font-weight: 700;
-  transition: all 0.3s ease;
-  font-size: 1.3rem;
-}
-
-.error {
-  font-size: 1.5rem;
-}
-
-.error-input {
-  border-bottom: 0.2rem solid rgb(255, 0, 0) !important;
-}
-
-.error-icono {
-  color: rgb(255, 0, 0) !important;
-}
-
-.swal2-popup {
-  font-size: 1.2rem !important;
-}
-@media (min-width: 768px) {
-  .swal2-popup {
-    font-size: 1.5rem !important;
-  }
 }
 
 #login, #registro, #olvide {
@@ -582,6 +569,45 @@ h3 {
     transform: scale(1);
   }
 }
+.confirmar__heading {
+  margin: 0;
+}
+.confirmar__contenedor {
+  margin: 10rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.contenedor-login {
+  display: flex;
+  justify-content: center;
+}
+.contenedor-login__boton {
+  background-color: #00c8c2;
+  padding: 1rem 4rem;
+  color: #FFFFFF;
+  font-size: 1.8rem;
+  font-weight: 700;
+  border: none;
+  transition-property: background-color;
+  transition-duration: 0.3s;
+  text-align: center;
+  display: inline-block;
+  font-size: 1.3rem;
+  border-radius: 2rem;
+  margin: 1rem 0;
+}
+.contenedor-login__boton:hover {
+  background-color: #009591;
+  cursor: pointer;
+}
+@media (min-width: 768px) {
+  .contenedor-login__boton {
+    font-size: 1.8rem;
+  }
+}
+
 .formulario {
   margin: 5rem 0;
 }
@@ -689,6 +715,53 @@ h3 {
 @media (min-width: 768px) {
   .acciones__texto {
     display: block;
+  }
+}
+
+.alertas {
+  margin: 2rem 0;
+  padding: 1rem 2rem;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+}
+.alertas.error {
+  background-color: #ffdcdc;
+  border-left: 0.5rem solid rgb(169, 0, 0);
+  color: rgb(169, 0, 0);
+}
+.alertas.exito {
+  background-color: white;
+  border-left: 0.5rem solid #02db02;
+  color: #02db02;
+}
+
+.alerta {
+  color: rgb(255, 0, 0);
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  font-size: 1.3rem;
+}
+
+.error {
+  font-size: 1.5rem;
+}
+
+.error-input {
+  border-bottom: 0.2rem solid rgb(255, 0, 0) !important;
+}
+
+.error-icono {
+  color: rgb(255, 0, 0) !important;
+}
+
+.swal2-popup {
+  font-size: 1.2rem !important;
+}
+@media (min-width: 768px) {
+  .swal2-popup {
+    font-size: 1.5rem !important;
   }
 }
 

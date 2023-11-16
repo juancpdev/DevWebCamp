@@ -1,0 +1,49 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.alertas {
+    margin: 2rem 0;
+    padding: 1rem 2rem;
+    text-transform: uppercase;
+    font-size: 1.3rem;
+    
+    &.error {
+        background-color: lighten(v.$rojo, 60%);
+        border-left: .5rem solid v.$rojo;
+        color: v.$rojo;
+    }
+    &.exito {
+        background-color: lighten(v.$verde, 60%);
+        border-left: .5rem solid v.$verde;
+        color: v.$verde;
+    }
+}
+
+.alerta {
+    color: rgb(255, 0, 0);
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    transition: all .3s ease;
+    font-size: 1.3rem;
+}
+
+.error {
+    font-size: 1.5rem;
+}
+
+.error-input {
+    border-bottom: .2rem solid rgb(255, 0, 0) !important;
+}
+
+.error-icono {
+    color: rgb(255, 0, 0) !important;
+}
+
+.swal2-popup { 
+    font-size: 1.2rem !important;
+
+    @include m.tablet {
+        font-size: 1.5rem !important;
+    }
+}

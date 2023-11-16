@@ -15,14 +15,14 @@ class AuthController {
         ]);
     }
 
-    public static function login(Router $router) {
+    public static function login() {
 
         $alertas = [];
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
     
             $usuario = new Usuario($_POST);
-
+            
             $alertas = $usuario->validarLogin();
             if(empty($alertas)) {
                 // Verificar quel el usuario exista
@@ -30,6 +30,12 @@ class AuthController {
 
                 if(!$usuario || !$usuario->confirmado ) {
                     Usuario::setAlerta('error', 'El Usuario No Existe o no esta confirmado');
+                    $alertas = Usuario::getAlertas();
+                    $respuesta = [
+                        'tipo' => 'error',
+                        'alertas' => $alertas
+                    ];
+                    echo json_encode($respuesta);
                 } else {
                     // El Usuario existe
                     if( password_verify($_POST['password'], $usuario->password) ) {
@@ -41,30 +47,31 @@ class AuthController {
                         $_SESSION['apellido'] = $usuario->apellido;
                         $_SESSION['email'] = $usuario->email;
                         $_SESSION['admin'] = $usuario->admin ?? null;
+
+                        $respuesta = [
+                            'tipo' => 'exito',
+                            'datos' => $usuario
+                        ];
+                        echo json_encode($respuesta);
                         
                     } else {
                         Usuario::setAlerta('error', 'Password Incorrecto');
+                        $alertas = Usuario::getAlertas();
+                        $respuesta = [
+                            'tipo' => 'error',
+                            'alertas' => $alertas
+                        ];
+                        echo json_encode($respuesta);
                     }
                 }
+            } else {
+                $respuesta = [
+                    'tipo' => 'error',
+                    'alertas' => $alertas
+                ];
+                echo json_encode($respuesta);
             }
         }
-
-        $alertas = Usuario::getAlertas();
-        
-        // Render a la vista 
-        $router->render('auth/login', [
-            'titulo' => 'Iniciar Sesión',
-            'alertas' => $alertas
-        ]);
-    }
-
-    public static function logout() {
-        if($_SERVER['REQUEST_METHOD'] === 'POST') {
-            session_start();
-            $_SESSION = [];
-            header('Location: /');
-        }
-       
     }
 
     public static function registro() {
@@ -124,7 +131,7 @@ class AuthController {
         }
     }
 
-    public static function olvide(Router $router) {
+    public static function olvide() {
         $alertas = [];
         
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -148,25 +155,38 @@ class AuthController {
                     $email = new Email( $usuario->email, $usuario->nombre, $usuario->token );
                     $email->enviarInstrucciones();
 
-
-                    // Imprimir la alerta
-                    // Usuario::setAlerta('exito', 'Hemos enviado las instrucciones a tu email');
-
-                    $alertas['exito'][] = 'Hemos enviado las instrucciones a tu email';
+                    $respuesta = [
+                        'tipo' => 'exito',
+                        'datos' => $usuario
+                    ];
+                    echo json_encode($respuesta);
                 } else {
-                 
-                    // Usuario::setAlerta('error', 'El Usuario no existe o no esta confirmado');
+                    Usuario::setAlerta('error', 'El Usuario no existe o no esta confirmado');
+                    $alertas = Usuario::getAlertas();
 
-                    $alertas['error'][] = 'El Usuario no existe o no esta confirmado';
+                    $respuesta = [
+                        'tipo' => 'error',
+                        'alertas' => $alertas
+                    ];
+                    echo json_encode($respuesta);
                 }
+            } else {
+                $respuesta = [
+                    'tipo' => 'error',
+                    'alertas' => $alertas
+                ];
+                echo json_encode($respuesta); 
             }
-        }
+        } 
+    }
 
-        // Muestra la vista
-        $router->render('auth/olvide', [
-            'titulo' => 'Olvide mi Password',
-            'alertas' => $alertas
-        ]);
+    public static function logout() {
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            session_start();
+            $_SESSION = [];
+            header('Location: /');
+        }
+       
     }
 
     public static function reestablecer(Router $router) {
@@ -198,6 +218,8 @@ class AuthController {
                 // Hashear el nuevo password
                 $usuario->hashPassword();
 
+                unset($usuario->password2);
+
                 // Eliminar el Token
                 $usuario->token = null;
 
@@ -218,13 +240,6 @@ class AuthController {
             'titulo' => 'Reestablecer Password',
             'alertas' => $alertas,
             'token_valido' => $token_valido
-        ]);
-    }
-
-    public static function mensaje(Router $router) {
-
-        $router->render('auth/mensaje', [
-            'titulo' => 'Cuenta Creada Exitosamente'
         ]);
     }
 
@@ -252,11 +267,11 @@ class AuthController {
             Usuario::setAlerta('exito', 'Cuenta Comprobada Correctamente');
         }
 
-     
+        $alertas = Usuario::getAlertas();
 
         $router->render('auth/confirmar', [
             'titulo' => 'Confirma tu cuenta DevWebcamp',
-            'alertas' => Usuario::getAlertas()
+            'alertas' => $alertas
         ]);
     }
 }

@@ -18,8 +18,10 @@
                     name="email"
                     placeholder=""
                     >
-                    <i class="formulario__icono fa-solid fa-envelope"></i>
                     <label class="formulario__label" for="emailOlvide">Email</label>
+                    <i class="formulario__icono fa-solid fa-envelope" id="emailOlvideIcono"></i>
+                    <p class="alerta" id="alertaEmailOlvide"></p>
+                    <p class="alerta" id="alertaEmail2Olvide"></p>
                 </div>
 
                 <div class="formulario__contenedor">
@@ -36,5 +38,6 @@
                 </p>
             </div>
         </section>
+        <?php include __DIR__ . "/../templates/spinner.php" ?>
     </div>
 </div>

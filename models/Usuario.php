@@ -36,13 +36,10 @@ class Usuario extends ActiveRecord {
     // Validar el Login de Usuarios
     public function validarLogin() {
         if(!$this->email) {
-            self::$alertas['error'][] = 'El Email del Usuario es Obligatorio';
-        }
-        if(!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
-            self::$alertas['error'][] = 'Email no válido';
+            self::$alertas['error'][] = 'El Email es Obligatorio';
         }
         if(!$this->password) {
-            self::$alertas['error'][] = 'El Password no puede ir vacio';
+            self::$alertas['error'][] = 'El Password debe ser mayor a 6';
         }
         return self::$alertas;
 
@@ -72,9 +69,6 @@ class Usuario extends ActiveRecord {
     public function validarEmail() {
         if(!$this->email) {
             self::$alertas['error'][] = 'El Email es Obligatorio';
-        }
-        if(!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
-            self::$alertas['error'][] = 'Email no válido';
         }
         return self::$alertas;
     }

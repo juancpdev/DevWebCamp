@@ -95,8 +95,12 @@ function modalAnimacion(modal, modal2, modal3) {
 }
 
 function cerrarModal() {
-    limpiarAlertas();
-    limpiarLabels();
+    limpiarAlertas('Registro');
+    limpiarAlertas('Login');
+    limpiarAlertas('Olvide');
+    limpiarLabels('registro');
+    limpiarLabels('login');
+    limpiarLabels('olvide');
     setTimeout(() => {
         const auth = document.querySelectorAll(".auth__modal");
         auth.forEach(formu => {
@@ -107,8 +111,12 @@ function cerrarModal() {
 
 
 function cambiarModal() {
-    limpiarAlertas();
-    limpiarLabels();
+    limpiarAlertas('Registro');
+    limpiarAlertas('Login');
+    limpiarAlertas('Olvide');
+    limpiarLabels('registro');
+    limpiarLabels('login');
+    limpiarLabels('olvide');
     const acciones = document.querySelectorAll(".acciones__enlace");
     const auth = document.querySelectorAll(".auth__modal");
     
@@ -128,21 +136,21 @@ function reiniciarFormu(modal1, modal2) {
     modal2.querySelector("form").reset();
 }
 
-function limpiarLabels() {
+function limpiarLabels(tipo) {
     // Seleccionar solo los labels dentro del formulario de registro
-    const labels = document.querySelectorAll('#registro .formulario__label');
-
+    const labels = document.querySelectorAll('#' + tipo + ' .formulario__label');
+    
     labels.forEach(label => {
         label.classList.remove("formulario__label--active");
     })
 }
 
-function limpiarAlertas() {
+function limpiarAlertas(tipo) {
         // Itera sobre todos los campos y limpia las alertas y estilos previos
-        ['Nombre', 'Apellido', 'Email', 'Password', 'Password2'].forEach((campo) => {
-            const alertaElemento = document.getElementById('alerta' + campo + 'Registro');
-            const inputCampo = document.getElementById(campo.toLowerCase() + 'Registro');
-            const iconoCampo = document.getElementById(campo.toLowerCase() + 'RegistroIcono');
+        ['Nombre', 'Apellido', 'Email', 'Email2', 'Password', 'Password2'].forEach((campo) => {
+            const alertaElemento = document.getElementById('alerta' + campo + tipo);
+            const inputCampo = document.getElementById(campo.toLowerCase() + tipo);
+            const iconoCampo = document.getElementById(campo.toLowerCase() + tipo + 'Icono');
 
             if (alertaElemento) {
                 alertaElemento.textContent = '';

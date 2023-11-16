@@ -18,8 +18,10 @@
                     name="email"
                     placeholder=""
                     >
-                    <i class="formulario__icono fa-solid fa-envelope"></i>
                     <label class="formulario__label" for="emailLogin">Email</label>
+                    <i class="formulario__icono fa-solid fa-envelope" id="emailLoginIcono"></i>
+                    <p class="alerta" id="alertaEmailLogin"></p>
+                    <p class="alerta" id="alertaEmail2Login"></p>
                 </div>
 
                 <div class="formulario__campo">
@@ -30,8 +32,10 @@
                     name="password"
                     placeholder=""
                     >
-                    <i class="formulario__icono fa-solid fa-lock"></i>
                     <label class="formulario__label" for="passwordLogin">Password</label>
+                    <i class="formulario__icono fa-solid fa-lock" id="passwordLoginIcono"></i>
+                    <p class="alerta" id="alertaPasswordLogin"></p>
+                    <p class="alerta" id="alertaPassword2Login"></p>
                 </div>
 
                 <div class="formulario__contenedor">

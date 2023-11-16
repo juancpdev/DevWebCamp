@@ -91,16 +91,6 @@
                 <a class="acciones__enlace olvide">¿Olvidaste tu contraseña?</a>
             </div>
         </section>
-            <!-- Spinner -->
-    <div class="spinner-contenedor">
-        <div class="sk-chase" id="spinner">
-            <div class="sk-chase-dot"></div>
-            <div class="sk-chase-dot"></div>
-            <div class="sk-chase-dot"></div>
-            <div class="sk-chase-dot"></div>
-            <div class="sk-chase-dot"></div>
-            <div class="sk-chase-dot"></div>
-        </div>
-    </div>
+        <?php include __DIR__ . "/../templates/spinner.php" ?>
     </div>
 </div>
