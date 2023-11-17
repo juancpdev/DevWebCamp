@@ -4,6 +4,11 @@
 .confirmar {
     &__heading {
         margin: 0;
+        font-size: 3rem;
+        
+        @include m.tablet {
+            font-size: 4rem;
+        }
     }
     
     &__contenedor {

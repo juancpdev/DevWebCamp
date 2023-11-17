@@ -75,12 +75,16 @@ class Usuario extends ActiveRecord {
 
     // Valida el Password 
     public function validarPassword() {
-        if(!$this->password) {
-            self::$alertas['error'][] = 'El Password no puede ir vacio';
+        if((!($this->password) || !($this->password2))) {
+            self::$alertas['error'][] = "El password es Obligatorio";
         }
-        if(strlen($this->password) < 6) {
-            self::$alertas['error'][] = 'El password debe contener al menos 6 caracteres';
+        if(strlen($this->password) < 6 || strlen($this->password2) < 6 ) {
+            self::$alertas['error'][] = "El password debe contener al menos 6 caracteres";
         }
+        if($this->password !== $this->password2) {
+            self::$alertas['error'][] = "Los passwords no coinciden";
+        }
+        
         return self::$alertas;
     }
 

@@ -571,6 +571,12 @@ h3 {
 }
 .confirmar__heading {
   margin: 0;
+  font-size: 3rem;
+}
+@media (min-width: 768px) {
+  .confirmar__heading {
+    font-size: 4rem;
+  }
 }
 .confirmar__contenedor {
   margin: 10rem 0;
@@ -608,9 +614,21 @@ h3 {
   }
 }
 
-.formulario {
-  margin: 5rem 0;
+.reestablecer__heading {
+  margin: 0;
+  font-size: 3rem;
 }
+@media (min-width: 768px) {
+  .reestablecer__heading {
+    font-size: 4rem;
+  }
+}
+.reestablecer__contenedor {
+  margin: 10rem 0;
+  display: flex;
+  flex-direction: column;
+}
+
 .formulario__campo {
   position: relative;
   margin: 3rem 0;
@@ -694,6 +712,31 @@ h3 {
   background-color: #002f5b;
   cursor: pointer;
 }
+.formulario__label-r {
+  color: #b3b3b3;
+}
+.formulario__input-r {
+  color: black;
+}
+.formulario__input-r:-webkit-autofill, .formulario__input-r:-webkit-autofill:hover, .formulario__input-r:-webkit-autofill:focus, .formulario__input-r:-webkit-autofill:active, .formulario__input-r:-webkit-autofill:visited {
+  color: black !important;
+  -webkit-text-fill-color: black !important;
+}
+.formulario__input-r:focus {
+  border-bottom-color: black;
+}
+.formulario__input-r:not(:-moz-placeholder-shown) ~ .formulario__label-r {
+  color: black;
+}
+.formulario__input-r:focus ~ .formulario__label-r, .formulario__input-r:not(:placeholder-shown) ~ .formulario__label-r {
+  color: black;
+}
+.formulario__icono-r {
+  color: #b3b3b3;
+}
+.formulario__input-r:focus ~ .formulario__icono-r {
+  color: black;
+}
 
 .acciones {
   text-align: center;
@@ -719,7 +762,7 @@ h3 {
 }
 
 .alertas {
-  margin: 2rem 0;
+  margin: 1rem 0;
   padding: 1rem 2rem;
   text-transform: uppercase;
   font-size: 1.3rem;

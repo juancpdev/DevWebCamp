@@ -190,7 +190,8 @@ class AuthController {
     }
 
     public static function reestablecer(Router $router) {
-
+        $exito = false;
+        
         $token = s($_GET['token']);
 
         $token_valido = true;
@@ -199,6 +200,7 @@ class AuthController {
 
         // Identificar el usuario con este token
         $usuario = Usuario::where('token', $token);
+
 
         if(empty($usuario)) {
             Usuario::setAlerta('error', 'Token No Válido, intenta de nuevo');
@@ -228,7 +230,7 @@ class AuthController {
 
                 // Redireccionar
                 if($resultado) {
-                    header('Location: /');
+                    $exito = true;
                 }
             }
         }
@@ -239,7 +241,8 @@ class AuthController {
         $router->render('auth/reestablecer', [
             'titulo' => 'Reestablecer Password',
             'alertas' => $alertas,
-            'token_valido' => $token_valido
+            'token_valido' => $token_valido,
+            'exito' => $exito
         ]);
     }
 

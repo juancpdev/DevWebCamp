@@ -2,7 +2,6 @@
 @use 'base/variables' as v;
 
 .formulario {
-    margin: 5rem 0;
 
     &__campo {
         position: relative;
@@ -86,4 +85,42 @@
             margin-top: 1rem;
         }
     }
+
+
+    // Parte reestablecer
+    &__label-r {
+        color: darken(v.$blanco, 30%);
+    }
+
+    &__input-r {
+        color: black;
+    }
+        
+    // Estilos para el estado de autocompletado
+    &__input-r:-webkit-autofill,
+    &__input-r:-webkit-autofill:hover,
+    &__input-r:-webkit-autofill:focus,
+    &__input-r:-webkit-autofill:active,
+    &__input-r:-webkit-autofill:visited {
+        color: black !important; // Establece el color del texto
+        -webkit-text-fill-color: black !important; // Establece el color del texto para WebKit
+    }
+
+    &__input-r:focus {
+        border-bottom-color: black;
+    }
+
+    &__input-r:focus ~ &__label-r,
+    &__input-r:not(:placeholder-shown) ~ &__label-r {
+        color: black;
+    }
+
+    &__icono-r {
+        color: darken(v.$blanco, 30%);
+    }
+
+    &__input-r:focus ~ &__icono-r {
+        color: black;
+    }
+
 }
