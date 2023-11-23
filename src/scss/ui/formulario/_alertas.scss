@@ -22,14 +22,14 @@
 .alerta {
     color: rgb(255, 0, 0);
     margin: 0;
-    font-size: 1.5rem;
     font-weight: 700;
-    transition: all .3s ease;
-    font-size: 1.3rem;
+    transition: all .5s ease;
+    font-size: 1.1rem;
 }
 
 .error {
     font-size: 1.5rem;
+    text-shadow: 0 0 2px red;
 }
 
 .error-input {

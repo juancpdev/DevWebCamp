@@ -78,7 +78,7 @@
     
         try {
             const resultado = await respuesta.json();
-
+            
             if (resultado.tipo === 'error') {
                 // Guarda los valores originales de los campos  
                 formulario.elements['email'].value;
@@ -101,8 +101,12 @@
                     modal.style.display = "none";
                 });
     
-                // Muestra una alerta de éxito (puedes personalizar esto según tu necesidad)
-                window.location.href = "/";
+                if(resultado.datos.admin === "1") {
+                    window.location.href = "/admin/dashboard";
+                } else {
+                    window.location.href = "/finalizar-registro";
+                }
+                
             }
         } catch (error) {
             console.error("Error al analizar la respuesta JSON del servidor");
@@ -234,20 +238,26 @@
     const formularioLogin = document.querySelector('#login .formulario');
     const formularioOlvidePassword = document.querySelector('#olvide .formulario');
 
-    formularioRegistro.addEventListener('submit', function(event) {
-        event.preventDefault();
-        manejarFormularioRegistro(formularioRegistro);
-    });
+    if(formularioRegistro) {
+        formularioRegistro.addEventListener('submit', function(event) {
+            event.preventDefault();
+            manejarFormularioRegistro(formularioRegistro);
+        });
+    }
 
-    formularioLogin.addEventListener('submit', function(event) {
-        event.preventDefault();
-        manejarFormularioLogin(formularioLogin);
-    });
+    if(formularioLogin) {
+        formularioLogin.addEventListener('submit', function(event) {
+            event.preventDefault();
+            manejarFormularioLogin(formularioLogin);
+        });
+    }
 
-    formularioOlvidePassword.addEventListener('submit', function(event) {
-        event.preventDefault();
-        manejarFormularioOlvidePassword(formularioOlvidePassword);
-    });
+    if(formularioOlvidePassword) {
+        formularioOlvidePassword.addEventListener('submit', function(event) {
+            event.preventDefault();
+            manejarFormularioOlvidePassword(formularioOlvidePassword);
+        });
+    }
 
     
     window.resetearFormulario = function () {
