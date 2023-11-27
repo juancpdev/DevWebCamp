@@ -1153,30 +1153,47 @@ h3 {
 }
 .dashboard__submit--logout:hover {
   cursor: pointer;
-  color: #007df4;
+  color: red;
 }
-.dashboard__grid {
-  display: flex;
-  flex: 1;
+@media (min-width: 768px) {
+  .dashboard__grid {
+    display: flex;
+    flex: 1;
+  }
 }
 .dashboard__sidebar {
   background-color: #2f405d;
-  width: 12rem;
+}
+@media (min-width: 768px) {
+  .dashboard__sidebar {
+    width: 12rem;
+  }
 }
 .dashboard__menu {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+}
+@media (min-width: 768px) {
+  .dashboard__menu {
+    flex-direction: column;
+  }
 }
 .dashboard__enlace {
   color: #6f8ab6;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 1rem;
-  padding: 2rem 1rem;
+  margin: 0.2rem;
+  padding: 1rem;
   gap: 0.5rem;
   border-radius: 1rem;
   transition: all 0.3s ease;
+}
+@media (min-width: 768px) {
+  .dashboard__enlace {
+    margin: 1rem;
+    padding: 2rem 1rem;
+  }
 }
 .dashboard__enlace:hover {
   background-color: #384c6e;
@@ -1187,19 +1204,57 @@ h3 {
   color: #FFFFFF;
 }
 .dashboard__icono {
-  font-size: 2rem;
+  font-size: 1.5rem;
+}
+@media (min-width: 768px) {
+  .dashboard__icono {
+    font-size: 2rem;
+  }
 }
 .dashboard__menu-texto {
-  font-size: 1.3rem;
+  font-size: 1rem;
   text-transform: uppercase;
 }
+@media (min-width: 768px) {
+  .dashboard__menu-texto {
+    font-size: 1.3rem;
+  }
+}
 .dashboard__contenido {
-  padding: 1rem 1rem 3rem 5rem;
+  padding: 1rem 2rem;
   width: 100%;
 }
 @media (min-width: 768px) {
   .dashboard__contenido {
     padding: 1rem 5rem 3rem 5rem;
+  }
+}
+.dashboard__contenedor--boton {
+  display: flex;
+  justify-content: flex-end;
+}
+.dashboard__boton {
+  background-color: #007df4;
+  padding: 1rem 4rem;
+  color: #FFFFFF;
+  font-size: 1.8rem;
+  font-weight: 700;
+  border: none;
+  transition-property: background-color;
+  transition-duration: 0.3s;
+  text-align: center;
+  display: inline-block;
+  border-radius: 1rem;
+  font-size: 1.5rem;
+  width: 100%;
+}
+.dashboard__boton:hover {
+  background-color: #0063c1;
+  cursor: pointer;
+}
+@media (min-width: 768px) {
+  .dashboard__boton {
+    width: auto;
   }
 }
 /*# sourceMappingURL=app.css.map */
