@@ -51,6 +51,11 @@
     margin: 0 auto;
 }
 
+@mixin contenedor-md {
+    width: min(95%, 80rem);
+    margin: 0 auto;
+}
+
 @mixin contenedor-sm {
     width: min(95%, 60rem);
     margin: 0 auto;
@@ -125,4 +130,8 @@
             transform: scale(.95);
         }
     }
+}
+
+@mixin shadow {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }

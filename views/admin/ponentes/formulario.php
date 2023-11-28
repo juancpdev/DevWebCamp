@@ -4,56 +4,56 @@
     <div class="formulario__campo">
         <input 
             type="text"
-            class="formulario__input"
+            class="formulario__input formulario__input-r"
             id="nombrePonente"
             name="nombre"
             placeholder=""
             value="<?php echo $ponente->nombre ?? ''; ?>"
         >
-        <label for="nombrePonente" class="formulario__label">Nombre Ponente</label>
+        <label for="nombrePonente" class="formulario__label formulario__label-r">Nombre</label>
     </div>
 
     <div class="formulario__campo">
         <input 
             type="text"
-            class="formulario__input"
+            class="formulario__input formulario__input-r"
             id="apellidoPonente"
             name="apellido"
             placeholder=""
             value="<?php echo $ponente->apellido ?? ''; ?>"
         >
-        <label for="apellidoPonente" class="formulario__label">Apellido Ponente</label>
+        <label for="apellidoPonente" class="formulario__label formulario__label-r">Apellido</label>
     </div>
 
     <div class="formulario__campo">
         <input 
             type="text"
-            class="formulario__input"
+            class="formulario__input formulario__input-r"
             id="ciudadPonente"
             name="ciudad"
             placeholder=""
             value="<?php echo $ponente->ciudad ?? ''; ?>"
         >
-        <label for="ciudadPonente" class="formulario__label">Ciudad</label>
+        <label for="ciudadPonente" class="formulario__label formulario__label-r">Ciudad</label>
     </div>
 
     <div class="formulario__campo">
         <input 
             type="text"
-            class="formulario__input"
+            class="formulario__input formulario__input-r"
             id="paisPonente"
             name="pais"
             placeholder=""
             value="<?php echo $ponente->pais ?? ''; ?>"
         >
-        <label for="paisPonente" class="formulario__label">País</label>
+        <label for="paisPonente" class="formulario__label formulario__label-r">País</label>
     </div>
 
-    <div class="formulario__campo">
-        <label for="imagenPonente" class="formulario__label">Imagen</label>
+    <div class="formulario__campo formulario__campo--file">
+        <label for="imagenPonente" class="formulario__label--file">Imagen</label>
         <input 
             type="file"
-            class="formulario__input formulario__input--file"
+            class="formulario__input--file"
             id="imagenPonente"
             name="imagen"
         >
@@ -63,11 +63,11 @@
 <fieldset class="formulario__fieldset">
     <legend class="formulario__legend">Información Extra</legend>
     
-    <div class="formulario__campo">
-        <label class="formulairo__label">Áreas de Experiencia (separadas por coma)</label>
+    <div class="formulario__campo-r">
+        <label class="formulario__label--area">Áreas de Experiencia (separadas por coma)</label>
         <input 
             type="text"
-            class="formulario__input"
+            class="formulario__input formulario__input-r"
             id="tags_input"
             placeholder="Ej. Node.js, PHP, CSS, Laravel, UX /UI"
         >
@@ -80,9 +80,9 @@
 <fieldset class="formulario__fieldset">
     <legend class="formulario__legend">Redes Sociales</legend>
     
-    <div class="formulario__campo">
+    <div class="formulario__campo formulario__campo-sociales">
         <div class="formulario__contenedor-icono">
-            <div class="formulario__icono">
+            <div class="formulario__icono-redes">
                 <i class="fa-brands fa-facebook"></i>
             </div>
             <input 
@@ -95,9 +95,9 @@
         </div>
     </div>
 
-    <div class="formulario__campo">
+    <div class="formulario__campo formulario__campo-sociales">
         <div class="formulario__contenedor-icono">
-            <div class="formulario__icono">
+            <div class="formulario__icono-redes">
                 <i class="fa-brands fa-twitter"></i>
             </div>
             <input 
@@ -110,9 +110,9 @@
         </div>
     </div>
 
-    <div class="formulario__campo">
+    <div class="formulario__campo formulario__campo-sociales">
         <div class="formulario__contenedor-icono">
-            <div class="formulario__icono">
+            <div class="formulario__icono-redes">
                 <i class="fa-brands fa-youtube"></i>
             </div>
             <input 
@@ -125,9 +125,9 @@
         </div>
     </div>
 
-    <div class="formulario__campo">
+    <div class="formulario__campo formulario__campo-sociales">
         <div class="formulario__contenedor-icono">
-            <div class="formulario__icono">
+            <div class="formulario__icono-redes">
                 <i class="fa-brands fa-instagram"></i>
             </div>
             <input 
@@ -140,9 +140,9 @@
         </div>
     </div>
 
-    <div class="formulario__campo">
+    <div class="formulario__campo formulario__campo-sociales">
         <div class="formulario__contenedor-icono">
-            <div class="formulario__icono">
+            <div class="formulario__icono-redes">
                 <i class="fa-brands fa-tiktok"></i>
             </div>
             <input 
@@ -155,9 +155,9 @@
         </div>
     </div>
 
-    <div class="formulario__campo">
+    <div class="formulario__campo formulario__campo-sociales">
         <div class="formulario__contenedor-icono">
-            <div class="formulario__icono">
+            <div class="formulario__icono-redes">
                 <i class="fa-brands fa-github"></i>
             </div>
             <input 

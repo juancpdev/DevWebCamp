@@ -115,9 +115,13 @@
         }
     }
 
-    &__contenedor--boton {
+    &__contenedor-boton {
         display: flex;
         justify-content: flex-end;
+        padding: 0 3rem;
+        @include m.tablet {
+            padding: 0;
+        }
     }
 
     &__boton {
@@ -128,5 +132,18 @@
         @include m.tablet {
             width: auto;
         }
+    }
+
+    &__contenedor {
+        @include m.shadow;
+        background-color: v.$blanco;
+        padding: 2rem;
+        border-radius: 1rem;
+    }
+
+    &__formulario {
+        @extend .dashboard__contenedor;
+        @include m.contenedor-sm;
+        margin: 5rem auto;
     }
 }
