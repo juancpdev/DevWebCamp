@@ -8,6 +8,14 @@
 </div>
 
 <div class="dashboard__formulario">
+<?php foreach ($alertas as $key => $mensajes) : ?>
+    <div class="alertas <?php echo $key; ?>">
+        <?php foreach ($mensajes as $mensaje) : ?>
+            <?php echo $mensaje; ?><br>
+        <?php endforeach; ?>
+    </div>
+<?php endforeach; ?>
+
 
     <form action="/admin/ponentes/crear" method="POST" enctype="multipart/form-data" class="formulario">
         <?php include_once __DIR__ . "/formulario.php"; ?>

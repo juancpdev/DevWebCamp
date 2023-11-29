@@ -77,7 +77,6 @@ class AuthController {
     public static function registro() {
         $alertas = [];
         $usuario = new Usuario;
-        $usuario->sincronizar($_POST);
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
 

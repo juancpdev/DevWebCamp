@@ -47,6 +47,7 @@
         @include m.tablet {
             display: flex;
             flex: 1;
+            overflow-y: auto;
         }
     }
 
@@ -111,6 +112,7 @@
         padding: 1rem 2rem;
         width: 100%;
         @include m.tablet {
+            overflow-y: scroll;
             padding: 1rem 5rem 3rem 5rem;
         }
     }

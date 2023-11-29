@@ -3,6 +3,17 @@ document.addEventListener("DOMContentLoaded", function() {
     modalAuth();
 })
 
+function seleccionarArchivo() {
+    document.getElementById('imagenPonente').click();
+}
+
+function mostrarNombreArchivo() {
+    var input = document.getElementById('imagenPonente');
+    var mensaje = document.getElementById('mensajeArchivo');
+    var nombreArchivo = input.files.length > 0 ? input.files[0].name : 'No se ha seleccionado ningún archivo.';
+    mensaje.textContent = nombreArchivo;
+}
+
 function autocompletadoFormulario() {
     // Selecciona todos los inputs
     const inputs = document.querySelectorAll('.formulario__input');

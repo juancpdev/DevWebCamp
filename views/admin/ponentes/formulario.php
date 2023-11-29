@@ -1,4 +1,5 @@
 <fieldset class="formulario__fieldset">
+
     <legend class="formulario__legend">Información Personal</legend>
 
     <div class="formulario__campo">
@@ -11,6 +12,7 @@
             value="<?php echo $ponente->nombre ?? ''; ?>"
         >
         <label for="nombrePonente" class="formulario__label formulario__label-r">Nombre</label>
+        <p class="alerta" id="alertaNombrePonente"></p>
     </div>
 
     <div class="formulario__campo">
@@ -23,6 +25,7 @@
             value="<?php echo $ponente->apellido ?? ''; ?>"
         >
         <label for="apellidoPonente" class="formulario__label formulario__label-r">Apellido</label>
+        <p class="alerta" id="alertaApellidoPonente"></p>
     </div>
 
     <div class="formulario__campo">
@@ -56,14 +59,20 @@
             class="formulario__input--file"
             id="imagenPonente"
             name="imagen"
+            onchange="mostrarNombreArchivo()"
+            style="display: none"
         >
+        <div class="formulario__contenedor-btn">
+            <button class="formulario__btn-img" type="button" onclick="seleccionarArchivo()">Elegir Archivo</button>
+            <p class="formulario__texto-img" id="mensajeArchivo">No se ha seleccionado ningún archivo.</p>
+        </div>
     </div>
 </fieldset>
 
 <fieldset class="formulario__fieldset">
     <legend class="formulario__legend">Información Extra</legend>
     
-    <div class="formulario__campo-r">
+    <div class="formulario__campo">
         <label class="formulario__label--area">Áreas de Experiencia (separadas por coma)</label>
         <input 
             type="text"

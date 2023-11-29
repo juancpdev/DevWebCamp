@@ -648,6 +648,7 @@ h3 {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  font-size: 1.4rem;
 }
 .formulario__campo-r {
   margin: 1rem 0;
@@ -743,6 +744,12 @@ h3 {
 }
 .formulario__input-r {
   color: black;
+  font-size: 1.5rem;
+}
+@media (min-width: 768px) {
+  .formulario__input-r {
+    font-size: 1.6rem;
+  }
 }
 .formulario__input-r:-webkit-autofill, .formulario__input-r:-webkit-autofill:hover, .formulario__input-r:-webkit-autofill:focus, .formulario__input-r:-webkit-autofill:active, .formulario__input-r:-webkit-autofill:visited {
   color: black !important;
@@ -808,6 +815,76 @@ h3 {
   border-radius: 0.5rem;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+  width: 20rem;
+  font-size: 1.5rem;
+}
+@media (min-width: 768px) {
+  .formulario__input--sociales {
+    font-size: 1.6rem;
+  }
+}
+.formulario__contenedor-btn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+@media (min-width: 768px) {
+  .formulario__contenedor-btn {
+    gap: 2rem;
+  }
+}
+.formulario__btn-img {
+  background-color: #27354c;
+  padding: 1rem 4rem;
+  color: #FFFFFF;
+  font-size: 1.8rem;
+  font-weight: 700;
+  border: none;
+  transition-property: background-color;
+  transition-duration: 0.3s;
+  text-align: center;
+  display: inline-block;
+  border-radius: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 1rem 1.5rem;
+  min-width: 12rem;
+}
+.formulario__btn-img:hover {
+  background-color: #151d2a;
+  cursor: pointer;
+}
+@media (min-width: 768px) {
+  .formulario__btn-img {
+    padding: 1rem 3rem;
+    min-width: 15rem;
+  }
+}
+.formulario__texto-img {
+  font-size: 1.3rem;
+}
+@media (min-width: 768px) {
+  .formulario__texto-img {
+    font-size: 1.6rem;
+  }
+}
+.formulario__listado {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+.formulario__listado > li {
+  background-color: #007df4;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  font-weight: bold;
+  font-size: 1.4rem;
+  color: #FFFFFF;
+  cursor: pointer;
 }
 
 .acciones {
@@ -1230,6 +1307,7 @@ h3 {
   .dashboard__grid {
     display: flex;
     flex: 1;
+    overflow-y: auto;
   }
 }
 .dashboard__sidebar {
@@ -1297,6 +1375,7 @@ h3 {
 }
 @media (min-width: 768px) {
   .dashboard__contenido {
+    overflow-y: scroll;
     padding: 1rem 5rem 3rem 5rem;
   }
 }
