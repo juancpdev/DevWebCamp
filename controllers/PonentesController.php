@@ -29,20 +29,30 @@ class PonentesController {
             // Guardar el registro
             if(empty($alertas)) {
 
-
                 // Guardar en la BD
-                $resultado = $ponente->guardar();
+                $ponente->guardar();
 
-                if($resultado) {
-                    header('Location: /admin/ponentes');
-                }
+                $respuesta = [
+                    'tipo' => 'exito',
+                    'datos' => $ponente
+                ];
+                echo json_encode($respuesta);
+                return;
+            } else {
+                
+                $respuesta = [
+                    'tipo' => 'error',
+                    'alertas' => $alertas
+                ];
+                echo json_encode($respuesta);
+                return;
             }
         }
 
         $router->render('admin/ponentes/crear', [
             'titulo' => 'Registrar Ponente',
-            'alertas' => $alertas,
-            'ponente' => $ponente
+            'ponente' => $ponente,
+            'alertas' => $alertas
         ]);
     }
     

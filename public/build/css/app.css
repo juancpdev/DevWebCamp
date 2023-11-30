@@ -651,7 +651,7 @@ h3 {
   font-size: 1.4rem;
 }
 .formulario__campo-r {
-  margin: 1rem 0;
+  margin: 3rem 0;
 }
 .formulario__campo-sociales {
   margin: 1rem 0;
@@ -908,6 +908,10 @@ h3 {
   .acciones__texto {
     display: block;
   }
+}
+
+.alertas-contenedor {
+  margin: 2rem 0;
 }
 
 .alertas {

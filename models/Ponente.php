@@ -35,16 +35,16 @@ class Ponente extends ActiveRecord {
             self::$alertas['error'][] = 'El Apellido es Obligatorio';
         }
         if(!$this->ciudad) {
-            self::$alertas['error'][] = 'El Campo Ciudad es Obligatorio';
+            self::$alertas['error'][] = 'La Ciudad es Obligatoria';
         }
         if(!$this->pais) {
-            self::$alertas['error'][] = 'El Campo País es Obligatorio';
+            self::$alertas['error'][] = 'El País es Obligatorio';
         }
         if(!$this->imagen) {
-            self::$alertas['error'][] = 'La imagen es obligatoria';
+            self::$alertas['error'][] = 'La Imagen es obligatoria';
         }
         if(!$this->tags) {
-            self::$alertas['error'][] = 'El Campo áreas es obligatorio';
+            self::$alertas['error'][] = 'Debes incluir al menos una';
         }
     
         return self::$alertas;

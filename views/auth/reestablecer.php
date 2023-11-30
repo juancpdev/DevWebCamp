@@ -1,5 +1,5 @@
 <?php include_once __DIR__ . "/auth_includes.php" ?>
-
+ 
 <main class="reestablecer contenedor-sm">
     <div class="reestablecer__contenedor">
         <h2 class="confirmar__heading"><?php echo $titulo; ?></h2>

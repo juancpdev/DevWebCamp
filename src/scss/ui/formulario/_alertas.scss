@@ -1,6 +1,10 @@
 @use 'base/mixins' as m;
 @use 'base/variables' as v;
 
+.alertas-contenedor {
+    margin: 2rem 0;
+}
+
 .alertas {
     margin: 1rem 0;
     padding: 1rem 2rem;

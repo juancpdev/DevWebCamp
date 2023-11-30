@@ -20,6 +20,7 @@
         
         try {
             const resultado = await respuesta.json();
+            
             if (resultado.tipo === 'error') {
                // Guarda los valores originales de los campos
                formulario.elements['nombre'].value;
@@ -165,11 +166,17 @@
 
     function mostrarAlertas(alertas, tipo) {
         // Itera sobre todos los campos y limpia las alertas y estilos previos
-        ['Nombre', 'Apellido', 'Email', 'Email2', 'Password', 'Password2'].forEach((campo) => {
+        const elementos = [
+            'Nombre', 'Apellido', 
+            'Email', 'Email2', 'Password', 'Password2', 
+            'Ciudad', 'Pais', 'Imagen', 'Tags'
+        ];
+
+        elementos.forEach(campo => {
             const alertaElemento = document.getElementById('alerta' + campo + tipo);
             const inputCampo = document.getElementById(campo.toLowerCase() + tipo);
             const iconoCampo = document.getElementById(campo.toLowerCase() + tipo + 'Icono');
-
+    
             if (alertaElemento) {
                 alertaElemento.textContent = '';
                 alertaElemento.classList.remove("error");
@@ -178,19 +185,17 @@
             if (inputCampo) {
                 inputCampo.classList.remove("error-input");
             }
-
+    
             if (iconoCampo) {
                 iconoCampo.classList.remove("error-icono");
             }
-
-
         });
     
         if (alertas && alertas.length > 0) {
             alertas.forEach((alerta) => {
                 // Asigna un identificador específico para cada campo
                 let campoId = "";
-    
+
                 // Identifica el campo según el contenido de la alerta 
                 if (alerta.includes('Nombre')) {
                     campoId = 'Nombre';
@@ -208,13 +213,21 @@
                     campoId = 'Password2';
                 } else if (alerta.includes('confirmado')) {
                     campoId = 'Email2';
+                } else if (alerta.includes('Ciudad')) {
+                    campoId = 'Ciudad';
+                } else if (alerta.includes('País')) {
+                    campoId = 'Pais';
+                } else if (alerta.includes('Imagen')) {
+                    campoId = 'Imagen';
+                } else if (alerta.includes('incluir')) {
+                    campoId = 'Tags';
                 }
     
                 // Construye el ID completo del elemento donde se mostrará la alerta
                 const alertaElemento = document.getElementById('alerta' + campoId + tipo);
                 const inputCampo = document.getElementById(campoId.toLowerCase() + tipo);
                 const iconoCampo = document.getElementById(campoId.toLowerCase() + tipo + 'Icono');
-
+                
                 if (alertaElemento) {
                     alertaElemento.textContent = alerta;
                     setTimeout(() => {
@@ -225,7 +238,7 @@
                 if (inputCampo) {
                     inputCampo.classList.add("error-input");
                 }
-
+    
                 if (iconoCampo) {
                     iconoCampo.classList.add("error-icono");
                 }
@@ -291,4 +304,7 @@
             }
         })
     }
+
+    // Funciones GLOBALES
+    window.mostrarAlertas = mostrarAlertas;
 })();

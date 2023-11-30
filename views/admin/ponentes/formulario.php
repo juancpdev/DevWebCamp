@@ -38,6 +38,7 @@
             value="<?php echo $ponente->ciudad ?? ''; ?>"
         >
         <label for="ciudadPonente" class="formulario__label formulario__label-r">Ciudad</label>
+        <p class="alerta" id="alertaCiudadPonente"></p>
     </div>
 
     <div class="formulario__campo">
@@ -50,6 +51,7 @@
             value="<?php echo $ponente->pais ?? ''; ?>"
         >
         <label for="paisPonente" class="formulario__label formulario__label-r">País</label>
+        <p class="alerta" id="alertaPaisPonente"></p>
     </div>
 
     <div class="formulario__campo formulario__campo--file">
@@ -66,6 +68,7 @@
             <button class="formulario__btn-img" type="button" onclick="seleccionarArchivo()">Elegir Archivo</button>
             <p class="formulario__texto-img" id="mensajeArchivo">No se ha seleccionado ningún archivo.</p>
         </div>
+        <p class="alerta" id="alertaImagenPonente"></p>
     </div>
 </fieldset>
 
@@ -80,7 +83,7 @@
             id="tags_input"
             placeholder="Ej. Node.js, PHP, CSS, Laravel, UX /UI"
         >
-        
+        <p class="alerta" id="alertaTagsPonente"></p>
         <div id="tags" class="formulario__listado"></div>
         <input type="hidden" name="tags" value="<?php echo $ponente->tags ?? ''; ?>">
     </div>
