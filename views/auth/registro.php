@@ -11,7 +11,7 @@
 
             <div id="alertas-container"></div>
 
-            <form class="formulario" method="POST">
+            <form class="formulario formulario__registro" method="POST">
 
                 <div class="formulario__campo">
                     <input 

@@ -79,8 +79,8 @@
         <label class="formulario__label--area">Áreas de Experiencia (separadas por coma)</label>
         <input 
             type="text"
-            class="formulario__input formulario__input-r"
-            id="tags_input"
+            class="formulario__input formulario__input-r tags_input"
+            id="tagsPonente"
             placeholder="Ej. Node.js, PHP, CSS, Laravel, UX /UI"
         >
         <p class="alerta" id="alertaTagsPonente"></p>

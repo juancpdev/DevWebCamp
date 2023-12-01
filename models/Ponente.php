@@ -3,7 +3,7 @@
 namespace Model;
 
 class Ponente extends ActiveRecord {
-    protected static $tabla = 'usuarios';
+    protected static $tabla = 'ponentes';
     protected static $columnasDB = ['id', 'nombre', 'apellido', 'ciudad', 'pais', 'imagen', 'tags', 'redes'];
 
     public $id;

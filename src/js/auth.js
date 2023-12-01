@@ -1,19 +1,15 @@
 (function() {
 
-    async function manejarFormularioRegistro(formulario) {
+    async function manejarFormulariosAuth(formulario, url, nombre) {
+
         const spinners = document.querySelectorAll(".spinner-contenedor");
         spinners.forEach(spinner => {
             spinner.style.display = 'flex'; // Muestra el spinner
         })
 
-        const datos = new FormData();
-        datos.append("nombre", formulario.elements['nombre'].value);
-        datos.append("apellido", formulario.elements['apellido'].value);
-        datos.append("email", formulario.elements['email'].value);
-        datos.append("password", formulario.elements['password'].value);
-        datos.append("password2", formulario.elements['password2'].value);
-
-        const respuesta = await fetch('/api/usuarios/registro', {
+        const datos = new FormData(formulario);
+        
+        const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
         });
@@ -22,26 +18,20 @@
             const resultado = await respuesta.json();
             
             if (resultado.tipo === 'error') {
-               // Guarda los valores originales de los campos
-               formulario.elements['nombre'].value;
-               formulario.elements['apellido'].value;
-               formulario.elements['email'].value;
-                
-               // Limpia el campo de contraseña
-               formulario.elements['password'].value = '';
-               formulario.elements['password2'].value = '';
 
-               // Mostrar alertas
-               mostrarAlertas(resultado.alertas.error, "Registro");
+                // Limpia el campo de contraseña si está presente
+                if (formulario.elements['password']) {
+                    formulario.elements['password'].value = '';
+                }
+                if (formulario.elements['password2']) {
+                    formulario.elements['password2'].value = '';
+                }
+
+               mostrarAlertas(resultado.alertas.error, nombre);
 
             } else if (resultado.tipo === 'exito') {
                 // Restablece los valores originales de los campos
-                formulario.elements['nombre'].value = '';
-                formulario.elements['apellido'].value = '';
-                formulario.elements['email'].value = '';
-                formulario.elements['password'].value = '';
-                formulario.elements['password2'].value = '';
-
+                formulario.reset();
                 // Cerrar Modal
                 cerrarModal();
                 const modales = document.querySelectorAll(".modal");
@@ -49,112 +39,22 @@
                     modal.style.display = "none";
                 })
 
-                // Alerta de éxito
-                usuarioCreado();
-                
+                if(nombre === "Registro") {
+                    // Alerta de éxito
+                    usuarioCreado();
+                } else if (nombre === "Login") {
+                    if(resultado.datos.admin === "1") {
+                        window.location.href = "/admin/dashboard";
+                    } else {
+                        window.location.href = "/finalizar-registro";
+                    }
+                } else if (nombre === "Olvide") { 
+                    // Alerta de éxito
+                    alertaRestablecer();
+                }        
             }
         } catch (error) {
             // Manejar el caso en que no se reciba una respuesta JSON válida
-            console.error("Error al analizar la respuesta JSON del servidor");
-        } finally {
-            const spinners = document.querySelectorAll(".spinner-contenedor");
-            spinners.forEach(spinner => {
-                spinner.style.display = 'none'; // Oculta el spinner cuando la acción se completa
-            })
-        }
-    }
-
-    
-    
-    async function manejarFormularioLogin(formulario) {
-        const datos = new FormData();
-        datos.append("email", formulario.elements['email'].value);
-        datos.append("password", formulario.elements['password'].value);
-    
-        const respuesta = await fetch('/api/usuarios/login', {
-            method: 'POST',
-            body: datos
-        });
-        
-    
-        try {
-            const resultado = await respuesta.json();
-            
-            if (resultado.tipo === 'error') {
-                // Guarda los valores originales de los campos  
-                formulario.elements['email'].value;
-
-                // Limpia el campo de contraseña
-                formulario.elements['password'].value = '';
-    
-                // Muestra alertas de error
-                mostrarAlertas(resultado.alertas.error, "Login");
-
-            } else if (resultado.tipo === 'exito') {
-                // Restablece los valores originales del formulario
-                formulario.elements['email'].value = '';
-                formulario.elements['password'].value = '';
-    
-                // Cierra el modal
-                cerrarModal();
-                const modales = document.querySelectorAll(".modal");
-                modales.forEach(modal => {
-                    modal.style.display = "none";
-                });
-    
-                if(resultado.datos.admin === "1") {
-                    window.location.href = "/admin/dashboard";
-                } else {
-                    window.location.href = "/finalizar-registro";
-                }
-                
-            }
-        } catch (error) {
-            console.error("Error al analizar la respuesta JSON del servidor");
-        }
-    }
-
-    async function manejarFormularioOlvidePassword(formulario) {
-        const spinners = document.querySelectorAll(".spinner-contenedor");
-        spinners.forEach(spinner => {
-            spinner.style.display = 'flex'; // Muestra el spinner
-        })
-
-        const datos = new FormData();
-        datos.append("email", formulario.elements['email'].value);
-
-        const respuesta = await fetch('/api/usuarios/olvidePassword', {
-            method: 'POST',
-            body: datos
-        });
-        
-        try {
-            const resultado = await respuesta.json();
-
-
-            if (resultado.tipo === 'error') {
-                // Guarda los valores originales de los campos  
-                formulario.elements['email'].value;
-    
-                // Muestra alertas de error
-                mostrarAlertas(resultado.alertas.error, "Olvide");
-
-            } else if (resultado.tipo === 'exito') {
-                // Restablece los valores originales del formulario
-
-                formulario.elements['email'].value = '';
-    
-                // Cerrar Modal
-                cerrarModal();
-                const modales = document.querySelectorAll(".modal");
-                modales.forEach(modal => {
-                    modal.style.display = "none";
-                })
-
-                // Alerta de éxito
-                alertaRestablecer();
-            }
-        } catch (error) {
             console.error("Error al analizar la respuesta JSON del servidor");
         } finally {
             const spinners = document.querySelectorAll(".spinner-contenedor");
@@ -254,21 +154,21 @@
     if(formularioRegistro) {
         formularioRegistro.addEventListener('submit', function(event) {
             event.preventDefault();
-            manejarFormularioRegistro(formularioRegistro);
+            manejarFormulariosAuth(formularioRegistro, '/api/usuarios/registro', "Registro");
         });
     }
 
     if(formularioLogin) {
         formularioLogin.addEventListener('submit', function(event) {
             event.preventDefault();
-            manejarFormularioLogin(formularioLogin);
+            manejarFormulariosAuth(formularioLogin, '/api/usuarios/login', "Login");
         });
     }
 
     if(formularioOlvidePassword) {
         formularioOlvidePassword.addEventListener('submit', function(event) {
             event.preventDefault();
-            manejarFormularioOlvidePassword(formularioOlvidePassword);
+            manejarFormulariosAuth(formularioOlvidePassword, '/api/usuarios/olvidePassword', "Olvide");
         });
     }
 

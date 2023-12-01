@@ -1,27 +1,21 @@
 (function() {
     async function manejarFormularioPonentes(formulario) {
-        const datos = new FormData();
-        datos.append("nombre", formulario.elements['nombre'].value);
-        datos.append("apellido", formulario.elements['apellido'].value);
-        datos.append("ciudad", formulario.elements['ciudad'].value);
-        datos.append("pais", formulario.elements['pais'].value);
-        datos.append("imagen", formulario.elements['imagen'].value);
-        datos.append("tags", formulario.elements['tags'].value);
+        const datos = new FormData(formulario);
 
         const respuesta = await fetch('/admin/ponentes/crear', {
             method: 'POST',
             body: datos
         });
-
+        
         try {
             const resultado = await respuesta.json();
+
+            // Capturar mensajes de depuración
+            if (resultado.debug) {
+                console.log(resultado.debug);
+            }
             
             if (resultado.tipo === 'error') {
-                // Guarda los valores originales de los campos
-                formulario.elements['nombre'].value;
-                formulario.elements['apellido'].value;
-                formulario.elements['ciudad'].value;
-                formulario.elements['pais'].value;
 
                 // Mostrar alertas
                 mostrarAlertas(resultado.alertas.error, "Ponente");
@@ -37,21 +31,34 @@
                 }
 
             } else if (resultado.tipo === 'exito') {
-                // Restablece los valores originales de los campos
-                formulario.elements['nombre'].value = '';
-                formulario.elements['apellido'].value = '';
-                formulario.elements['ciudad'].value = '';
-                formulario.elements['pais'].value = '';
+               // Restablece los valores originales de los campos
+               formulario.reset();
 
-                // Alerta de éxito usuarioCreado();
-                console.log("Ponente creado");
+                // Alerta de éxito
+                ponenteCreado();
             }
         } catch (error) {
             // Manejar el caso en que no se reciba una respuesta JSON válida
             console.error("Error al analizar la respuesta JSON del servidor", error);
         }
+        
     }
 
+    function ponenteCreado() {
+        Swal.fire({
+            icon: 'success',
+            title: 'Ponente Creado',
+            text: 'Se agregó un nuevo ponente',
+            confirmButtonText: 'OK',
+            willClose: () => {
+                // Esta función se ejecutará cuando se cierre el cuadro de diálogo
+                document.body.style.overflow = "auto";
+            }
+        }).then(() => {
+            // Redirigir a /admin/ponente
+            window.location.href = '/admin/ponentes';
+        });
+    }
 
     const formularioPonentes = document.querySelector('#ponentes .formulario');
 
@@ -61,4 +68,7 @@
             manejarFormularioPonentes(formularioPonentes);
         });
     }
+
+
+    
 })();

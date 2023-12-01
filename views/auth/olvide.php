@@ -8,7 +8,7 @@
             <h2 class="auth__heading">Recuperar Cuenta</h2>
             <p class="auth__texto">Reestablece tu password</p>
 
-            <form class="formulario">
+            <form class="formulario formulario__olvide">
 
                 <div class="formulario__campo">
                     <input 

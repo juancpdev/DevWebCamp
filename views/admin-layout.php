@@ -27,5 +27,6 @@
         </div>
 
     <script src="/build/js/bundle.min.js" defer></script>
+    <script src='//cdn.jsdelivr.net/npm/sweetalert2@10'></script>
 </body>
 </html>

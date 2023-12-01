@@ -7,6 +7,11 @@ function debuguear($variable) : string {
     exit;
 }
 
+function debuguear2($variable) {
+    echo json_encode(['debug' => $variable]);
+    exit;
+}
+
 function s($html) : string {
     $s = htmlspecialchars($html);
     return $s;
