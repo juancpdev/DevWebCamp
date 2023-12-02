@@ -90,7 +90,10 @@
 </fieldset>
 
 <fieldset class="formulario__fieldset">
-    <legend class="formulario__legend">Redes Sociales</legend>
+    <div class="formulario__contenedor-redes">
+        <legend class="formulario__legend">Redes Sociales</legend>
+        <span class="formulario__legend-span">(Solo el usuario)</span>
+    </div>
     
     <div class="formulario__campo formulario__campo-sociales">
         <div class="formulario__contenedor-icono">
@@ -99,9 +102,9 @@
             </div>
             <input 
                 type="text"
-                class="formulario__input--sociales"
+                class="formulario__input--sociales formulario__input--sociales--barra"
                 name="redes[facebook]"
-                placeholder="Facebook"
+                placeholder="/ Tu usuario"
                 value="<?php echo $redes->facebook ?? ''; ?>"
             >
         </div>
@@ -116,7 +119,7 @@
                 type="text"
                 class="formulario__input--sociales"
                 name="redes[twitter]"
-                placeholder="Twitter"
+                placeholder="/ Tu usuario"
                 value="<?php echo $redes->twitter ?? ''; ?>"
             >
         </div>
@@ -131,7 +134,7 @@
                 type="text"
                 class="formulario__input--sociales"
                 name="redes[youtube]"
-                placeholder="Youtube"
+                placeholder="/ Tu usuario"
                 value="<?php echo $redes->youtube ?? ''; ?>"
             >
         </div>
@@ -146,7 +149,7 @@
                 type="text"
                 class="formulario__input--sociales"
                 name="redes[instagram]"
-                placeholder="Instagram"
+                placeholder="/ Tu usuario"
                 value="<?php echo $redes->instagram ?? ''; ?>"
             >
         </div>
@@ -161,7 +164,7 @@
                 type="text"
                 class="formulario__input--sociales"
                 name="redes[tiktok]"
-                placeholder="Tiktok"
+                placeholder="/ Tu usuario"
                 value="<?php echo $redes->tiktok ?? ''; ?>"
             >
         </div>
@@ -176,7 +179,7 @@
                 type="text"
                 class="formulario__input--sociales"
                 name="redes[github]"
-                placeholder="Github"
+                placeholder="/ Tu usuario"
                 value="<?php echo $redes->github ?? ''; ?>"
             >
         </div>

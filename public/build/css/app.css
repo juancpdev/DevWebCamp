@@ -639,6 +639,16 @@ h3 {
   padding-top: 3rem;
   padding-bottom: 0rem;
 }
+.formulario__legend-span {
+  color: black;
+  font-size: 1.3rem;
+  padding-top: 3.3rem;
+}
+.formulario__contenedor-redes {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
 .formulario__campo {
   position: relative;
   margin: 3rem 0;
@@ -688,6 +698,15 @@ h3 {
   transition: all 0.3s;
   color: white;
   font-weight: 100;
+}
+.formulario__input--sociales--barra::before {
+  content: "/";
+  position: absolute;
+  left: 10px; /* Ajusta la posición según sea necesario */
+  top: 50%;
+  transform: translateY(-50%);
+  color: #333; /* Color de la barra */
+  pointer-events: none; /* Evita que la barra sea seleccionable */
 }
 .formulario__input:-webkit-autofill, .formulario__input:-webkit-autofill:hover, .formulario__input:-webkit-autofill:focus, .formulario__input:-webkit-autofill:active, .formulario__input:-webkit-autofill:visited {
   background-color: transparent !important;
@@ -802,11 +821,11 @@ h3 {
   justify-content: center;
   align-items: center;
   background-color: #1E293B;
-  width: 4rem;
+  width: 6rem;
 }
 .formulario__icono-redes i {
   color: white;
-  font-size: 2rem;
+  font-size: 2.2rem;
 }
 .formulario__input--sociales {
   flex: 1;
