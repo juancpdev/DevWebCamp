@@ -10,8 +10,13 @@ use Intervention\Image\ImageManagerStatic as Image;
 class PonentesController { 
 
     public static function index(Router $router) { 
+        $ponente = Ponente::all();
+
+        
+
         $router->render('admin/ponentes/index', [
-            'titulo' => 'Ponentes / Conferencistas'
+            'titulo' => 'Ponentes / Conferencistas',
+            'ponentes' => $ponente
         ]);
     }
     

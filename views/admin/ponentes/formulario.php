@@ -104,7 +104,7 @@
                 type="text"
                 class="formulario__input--sociales formulario__input--sociales--barra"
                 name="redes[facebook]"
-                placeholder="/ Tu usuario"
+                placeholder="@usuario"
                 value="<?php echo $redes->facebook ?? ''; ?>"
             >
         </div>
@@ -119,7 +119,7 @@
                 type="text"
                 class="formulario__input--sociales"
                 name="redes[twitter]"
-                placeholder="/ Tu usuario"
+                placeholder="@usuario"
                 value="<?php echo $redes->twitter ?? ''; ?>"
             >
         </div>
@@ -134,7 +134,7 @@
                 type="text"
                 class="formulario__input--sociales"
                 name="redes[youtube]"
-                placeholder="/ Tu usuario"
+                placeholder="@usuario"
                 value="<?php echo $redes->youtube ?? ''; ?>"
             >
         </div>
@@ -149,7 +149,7 @@
                 type="text"
                 class="formulario__input--sociales"
                 name="redes[instagram]"
-                placeholder="/ Tu usuario"
+                placeholder="@usuario"
                 value="<?php echo $redes->instagram ?? ''; ?>"
             >
         </div>
@@ -164,7 +164,7 @@
                 type="text"
                 class="formulario__input--sociales"
                 name="redes[tiktok]"
-                placeholder="/ Tu usuario"
+                placeholder="@usuario"
                 value="<?php echo $redes->tiktok ?? ''; ?>"
             >
         </div>
@@ -179,7 +179,7 @@
                 type="text"
                 class="formulario__input--sociales"
                 name="redes[github]"
-                placeholder="/ Tu usuario"
+                placeholder="@usuario"
                 value="<?php echo $redes->github ?? ''; ?>"
             >
         </div>
