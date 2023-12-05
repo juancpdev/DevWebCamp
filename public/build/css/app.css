@@ -905,6 +905,13 @@ h3 {
   color: #FFFFFF;
   cursor: pointer;
 }
+.formulario__texto {
+  font-size: 1.6rem;
+  color: rgba(26, 27, 21, 0.8);
+}
+.formulario__imagen {
+  max-width: 20rem;
+}
 
 .acciones {
   text-align: center;
@@ -1399,7 +1406,7 @@ h3 {
 @media (min-width: 768px) {
   .dashboard__contenido {
     overflow-y: scroll;
-    padding: 1rem 5rem 3rem 5rem;
+    padding: 1rem 8rem 3rem 8rem;
   }
 }
 .dashboard__contenedor--boton {
@@ -1459,26 +1466,49 @@ h3 {
   color: #FFFFFF;
 }
 .table__th {
-  padding: 1rem;
+  padding: 1rem 2rem;
   text-align: left;
+  font-size: 1.3rem;
+}
+@media (min-width: 768px) {
+  .table__th {
+    font-size: 2rem;
+  }
 }
 .table__tr:nth-of-type(even) {
   background-color: #eaf0f6;
 }
 .table__td, .table__td--acciones {
-  padding: 1.5rem 1rem;
+  padding: 1.5rem 2rem;
+  font-size: 1.2rem;
+}
+@media (min-width: 768px) {
+  .table__td, .table__td--acciones {
+    font-size: 1.6rem;
+  }
 }
 .table__td--acciones {
   display: flex;
   justify-content: flex-end;
-  gap: 2rem;
+  gap: 1rem;
   align-items: center;
+}
+@media (min-width: 768px) {
+  .table__td--acciones {
+    gap: 2rem;
+  }
 }
 .table__accion {
   all: unset;
   text-transform: uppercase;
-  font-size: 1.4rem;
+  font-size: 1rem;
   font-weight: 700;
+  display: flex;
+}
+@media (min-width: 768px) {
+  .table__accion {
+    font-size: 1.4rem;
+  }
 }
 .table__accion--icono {
   padding-right: 0.5rem;

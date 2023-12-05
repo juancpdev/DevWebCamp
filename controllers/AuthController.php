@@ -84,31 +84,32 @@ class AuthController {
             
             $alertas = $usuario->validar_cuenta();
 
+            
             if (empty($alertas)) {
                 $existeUsuario = Usuario::where('email', $usuario->email);
-
+                
                 if($existeUsuario) {
                     Usuario::setAlerta('error', 'El Email ya se encuentra registrado');
                     $alertas = Usuario::getAlertas();
-
-                $respuesta = [
-                    'tipo' => 'error',
-                    'alertas' => $alertas
-                ];
-                echo json_encode($respuesta);
+                    
+                    $respuesta = [
+                        'tipo' => 'error',
+                        'alertas' => $alertas
+                    ];
+                    echo json_encode($respuesta);
                 } else {
                     // Hashear el password
                     $usuario->hashPassword();
-
+                    
                     // Eliminar password2
                     unset($usuario->password2);
-
+                    
                     // Generar el Token
                     $usuario->crearToken();
-
+                    
                     // Crear un nuevo usuario
                     $usuario->guardar();
-
+                    
                     // Enviar email
                     $email = new Email($usuario->email, $usuario->nombre, $usuario->token);
                     $email->enviarConfirmacion();

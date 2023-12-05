@@ -16,6 +16,12 @@
         
         try {
             const resultado = await respuesta.json();
+            console.log(resultado);
+
+            // Capturar mensajes de depuración
+            if (resultado.debug) {
+                console.log(resultado.debug);
+            }
             
             if (resultado.tipo === 'error') {
 

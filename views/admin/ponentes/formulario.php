@@ -68,6 +68,19 @@
             <button class="formulario__btn-img" type="button" onclick="seleccionarArchivo()">Elegir Archivo</button>
             <p class="formulario__texto-img" id="mensajeArchivo">No se ha seleccionado ningún archivo.</p>
         </div>
+
+        <?php if(isset($ponente->imagen_actual)) { ?>
+            <p class="formulario__texto">Imagen Actual:</p>
+            <div class="formulario__imagen">
+                <picture>
+                    <source srcset="<?php echo $_ENV['HOST'] . '/img/speakers/' . $ponente->imagen . '.webp' ?>" type="image/webp">
+                    <source srcset="<?php echo $_ENV['HOST'] . '/img/speakers/' . $ponente->imagen . '.png' ?>" type="image/png">
+
+                    <img src="<?php echo $_ENV['HOST'] . '/img/speakers/' . $ponente->imagen . '.png' ?>" alt="Imagen Ponente">
+                </picture>
+            </div>
+        <?php } ?>
+
         <p class="alerta" id="alertaImagenPonente"></p>
     </div>
 </fieldset>
@@ -185,3 +198,5 @@
         </div>
     </div>
 </fieldset>
+
+<?php include_once __DIR__ . "/../../templates/spinner.php" ?>

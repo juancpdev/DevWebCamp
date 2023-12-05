@@ -7,11 +7,11 @@
     </a>
 </div>
 
-<div class="dashboard__formulario" id="ponentesCrear">
+<div class="dashboard__formulario" id="ponentesEditar">
 
-    <form action="/admin/ponentes/crear" method="POST" enctype="multipart/form-data" class="formulario">
+    <form method="POST" enctype="multipart/form-data" class="formulario">
         <?php include_once __DIR__ . "/formulario.php"; ?>
-        <input type="submit" value="Registrar Ponente" class="formulario__submit formulario__submit--registrar">
+        <input type="submit" value="Actualizar Ponente" class="formulario__submit formulario__submit--registrar">
     </form>
 
 </div>

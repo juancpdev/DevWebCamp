@@ -267,4 +267,13 @@
     &__listado {
         @include m.tags;
     }
+
+    &__texto {
+        font-size: 1.6rem;
+        color: rgba(v.$negro, .8);
+    }
+
+    &__imagen {
+        max-width: 20rem;
+    }
 }
