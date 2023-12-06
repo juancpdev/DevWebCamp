@@ -31,10 +31,14 @@
                             <a class="table__accion table__accion--editar" href="/admin/ponentes/editar?id=<?php echo $ponente->id; ?>">
                                 <i class="fa-solid fa-user-pen table__accion--icono"></i>Editar
                             </a>
-                            <form class="table__formulario" method="POST" action="/admin/ponentes/eliminar">
+                            <form class="table__formulario" method="POST" action="/admin/ponentes/eliminar" id="formEliminarPonente-<?php echo $ponente->id; ?>" >
                                 <input type="hidden" name="id" value="<?php echo $ponente->id; ?>">
-                                <button class="table__accion table__accion--eliminar" type="submit">
-                                    <i class="fa-solid fa-circle-xmark table__accion--icono"></i>Eliminar
+                                <button 
+                                    class="table__accion table__accion--eliminar" 
+                                    type="submit" 
+                                    onclick="confirmDelete(event,'formEliminarPonente-<?php echo $ponente->id; ?>')"
+                                    >
+                                        <i class="fa-solid fa-circle-xmark table__accion--icono"></i>Eliminar
                                 </button>
                             </form>
                         </td>
