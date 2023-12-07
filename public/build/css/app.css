@@ -1456,10 +1456,15 @@ h3 {
 }
 
 .table {
-  margin: 5rem 0;
+  margin: 5rem 0 2rem 0;
   width: 100%;
   border-collapse: collapse;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+@media (min-width: 768px) {
+  .table {
+    margin: 5rem 0 3rem 0;
+  }
 }
 .table__thead {
   background-color: #1E293B;
@@ -1522,5 +1527,42 @@ h3 {
 }
 .table__accion:hover {
   cursor: pointer;
+}
+
+.paginacion {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 2rem;
+}
+.paginacion__enlace--texto {
+  border: 1px solid #007df4;
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+  padding: 0.7rem;
+  font-size: 1.3rem;
+}
+@media (min-width: 768px) {
+  .paginacion__enlace--texto {
+    padding: 1rem;
+    font-size: 1.6rem;
+  }
+}
+.paginacion__enlace--texto:hover {
+  background-color: #007df4;
+  color: #FFFFFF;
+}
+.paginacion__enlace--numero {
+  display: none;
+  font-weight: bold;
+  color: #007df4;
+}
+@media (min-width: 768px) {
+  .paginacion__enlace--numero {
+    display: inline;
+  }
+}
+.paginacion__enlace--numero-actual {
+  color: #1E293B;
 }
 /*# sourceMappingURL=app.css.map */

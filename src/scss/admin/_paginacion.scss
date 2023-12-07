@@ -1,0 +1,43 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.paginacion {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 2rem;
+
+    &__enlace {
+
+        &--texto {
+            border: 1px solid v.$azul;
+            border-radius: 1rem;
+            transition: all .3s ease;
+            padding: .7rem;
+            font-size: 1.3rem;
+            @include m.tablet {
+                padding: 1rem;
+                font-size: 1.6rem;
+            }
+            &:hover {
+                background-color: v.$azul;
+                color: v.$blanco;
+            }
+        }
+
+        &--numero {
+            display: none;
+            font-weight: bold;
+            color: v.$azul;
+            @include m.tablet {
+                display: inline;
+            }
+
+            &-actual {
+                color: v.$gris-oscuro;
+            }
+        }
+    }
+
+    
+}

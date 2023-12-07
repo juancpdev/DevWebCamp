@@ -2,9 +2,12 @@
 @use 'base/variables' as v;
 
 .table {
-    margin: 5rem 0;
+    margin: 5rem 0 2rem 0;
     width: 100%;
     border-collapse: collapse;
+    @include m.tablet {
+        margin: 5rem 0 3rem 0;
+    }
 
     @include m.shadow;
 
