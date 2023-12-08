@@ -1336,7 +1336,7 @@ h3 {
 @media (min-width: 768px) {
   .dashboard__grid {
     display: flex;
-    flex: 1;
+    height: 100vh;
     overflow-y: auto;
   }
 }
@@ -1497,10 +1497,12 @@ h3 {
   justify-content: flex-end;
   gap: 1rem;
   align-items: center;
+  height: 7rem;
 }
 @media (min-width: 768px) {
   .table__td--acciones {
     gap: 2rem;
+    height: 6rem;
   }
 }
 .table__accion {
@@ -1531,7 +1533,7 @@ h3 {
 
 .paginacion {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   gap: 2rem;
 }
@@ -1564,5 +1566,6 @@ h3 {
 }
 .paginacion__enlace--numero-actual {
   color: #1E293B;
+  border-bottom: 2px solid #1E293B;
 }
 /*# sourceMappingURL=app.css.map */

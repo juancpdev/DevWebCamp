@@ -45,9 +45,11 @@
             justify-content: flex-end;
             gap: 1rem;
             align-items: center;
+            height: 7rem;
             
             @include m.tablet {
                 gap: 2rem;
+                height: 6rem;
             }
         }
     }

@@ -19,7 +19,7 @@ class PonentesController {
         $pagina_actual = filter_var($pagina_actual, FILTER_VALIDATE_INT);
 
         
-        $registros_por_pagina = 5;
+        $registros_por_pagina = 7;
        
         $total = Ponente::total();
 
