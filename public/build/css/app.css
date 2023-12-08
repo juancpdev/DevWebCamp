@@ -660,6 +660,11 @@ h3 {
   gap: 1rem;
   font-size: 1.4rem;
 }
+.formulario__campo--categorias {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
 .formulario__campo-r {
   margin: 3rem 0;
 }
@@ -676,6 +681,9 @@ h3 {
   color: #b3b3b3;
   font-weight: 100;
 }
+.formulario__label--textarea {
+  top: 70%;
+}
 .formulario__label--file {
   display: block;
   font-size: 1.8rem;
@@ -684,7 +692,7 @@ h3 {
 .formulario__label--active {
   top: -0.5rem;
 }
-.formulario__input {
+.formulario__input, .formulario__select {
   border: none;
   padding: 1rem;
   width: 100%;
@@ -698,6 +706,30 @@ h3 {
   transition: all 0.3s;
   color: white;
   font-weight: 100;
+}
+.formulario__select {
+  cursor: pointer;
+}
+.formulario__textarea {
+  padding: 2rem 0.6rem;
+  height: 10rem;
+  resize: none;
+}
+.formulario__radio {
+  display: flex;
+  gap: 2rem;
+  margin: 2rem 0;
+  font-size: 1.5rem;
+}
+.formulario__radio--contenedor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+.formulario__radio--contenedor label, .formulario__radio--contenedor input {
+  cursor: pointer;
 }
 .formulario__input--sociales--barra::before {
   content: "/";
@@ -761,12 +793,12 @@ h3 {
 .formulario__label-r {
   color: #b3b3b3;
 }
-.formulario__input-r {
+.formulario__input-r, .formulario__select {
   color: black;
   font-size: 1.5rem;
 }
 @media (min-width: 768px) {
-  .formulario__input-r {
+  .formulario__input-r, .formulario__select {
     font-size: 1.6rem;
   }
 }
