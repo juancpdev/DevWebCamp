@@ -65,7 +65,7 @@
         font-weight: 100;
 
         &--textarea {
-            top: 70%;
+            top: 60%;
         }
     }
 
@@ -102,7 +102,7 @@
 
     &__textarea {
         padding: 2rem .6rem;
-        height: 10rem;
+        height: 8rem;
         resize: none;
     }
 
@@ -122,8 +122,11 @@
             label, input {
                 cursor: pointer;
             }
+
         }
     }
+
+
 
     &__input--sociales--barra {
         &::before {

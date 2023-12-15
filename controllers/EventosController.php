@@ -4,6 +4,8 @@ namespace Controllers;
 
 use Model\Categoria;
 use Model\Dia;
+use Model\Evento;
+use Model\Hora;
 use MVC\Router;
 
 class EventosController { 
@@ -24,16 +26,49 @@ class EventosController {
         }
         
         $categorias = new Categoria();
-        $categorias = $categorias::all();
+        $categorias = $categorias::all('ASC');
         $dias = new Dia();
         $dias = $dias::all('ASC');
+        $horas = new Hora();
+        $horas = $horas::all('ASC');
+        
+        $alertas = [];
+        $evento = new Evento();
+
+        if($_SERVER['REQUEST_METHOD'] === 'POST') { 
+
+            $evento->sincronizar($_POST);
+
+            $alertas = $evento->validar();
+
+            // Guardar el registro
+            if(empty($alertas)) { 
+
+                $respuesta = [
+                    'tipo' => 'exito',
+                    'datos' => $evento
+                ];
+                echo json_encode($respuesta);
+                return;
+            } else {
+                $respuesta = [
+                    'tipo' => 'error',
+                    'alertas' => $alertas
+                ];
+                echo json_encode($respuesta);
+                return;
+            }
+        }
+
 
 
         
         $router->render('admin/eventos/crear', [
             'titulo' => 'Crear Evento',
             'categorias' => $categorias,
-            'dias' => $dias
+            'dias' => $dias,
+            'horas' => $horas,
+            'evento' => $evento
         ]);
     }
 }

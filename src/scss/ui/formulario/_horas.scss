@@ -1,0 +1,26 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.horas {
+    @include m.reset-lista;
+    @include m.grid(1, 1rem);
+    margin: 2rem 0;
+    
+    @include m.tablet {
+        @include m.grid(2, 1rem);
+    }
+
+    &__hora {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: v.$azul;
+        border: 1px solid v.$azul;
+        border-radius: 1rem;
+        height: 4rem;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}

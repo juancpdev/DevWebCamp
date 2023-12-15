@@ -12,6 +12,7 @@
             value="<?php echo $evento->nombre ?? ''; ?>"
         >
         <label for="nombreEvento" class="formulario__label formulario__label-r">Nombre</label>
+        <i class="formulario__icono formulario__icono-r fa-solid fa-user" id="nombreEventoIcono"></i>
         <p class="alerta" id="alertaNombreEvento"></p>
     </div>
 
@@ -32,10 +33,10 @@
         <select 
             class="formulario__select formulario__selecct-r" 
             name="categoria_id" 
-            id="categoria">
+            id="categoriaEvento">
                 <option value="">-- Seleccionar --</option>
                 <?php foreach($categorias as $categoria) { ?>
-                    <option value="<?php echo $categoria->id; ?>"><?php echo $categoria->nombre; ?></option>
+                    <option <?php echo ($evento->categoria_id === $categoria->id) ? 'selected' : '' ?> value="<?php echo $categoria->id; ?>"><?php echo $categoria->nombre; ?></option>
                 <?php } ?>
         </select>
         <p class="alerta" id="alertaCategoriaEvento"></p>
@@ -48,21 +49,56 @@
             <?php foreach($dias as $dia) { ?>
                 <div class="formulario__radio--contenedor">
                     <label for="<?php echo strtolower($dia->nombre); ?>"><?php echo $dia->nombre; ?></label>
-                    <input 
+                    <input
                         type="radio"
                         id="<?php echo strtolower($dia->nombre) ?>"
                         name="dia"
                         value="<?php echo $dia->id; ?>">
                 </div>
-            <?php } ?>
-        </div>
-        <p class="alerta" id="alertaCategoriaEvento"></p>
+                <?php } ?>
+            </div>
+            <input type="hidden" name="dia_id" value="">
+        <p class="alerta" id="alertaDiaEvento"></p>
     </div>
 
+    <div class="formulario__campo" id="horas">
+        
+        <label class="formulario__label--area">Seleccionar Hora</label>
+        <ul class="horas">
+            <?php foreach($horas as $hora) { ?>
+                <li class="horas__hora"><?php echo $hora->hora; ?></li>
+            <?php } ?>
+        </ul>
+     
+        <p class="alerta" id="alertaHoraEvento"></p>
+    </div>
 
+    <div class="formulario__campo">
+        <input 
+            type="text"
+            class="formulario__input formulario__input-r"
+            id="ponenteEvento"
+            placeholder=""
+        >
+        <label for="ponenteEvento" class="formulario__label formulario__label-r">Buscar Ponente</label>
+        <i class="formulario__icono formulario__icono-r fa-solid fa-search" id="ponenteEventoIcono"></i>
+        <p class="alerta" id="alertaPonenteEvento"></p>
+    </div>
+
+    <div class="formulario__campo">
+        <input 
+            type="number"
+            class="formulario__input formulario__input-r"
+            id="disponiblesEvento"
+            name="disponibles"
+            placeholder=""
+            min="1"
+            value="<?php echo $evento->disponibles ?? ''; ?>"
+        >
+        <label for="disponiblesEvento" class="formulario__label formulario__label-r">Lugares Disponibles</label>
+        <i class="formulario__icono formulario__icono-r fa-solid fa-user" id="disponiblesEventoIcono"></i>
+        <p class="alerta" id="alertaDisponiblesEvento"></p>
+    </div>
 </fieldset>
-
-
-
 
 <?php include_once __DIR__ . "/../../templates/spinner.php" ?>

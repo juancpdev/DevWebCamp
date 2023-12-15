@@ -157,26 +157,125 @@ function limpiarLabels(tipo) {
 }
 
 function limpiarAlertas(tipo) {
-        // Itera sobre todos los campos y limpia las alertas y estilos previos
-        ['Nombre', 'Apellido', 'Email', 'Email2', 'Password', 'Password2'].forEach((campo) => {
-            const alertaElemento = document.getElementById('alerta' + campo + tipo);
-            const inputCampo = document.getElementById(campo.toLowerCase() + tipo);
-            const iconoCampo = document.getElementById(campo.toLowerCase() + tipo + 'Icono');
+    // Itera sobre todos los campos y limpia las alertas y estilos previos
+    ['Nombre', 'Apellido', 'Email', 'Email2', 'Password', 'Password2'].forEach((campo) => {
+        const alertaElemento = document.getElementById('alerta' + campo + tipo);
+        const inputCampo = document.getElementById(campo.toLowerCase() + tipo);
+        const iconoCampo = document.getElementById(campo.toLowerCase() + tipo + 'Icono');
 
-            if (alertaElemento) {
-                alertaElemento.textContent = '';
-                alertaElemento.classList.remove("error");
-            }
+        if (alertaElemento) {
+            alertaElemento.textContent = '';
+            alertaElemento.classList.remove("error");
+        }
+
+        if (inputCampo) {
+            inputCampo.classList.remove("error-input");
+        }
+
+        if (iconoCampo) {
+            iconoCampo.classList.remove("error-icono");
+        }
+
+
+    });
+}
+
+
+function mostrarAlertas(alertas, tipo) {
+    // Itera sobre todos los campos y limpia las alertas y estilos previos
+    const elementos = [
+        'Nombre', 'Apellido', 
+        'Email', 'Email2', 'Password', 'Password2', 
+        'Ciudad', 'Pais', 'Imagen', 'Tags',
+        'Descripcion', 'Categoria', 'Disponibles'
+    ];
     
+    elementos.forEach(campo => {
+        
+        const alertaElemento = document.getElementById('alerta' + campo + tipo);
+        const inputCampo = document.getElementById(campo.toLowerCase() + tipo);
+        const iconoCampo = document.getElementById(campo.toLowerCase() + tipo + 'Icono');
+        
+        if (alertaElemento) {
+            alertaElemento.textContent = '';
+            console.log(alertaElemento);
+            alertaElemento.classList.remove("error");
+        }
+
+        if (inputCampo) {
+            inputCampo.classList.remove("error-input");
+        }
+
+        if (iconoCampo) {
+            iconoCampo.classList.remove("error-icono");
+        }
+    });
+
+    if (alertas && alertas.length > 0) {
+        alertas.forEach((alerta) => {
+            
+            // Asigna un identificador específico para cada campo
+            let campoId = "";
+
+            // Identifica el campo según el contenido de la alerta 
+            if (alerta.includes('Nombre')) {
+                campoId = 'Nombre';
+            } else if (alerta.includes('Apellido')) {
+                campoId = 'Apellido';
+            } else if (alerta.includes('Email')) {
+                campoId = 'Email';
+            } else if (alerta.includes('mayor')) {
+                campoId = 'Password';
+            } else if (alerta.includes('coinciden')) {
+                campoId = 'Password2';
+            } else if (alerta.includes('registrado')) {
+                campoId = 'Email2';
+            } else if (alerta.includes('Incorrecto')) {
+                campoId = 'Password2';
+            } else if (alerta.includes('confirmado')) {
+                campoId = 'Email2';
+            } else if (alerta.includes('Ciudad')) {
+                campoId = 'Ciudad';
+            } else if (alerta.includes('País')) {
+                campoId = 'Pais';
+            } else if (alerta.includes('Imagen')) {
+                campoId = 'Imagen';
+            } else if (alerta.includes('incluir')) {
+                campoId = 'Tags';
+            } else if (alerta.includes('descripción')) {
+                campoId = 'Descripcion';
+            } else if (alerta.includes('Categoría')) {
+                campoId = 'Categoria';
+            } else if (alerta.includes('Día')) {
+                campoId = 'Dia';
+            } else if (alerta.includes('hora')) {
+                campoId = 'Hora';
+            } else if (alerta.includes('disponibles')) {
+                campoId = 'Disponibles';
+            } else if (alerta.includes('encargada')) {
+                campoId = 'Ponente';
+            }
+
+            // Construye el ID completo del elemento donde se mostrará la alerta
+            const alertaElemento = document.getElementById('alerta' + campoId + tipo);
+            const inputCampo = document.getElementById(campoId.toLowerCase() + tipo);
+            const iconoCampo = document.getElementById(campoId.toLowerCase() + tipo + 'Icono');
+            
+            if (alertaElemento) {
+                alertaElemento.textContent = alerta;
+                setTimeout(() => {
+                    alertaElemento.classList.add("error");
+                }, 0);
+            }
+
             if (inputCampo) {
-                inputCampo.classList.remove("error-input");
+                inputCampo.classList.add("error-input");
             }
 
             if (iconoCampo) {
-                iconoCampo.classList.remove("error-icono");
+                iconoCampo.classList.add("error-icono");
             }
-
-
+        
         });
+    }
 }
-

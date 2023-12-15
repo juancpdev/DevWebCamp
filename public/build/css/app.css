@@ -682,7 +682,7 @@ h3 {
   font-weight: 100;
 }
 .formulario__label--textarea {
-  top: 70%;
+  top: 60%;
 }
 .formulario__label--file {
   display: block;
@@ -712,7 +712,7 @@ h3 {
 }
 .formulario__textarea {
   padding: 2rem 0.6rem;
-  height: 10rem;
+  height: 8rem;
   resize: none;
 }
 .formulario__radio {
@@ -1017,6 +1017,35 @@ h3 {
   .swal2-popup {
     font-size: 1.5rem !important;
   }
+}
+
+.horas {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(1, 1fr);
+  margin: 2rem 0;
+}
+@media (min-width: 768px) {
+  .horas {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.horas__hora {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #007df4;
+  border: 1px solid #007df4;
+  border-radius: 1rem;
+  height: 4rem;
+}
+.horas__hora:hover {
+  cursor: pointer;
 }
 
 .header {
