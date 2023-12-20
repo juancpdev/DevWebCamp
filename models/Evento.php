@@ -26,7 +26,6 @@ class Evento extends ActiveRecord {
         $this->dia_id = $args['dia_id'] ?? '';
         $this->hora_id = $args['hora_id'] ?? '';
         $this->ponente_id = $args['ponente_id'] ?? '';
-        $this->aaa = $args['aaa'] ?? '';
     }
 
     // Mensajes de validación para la creación de un evento

@@ -21,6 +21,28 @@
 
         &:hover {
             cursor: pointer;
+            background-color: rgba(80, 229, 255, 0.562);
+            border: 1px solid rgba(80, 229, 255, 0.562);
+        }
+
+        &--seleccionada {
+            background-color: v.$azul;
+            color: v.$blanco;
+
+            &:hover {
+                background-color: v.$azul;
+            }
+        }
+
+        &--deshabilitada {
+            border: 1px solid rgb(212, 212, 212);
+            color: rgb(212, 212, 212);
+
+            &:hover {
+                cursor: not-allowed;
+                background-color: v.$blanco;
+                border: 1px solid rgb(212, 212, 212);
+            }
         }
     }
 }

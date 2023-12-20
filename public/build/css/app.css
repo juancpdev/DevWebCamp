@@ -1046,6 +1046,24 @@ h3 {
 }
 .horas__hora:hover {
   cursor: pointer;
+  background-color: rgba(80, 229, 255, 0.562);
+  border: 1px solid rgba(80, 229, 255, 0.562);
+}
+.horas__hora--seleccionada {
+  background-color: #007df4;
+  color: #FFFFFF;
+}
+.horas__hora--seleccionada:hover {
+  background-color: #007df4;
+}
+.horas__hora--deshabilitada {
+  border: 1px solid rgb(212, 212, 212);
+  color: rgb(212, 212, 212);
+}
+.horas__hora--deshabilitada:hover {
+  cursor: not-allowed;
+  background-color: #FFFFFF;
+  border: 1px solid rgb(212, 212, 212);
 }
 
 .header {
