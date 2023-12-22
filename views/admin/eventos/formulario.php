@@ -34,7 +34,7 @@
             class="formulario__select formulario__selecct-r" 
             name="categoria_id" 
             id="categoriaEvento">
-                <option value="">-- Seleccionar --</option>
+                <option selected disabled value="">-- Seleccionar --</option>
                 <?php foreach($categorias as $categoria) { ?>
                     <option <?php echo ($evento->categoria_id === $categoria->id) ? 'selected' : '' ?> value="<?php echo $categoria->id; ?>"><?php echo $categoria->nombre; ?></option>
                 <?php } ?>
@@ -82,6 +82,7 @@
         >
         <label for="ponenteEvento" class="formulario__label formulario__label-r">Buscar Ponente</label>
         <i class="formulario__icono formulario__icono-r fa-solid fa-search" id="ponenteEventoIcono"></i>
+        <ul id="listado-ponentes" class="listado-ponentes"></ul>
         <p class="alerta" id="alertaPonenteEvento"></p>
     </div>
 
