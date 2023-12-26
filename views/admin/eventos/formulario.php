@@ -57,8 +57,7 @@
                 </div>
             <?php } ?>
         </div>
-            <input type="hidden" name="dia_id" value="">
-            <p class="alerta" id="alertaDiaEvento"></p>
+        <input type="hidden" name="dia_id" value="">
     </div>
 
     <div class="formulario__campo" id="horas">
@@ -70,7 +69,7 @@
             <?php } ?>
         </ul>
         <input type="hidden" name="hora_id" value="">
-        <p class="alerta" id="alertaHoraEvento"></p>
+        <p class="alerta" id="alertaDiaHoraEvento"></p>
     </div>
 
     <div class="formulario__campo">
@@ -81,8 +80,8 @@
             placeholder=""
         >
         <label for="ponenteEvento" class="formulario__label formulario__label-r">Buscar Ponente</label>
-        <i class="formulario__icono formulario__icono-r fa-solid fa-search" id="ponenteEventoIcono"></i>
         <ul id="listado-ponentes" class="listado-ponentes"></ul>
+        <input type="hidden" name="ponente_id" value="">
         <p class="alerta" id="alertaPonenteEvento"></p>
     </div>
 

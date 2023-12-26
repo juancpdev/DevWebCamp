@@ -187,7 +187,7 @@ function mostrarAlertas(alertas, tipo) {
         'Nombre', 'Apellido', 
         'Email', 'Email2', 'Password', 'Password2', 
         'Ciudad', 'Pais', 'Imagen', 'Tags',
-        'Descripcion', 'Categoria', 'Disponibles'
+        'Descripcion', 'Categoria', 'DiaHora', 'Ponente', 'Disponibles'
     ];
     
     elementos.forEach(campo => {
@@ -198,7 +198,7 @@ function mostrarAlertas(alertas, tipo) {
         
         if (alertaElemento) {
             alertaElemento.textContent = '';
-            console.log(alertaElemento);
+            
             alertaElemento.classList.remove("error");
         }
 
@@ -246,14 +246,12 @@ function mostrarAlertas(alertas, tipo) {
                 campoId = 'Descripcion';
             } else if (alerta.includes('Categoría')) {
                 campoId = 'Categoria';
-            } else if (alerta.includes('Día')) {
-                campoId = 'Dia';
-            } else if (alerta.includes('hora')) {
-                campoId = 'Hora';
+            } else if (alerta.includes('día y la hora')) {
+                campoId = 'DiaHora';
+            }  else if (alerta.includes('encargada')) {
+                campoId = 'Ponente';
             } else if (alerta.includes('disponibles')) {
                 campoId = 'Disponibles';
-            } else if (alerta.includes('encargada')) {
-                campoId = 'Ponente';
             }
 
             // Construye el ID completo del elemento donde se mostrará la alerta

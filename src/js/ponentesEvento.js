@@ -1,12 +1,16 @@
 (function () {
     const inputPonente = document.querySelector("#ponenteEvento");
 
+    const inputHiddenPonente = document.querySelector("[name=ponente_id]");
+
     let ponentes = [];
     let ponentesFiltrados = [];
 
     const listadoPonentes = document.querySelector("#listado-ponentes");
 
-    inputPonente.addEventListener('input', buscarPonentes);
+    if(inputPonente) {
+        inputPonente.addEventListener('input', buscarPonentes);
+    }
 
     obtenerPonentes();
 
@@ -27,7 +31,7 @@
         });
     }
 
-    // Función para escapar caracteres especiales de una cadena antes de usarla en una expresión regular
+    // Función para escapar caracteres especiales de una cadena
     function escapeRegExp(str) {
         return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     }
@@ -56,6 +60,15 @@
     
     function mostrarPonentes() {
 
+        // Agrega un evento al input para detectar cambios
+        inputPonente.addEventListener("input", function() {
+            if (listadoPonentes.getElementsByTagName("li").length > 0) {
+                listadoPonentes.classList.add("listado-ponentes__ponente--con-margen");
+            } else {
+                listadoPonentes.classList.remove("listado-ponentes__ponente--con-margen");
+            }
+        });
+
         while(listadoPonentes.firstChild) {
             listadoPonentes.removeChild(listadoPonentes.firstChild)
         }
@@ -66,6 +79,7 @@
                 ponenteHTML.classList.add("listado-ponentes__ponente");
                 ponenteHTML.textContent = ponente.nombre;
                 ponenteHTML.dataset.ponenteId = ponente.id;
+                ponenteHTML.onclick = seleccionarPonente;
     
                 listadoPonentes.appendChild(ponenteHTML);
             });
@@ -78,6 +92,20 @@
         
         }
             
+    }
+
+    function seleccionarPonente(e) {
+        const ponente = e.target;
+
+        const ponentePrevio = document.querySelector(".listado-ponentes__ponente--seleccionado");
+
+        if(ponentePrevio) {
+            ponentePrevio.classList.remove("listado-ponentes__ponente--seleccionado");
+        }
+
+        ponente.classList.add("listado-ponentes__ponente--seleccionado");
+        
+        inputHiddenPonente.value = ponente.dataset.ponenteId;
     }
     
 

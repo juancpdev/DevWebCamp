@@ -1647,4 +1647,43 @@ h3 {
   color: #1E293B;
   border-bottom: 2px solid #1E293B;
 }
+
+.listado-ponentes {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0;
+  margin: 0;
+}
+.listado-ponentes__ponente {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  list-style: none;
+  color: #007df4;
+  border: 0.1rem solid #007df4;
+  border-radius: 1rem;
+  height: 4rem;
+  transition: all 0.3s ease;
+}
+.listado-ponentes__ponente:hover {
+  cursor: pointer;
+  background-color: #dbedff;
+}
+.listado-ponentes__ponente--con-margen {
+  margin: 1rem 0;
+}
+.listado-ponentes__ponente--seleccionado {
+  color: #FFFFFF;
+  background-color: #007df4;
+}
+.listado-ponentes__ponente--seleccionado:hover {
+  cursor: pointer;
+  background-color: #0056a8;
+}
+.listado-ponentes__no-resultado {
+  text-align: center;
+  font-size: 1.6rem;
+}
 /*# sourceMappingURL=app.css.map */

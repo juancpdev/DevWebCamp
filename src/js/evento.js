@@ -12,18 +12,16 @@
             body: datos
         });
   
-        
         try {
             const resultado = await respuesta.json();
-           
-
+        
             // Capturar mensajes de depuración
             if (resultado.debug) {
                 console.log(resultado.debug);
             }
             
             if (resultado.tipo === 'error') {
-                console.log(resultado.alertas.error);
+                
                 // Mostrar alertas
                 mostrarAlertas(resultado.alertas.error, "Evento");
 

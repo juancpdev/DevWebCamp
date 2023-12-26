@@ -44,12 +44,15 @@ class EventosController {
             // Guardar el registro
             if(empty($alertas)) { 
 
+                $evento->guardar();
+
                 $respuesta = [
                     'tipo' => 'exito',
                     'datos' => $evento
                 ];
                 echo json_encode($respuesta);
                 return;
+
             } else {
                 $respuesta = [
                     'tipo' => 'error',
@@ -60,9 +63,6 @@ class EventosController {
             }
         }
 
-
-
-        
         $router->render('admin/eventos/crear', [
             'titulo' => 'Crear Evento',
             'categorias' => $categorias,

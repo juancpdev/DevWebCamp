@@ -9,9 +9,12 @@
     const categoria = document.querySelector("[name=categoria_id]");
     const inputHiddenDia = document.querySelector("[name=dia_id]");
     const inputHiddenHora = document.querySelector("[name=hora_id]");
-
+    
     dias.forEach(dia => dia.addEventListener('change', terminoBusqueda));
-    categoria.addEventListener('change', terminoBusqueda);
+
+    if(categoria) {
+        categoria.addEventListener('change', terminoBusqueda);
+    }
 
     function terminoBusqueda(e) {
         busqueda[e.target.name] = e.target.value;

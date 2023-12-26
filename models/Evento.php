@@ -42,11 +42,8 @@ class Evento extends ActiveRecord {
         if(!$this->disponibles || !filter_var($this->disponibles, FILTER_VALIDATE_INT)) {
             self::$alertas['error'][] = 'Ingresa los lugares disponibles';
         }
-        if(!$this->dia_id  || !filter_var($this->dia_id, FILTER_VALIDATE_INT)) {
-            self::$alertas['error'][] = 'Elige el Día del evento';
-        }
         if(!$this->hora_id  || !filter_var($this->hora_id, FILTER_VALIDATE_INT)) {
-            self::$alertas['error'][] = 'Elige la hora del evento';
+            self::$alertas['error'][] = 'Elige el día y la hora del evento';
         }
         if(!$this->ponente_id || !filter_var($this->ponente_id, FILTER_VALIDATE_INT) ) {
             self::$alertas['error'][] = 'Selecciona la persona encargada del evento';
