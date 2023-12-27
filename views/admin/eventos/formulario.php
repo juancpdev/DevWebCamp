@@ -16,20 +16,21 @@
     </div>
 
     <div class="formulario__campo">
-        <textarea 
+        <textarea
+            title="Ingrese una descripción del evento"
             class="formulario__input formulario__input-r formulario__textarea"
             id="descripcionEveto"
             name="descripcion"
             placeholder=""
-            value="<?php echo $evento->descripcion ?? ''; ?>"
-        ></textarea>
+        ><?php echo $evento->descripcion ?? ''; ?></textarea>
         <label for="descripcionEvento" class="formulario__label formulario__label-r formulario__label--textarea">Descripción</label>
         <p class="alerta" id="alertaDescripcionEvento"></p>
     </div>
 
     <div class="formulario__campo formulario__campo--categorias">
         <label for="categoria" class="formulario__label--area">Categoría o Tipo de Evento</label>
-        <select 
+        <select
+            title="Selecciona una categoría para el evento"
             class="formulario__select formulario__selecct-r" 
             name="categoria_id" 
             id="categoriaEvento">
@@ -52,11 +53,13 @@
                         type="radio"
                         id="<?php echo strtolower($dia->nombre) ?>"
                         name="dia"
-                        value="<?php echo $dia->id; ?>">
+                        value="<?php echo $dia->id; ?>"
+                        <?php echo ($evento->dia_id === $dia->id) ? 'checked' : ''; ?>
+                        >
                 </div>
             <?php } ?>
         </div>
-        <input type="hidden" name="dia_id" value="">
+        <input type="hidden" name="dia_id" value="<?php echo $evento->dia_id; ?>">
     </div>
 
     <div class="formulario__campo" id="horas">
@@ -67,7 +70,7 @@
                 <li data-hora-id="<?php echo $hora->id ?>" class="horas__hora horas__hora--deshabilitada"><?php echo $hora->hora; ?></li>
             <?php } ?>
         </ul>
-        <input type="hidden" name="hora_id" value="">
+        <input type="hidden" name="hora_id" value="<?php echo $evento->hora_id; ?>">
         <p class="alerta" id="alertaDiaHoraEvento"></p>
     </div>
 
@@ -78,9 +81,9 @@
             id="ponenteEvento"
             placeholder=""
         >
-        <label for="ponenteEvento" class="formulario__label formulario__label-r">Buscar Ponente</label>
+        <label for="ponenteEvento" id="labelPonente" class="formulario__label formulario__label-r">Buscar Ponente</label>
         <ul id="listado-ponentes" class="listado-ponentes"></ul>
-        <input type="hidden" name="ponente_id" value="">
+        <input type="hidden" name="ponente_id" value="<?php echo $evento->ponente_id; ?>">
         <p class="alerta" id="alertaPonenteEvento"></p>
     </div>
 

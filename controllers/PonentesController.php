@@ -30,11 +30,11 @@ class PonentesController {
             header("Location: /admin/ponentes?page=1");
         }
         
-        $ponente = Ponente::paginar($registros_por_pagina, $paginacion->offset());
+        $ponentes = Ponente::paginar($registros_por_pagina, $paginacion->offset());
 
         $router->render('admin/ponentes/index', [
             'titulo' => 'Ponentes / Conferencistas',
-            'ponentes' => $ponente,
+            'ponentes' => $ponentes,
             'paginacion' => $paginacion->paginacion()
         ]);
     }

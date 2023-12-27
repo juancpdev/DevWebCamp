@@ -59,12 +59,34 @@
     }
 
     const formularioEventosCrear = document.querySelector('#eventosCrear .formulario');
+    const formularioEventosEditar = document.querySelector('#eventosEditar .formulario');
 
 
     if(formularioEventosCrear) {
         formularioEventosCrear.addEventListener('submit', function(event) {
             event.preventDefault();
             manejarFormularioEventos(formularioEventosCrear, '/admin/eventos/crear', "Crear");
+        });
+    }
+    if(formularioEventosEditar) {
+        formularioEventosEditar.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Obtener la cadena de consulta de la URL actual
+            const queryString = window.location.search;
+            // Crear un objeto URLSearchParams a partir de la cadena de consulta
+            const params = new URLSearchParams(queryString);
+            
+            // Obtener el valor del parámetro 'id'
+            const idDelEvento = params.get('id');
+
+            // Verificar si se obtuvo un valor válido
+            if (idDelEvento) {
+                const url = '/admin/eventos/editar?id=' + idDelEvento;
+                manejarFormularioEventos(formularioEventosEditar, url, "Editar");
+            } else {
+                console.error('ID del evento no encontrado en la URL');
+            }
         });
     }
 

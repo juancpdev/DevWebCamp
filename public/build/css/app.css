@@ -684,6 +684,9 @@ h3 {
 .formulario__label--textarea {
   top: 60%;
 }
+.formulario__label--li {
+  top: 25%;
+}
 .formulario__label--file {
   display: block;
   font-size: 1.8rem;
