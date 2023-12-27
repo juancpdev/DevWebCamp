@@ -12,7 +12,6 @@
             value="<?php echo $evento->nombre ?? ''; ?>"
         >
         <label for="nombreEvento" class="formulario__label formulario__label-r">Nombre</label>
-        <i class="formulario__icono formulario__icono-r fa-solid fa-user" id="nombreEventoIcono"></i>
         <p class="alerta" id="alertaNombreEvento"></p>
     </div>
 
@@ -96,7 +95,6 @@
             value="<?php echo $evento->disponibles ?? ''; ?>"
         >
         <label for="disponiblesEvento" class="formulario__label formulario__label-r">Lugares Disponibles</label>
-        <i class="formulario__icono formulario__icono-r fa-solid fa-user" id="disponiblesEventoIcono"></i>
         <p class="alerta" id="alertaDisponiblesEvento"></p>
     </div>
 </fieldset>
