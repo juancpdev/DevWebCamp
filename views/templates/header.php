@@ -25,10 +25,10 @@
         </h2>
 
         <nav class="navegacion">
-            <a class="navegacion__enlace" href="/">Evento</a>
-            <a class="navegacion__enlace" href="/">Paquetes</a>
-            <a class="navegacion__enlace" href="/">Workshops/Conferencias</a>
-            <a class="navegacion__enlace" href="/">Comprar Pase</a>
+            <a class="navegacion__enlace" href="/evento">Evento</a>
+            <a class="navegacion__enlace" href="/paquetes">Paquetes</a>
+            <a class="navegacion__enlace" href="/conferencias">Workshops/Conferencias</a>
+            <a class="navegacion__enlace" href="/comprar-pase">Comprar Pase</a>
         </nav>
     </div>
 </div>

@@ -16,6 +16,8 @@ body {
     padding: 0;
     height: 100%;
     padding: 0 !important;
+    display: flex;
+    flex-direction: column;
 }
 a {
     text-decoration: none;
@@ -37,4 +39,8 @@ img {
     max-width: 70rem;
     margin: 0 auto;
     padding: 0 3rem;
+}
+
+.principal {
+    flex: 1;
 }

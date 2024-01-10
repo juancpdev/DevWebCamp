@@ -20,27 +20,27 @@
 
                 const ponenteDOM = document.createElement('LI');
                 ponenteDOM.classList.add("listado-ponentes__ponente", "listado-ponentes__ponente--seleccionado", "listado-ponentes__ponente--con-margen");
-                ponenteDOM.textContent = ponente.nombre + " " + ponente.apellido;
+                ponenteDOM.textContent = `${nombre} ${apellido}`;
                 
                 listadoPonentes.appendChild(ponenteDOM);
 
                 // Estilos al label
                 labelPonente.classList.add('formulario__label--li');
                 inputPonente.addEventListener('input', verificarElementos);
+            }
 
-                function verificarElementos() {
+            function verificarElementos() {
                     
-                    if (listadoPonentes.getElementsByTagName('li').length > 0) {
-                        labelPonente.classList.add('formulario__label--li');
-                        console.log("li");
-                    } else {
-                        labelPonente.classList.remove('formulario__label--li');
-                        console.log("no li");
-                    }
+                if (listadoPonentes.getElementsByTagName('li').length > 0) {
+                    labelPonente.classList.add('formulario__label--li');
+
+                } else {
+                    labelPonente.classList.remove('formulario__label--li');
                 }
             }
+
             iniciarApp();
-            
+            inputPonente.addEventListener('input', iniciarApp);
         }
 
         async function obtenerPonentes() {

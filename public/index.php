@@ -8,14 +8,19 @@ use MVC\Router;
 use Controllers\AuthController;
 use Controllers\DashboardController;
 use Controllers\EventosController;
+use Controllers\PaginasController;
 use Controllers\PonentesController;
 use Controllers\RegalosController;
 use Controllers\RegistradosController;
 
 $router = new Router();
 
-// Pag Principal (DEMO)
-$router->get('/', [AuthController::class, 'demo']);
+// Pag Publicas
+$router->get('/', [PaginasController::class, 'index']);
+$router->get('/evento', [PaginasController::class, 'evento']);
+$router->get('/paquetes', [PaginasController::class, 'paquetes']);
+$router->get('/conferencias', [PaginasController::class, 'conferencias']);
+$router->get('/comprar-pase', [PaginasController::class, 'pase']);
 
 // Paginas
 $router->get('/confirmar-cuenta', [AuthController::class, 'confirmar']);

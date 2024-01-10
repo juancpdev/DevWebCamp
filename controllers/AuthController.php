@@ -8,13 +8,6 @@ use MVC\Router;
 
 class AuthController {
     
-    public static function demo(Router $router) {
-        // Render a la vista 
-        $router->render('auth/demo', [
-            'titulo' => 'Principal'
-        ]);
-    }
-
     public static function login() {
 
         $alertas = [];
