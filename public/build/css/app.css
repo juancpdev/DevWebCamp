@@ -380,7 +380,6 @@ h3 {
   font-family: "Outfit", sans-serif;
   font-weight: 900;
   margin: 2rem 0;
-  margin: 6rem 0 3rem 0;
   text-align: center;
 }
 
@@ -629,21 +628,9 @@ h3 {
   }
 }
 
-.reestablecer__heading {
-  margin: 0;
-  font-size: 3rem;
+.devwebcamp {
+  margin: 5rem 0 7rem 0;
 }
-@media (min-width: 768px) {
-  .reestablecer__heading {
-    font-size: 4rem;
-  }
-}
-.reestablecer__contenedor {
-  margin: 10rem 0;
-  display: flex;
-  flex-direction: column;
-}
-
 .devwebcamp__grid {
   width: min(95%, 120rem);
   margin: 0 auto;
@@ -661,6 +648,101 @@ h3 {
 }
 .devwebcamp__texto {
   line-height: 3rem;
+}
+
+.paquetes {
+  margin: 5rem 3rem 7rem 3rem;
+}
+.paquetes__grid {
+  width: min(95%, 120rem);
+  margin: 0 auto;
+  display: grid;
+  gap: 5rem;
+  grid-template-columns: repeat(1, 1fr);
+}
+@media (min-width: 768px) {
+  .paquetes__grid {
+    display: grid;
+    gap: 5rem;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: flex-start;
+  }
+}
+@media (min-width: 1024px) {
+  .paquetes__grid {
+    display: grid;
+    gap: 5rem;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.paquete {
+  padding: 3rem;
+  border-radius: 2rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.paquete:nth-child(2) {
+  order: -1;
+}
+@media (min-width: 1024px) {
+  .paquete:nth-child(2) {
+    order: unset;
+  }
+}
+.paquete:nth-child(3) {
+  order: -1;
+}
+@media (min-width: 1024px) {
+  .paquete:nth-child(3) {
+    order: unset;
+  }
+}
+.paquete__nombre {
+  font-size: 2.3rem;
+}
+@media (min-width: 768px) {
+  .paquete__nombre {
+    font-size: 2.5rem;
+  }
+}
+@media (min-width: 1024px) {
+  .paquete__nombre {
+    font-size: 3rem;
+  }
+}
+.paquete__lista {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 1.7rem;
+  line-height: 3.5rem;
+}
+@media (min-width: 1024px) {
+  .paquete__lista {
+    font-size: 1.7rem;
+  }
+}
+.paquete__precio {
+  font-size: 5rem;
+  margin: 3rem 0;
+  color: #007df4;
+  font-weight: 900;
+  text-align: center;
+}
+
+.reestablecer__heading {
+  margin: 0;
+  font-size: 3rem;
+}
+@media (min-width: 768px) {
+  .reestablecer__heading {
+    font-size: 4rem;
+  }
+}
+.reestablecer__contenedor {
+  margin: 10rem 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .formulario__fieldset {
@@ -1239,6 +1321,7 @@ h3 {
 .barra__logo {
   margin: 0;
   font-size: 3rem;
+  color: #FFFFFF;
 }
 
 .navegacion {

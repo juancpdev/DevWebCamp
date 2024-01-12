@@ -1,0 +1,72 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.paquetes {
+    margin: 5rem 3rem 7rem 3rem;
+
+    &__grid {
+        @include m.contenedor;
+        @include m.grid(1, 5rem);
+
+        @include m.tablet {
+            @include m.grid(2, 5rem);
+            align-items: flex-start;
+        }
+
+        @include m.desktop {
+            @include m.grid(3, 5rem);
+        }
+
+    }
+}
+
+.paquete {
+    padding: 3rem;
+    border-radius: 2rem;
+    @include m.shadow;
+
+    &:nth-child(2) {
+        order: -1;
+        @include m.desktop {
+            order: unset;
+        }
+    }
+
+    &:nth-child(3) {
+        order: -1;
+        @include m.desktop {
+            order: unset;
+        }
+    }
+  
+
+    &__nombre {
+        font-size: 2.3rem;
+
+        @include m.tablet {
+            font-size: 2.5rem;
+        }
+
+        @include m.desktop {
+            font-size: 3rem;
+        }
+    }
+
+    &__lista {
+        @include m.reset-lista;
+        font-size: 1.7rem;
+        line-height: 3.5rem;
+
+        @include m.desktop {
+            font-size: 1.7rem;
+        }
+    }
+
+    &__precio {
+        font-size: 5rem;
+        margin: 3rem 0;
+        color: v.$azul;
+        font-weight: v.$black;
+        text-align: center;
+    }
+}

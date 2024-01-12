@@ -7,20 +7,20 @@ use MVC\Router;
 class PaginasController {
 
     public static function index(Router $router) {
-        $router->render("paginas/devwebcamp", [
+        $router->render("paginas/index", [
             'titulo' => 'Página Principal'
         ]);
     }
 
     public static function evento(Router $router) {
-        $router->render("paginas/evento", [
-            'titulo' => 'Evento'
+        $router->render("paginas/devwebcamp", [
+            'titulo' => 'DevWebCamp'
         ]);
     }
 
     public static function paquetes(Router $router) {
         $router->render("paginas/paquetes", [
-            'titulo' => 'Paquetes'
+            'titulo' => 'Paquetes DevWebCamp'
         ]);
     }
 

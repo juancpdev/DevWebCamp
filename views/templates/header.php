@@ -6,9 +6,11 @@
         </nav>
 
         <div class="header__contenido">
-            <h1 class="header__titulo">
-                &lt;DevWebCamp/&gt;
-            </h1>
+            <a href="/">
+                <h1 class="header__titulo">
+                    &lt;DevWebCamp/&gt;
+                </h1>
+            </a>
 
             <p class="header__texto">Octubre 5-6 - 2023 </p>
             <p class="header__texto header__texto--modalidad">En Linea - Presencial</p>
@@ -20,9 +22,11 @@
 
 <div class="barra">
     <div class="barra__contenido">
-        <h2 href="/" class="barra__logo">
-            &lt;DevWebCamp/&gt;
-        </h2>
+        <a href="/">
+            <h2 href="/" class="barra__logo">
+                &lt;DevWebCamp/&gt;
+            </h2>
+        </a>
 
         <nav class="navegacion">
             <a class="navegacion__enlace" href="/evento">Evento</a>
