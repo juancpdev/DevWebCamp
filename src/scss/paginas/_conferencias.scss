@@ -25,10 +25,82 @@
         #{$modificador}__heading {
             color: v.$secundario;
         }
-
-
     }
 
+    &__listado {
+        display: flex;
+        flex-direction: column;
+        gap: 5rem;
+    }
+
+    .evento {
+        color: v.$blanco;
+
+        &__hora {
+            color: v.$negro;
+            font-weight: bold;
+        }
+
+        &__informacion {
+            position: relative;
+            border-radius: 2rem;
+            padding: 2.5rem;
+            overflow: hidden;
+            cursor: pointer;
+        
+            &::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background: linear-gradient(45deg, v.$azul, #011c35);
+                border-radius: 2rem;
+                transition: opacity 0.3s ease;
+                z-index: -1;
+                opacity: .9;
+            }
+        
+            &:hover::before {
+                opacity: 1;
+            }
+        }
+
+        &__nombre {
+            font-weight: bold;
+        }
+
+        &__texto {
+            color: v.$blanco;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            
+            @include m.tablet {
+                -webkit-line-clamp: 2;
+            }
+        }
+
+        &__ponente {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            &--imagen {
+                width: 6rem;
+                background-color: v.$blanco;
+                border-radius: 50%;
+            }
+
+            &--nombre {
+                font-weight: bold;
+            }
+        }
+    }
+    
+    
 }
 
 

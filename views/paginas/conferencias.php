@@ -1,3 +1,5 @@
+<?php include_once __DIR__ . "/../auth/auth_includes.php" ?>
+
 <main class="agenda">
     <h2 class="agenda__heading">Workshops & Conferencias</h2>
     <p class="agenda__descripcion">Talleres y Conferencias dictados por expertos en desarrollo web</p>
@@ -12,15 +14,14 @@
                     <p class="evento__hora"><?php echo $evento->hora->hora; ?></p>
                     <div class="evento__informacion">
                         <p class="evento__nombre"><?php echo $evento->nombre; ?></p>
-                        <p class="evento__nombre"><?php echo $evento->descripcion; ?></p>
+                        <p class="evento__texto"><?php echo $evento->descripcion; ?></p>
                         <div class="evento__ponente">
-                            <picture>
+                            <picture >
                                 <source srcset="<?php echo '/img/speakers/' . $evento->ponente->imagen . '.webp' ?>" type="image/webp">
                                 <source srcset="<?php echo '/img/speakers/' . $evento->ponente->imagen . '.png' ?>" type="image/png">
-
-                                <img src="<?php echo '/img/speakers/' . $evento->ponente->imagen . '.png' ?>" alt="Imagen Ponente">
+                                <img class="evento__ponente--imagen" width="200" height="300" src="<?php echo '/img/speakers/' . $evento->ponente->imagen . '.png' ?>" alt="Imagen Ponente">
                             </picture>
-                            <p class="evento__ponente-imagen"><?php echo $evento->ponente->nombre . " " . $evento->ponente->apellido; ?></p>
+                            <p class="evento__ponente--nombre"><?php echo $evento->ponente->nombre . " " . $evento->ponente->apellido; ?></p>
                         </div>
                     </div>
                 </div>

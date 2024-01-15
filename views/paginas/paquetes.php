@@ -1,3 +1,5 @@
+<?php include_once __DIR__ . "/../auth/auth_includes.php" ?>
+
 <main class="paquetes">
     <h2 class="paquetes__heading"><?php echo $titulo ?></h2>
     <p class="paquetes__descripcion">Compara los paquetes de DevWebCamp</p>

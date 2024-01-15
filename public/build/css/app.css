@@ -764,6 +764,69 @@ h3 {
 .eventos--workshops .eventos__heading {
   color: #00c8c2;
 }
+.eventos__listado {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+.eventos .evento {
+  color: #FFFFFF;
+}
+.eventos .evento__hora {
+  color: #1a1b15;
+  font-weight: bold;
+}
+.eventos .evento__informacion {
+  position: relative;
+  border-radius: 2rem;
+  padding: 2.5rem;
+  overflow: hidden;
+  cursor: pointer;
+}
+.eventos .evento__informacion::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(45deg, #007df4, #011c35);
+  border-radius: 2rem;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+  opacity: 0.9;
+}
+.eventos .evento__informacion:hover::before {
+  opacity: 1;
+}
+.eventos .evento__nombre {
+  font-weight: bold;
+}
+.eventos .evento__texto {
+  color: #FFFFFF;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+@media (min-width: 768px) {
+  .eventos .evento__texto {
+    -webkit-line-clamp: 2;
+  }
+}
+.eventos .evento__ponente {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.eventos .evento__ponente--imagen {
+  width: 6rem;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+}
+.eventos .evento__ponente--nombre {
+  font-weight: bold;
+}
 
 .formulario__fieldset {
   border: none;
