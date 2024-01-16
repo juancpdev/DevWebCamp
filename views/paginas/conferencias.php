@@ -8,46 +8,66 @@
         <h3 class="eventos__heading">&lt;Conferencias /></h3>
         <p class="eventos__fecha">Viernes 5 de Octubre</p>
 
-        <div class="eventos__listado ">
-            <?php foreach ($eventos["conferencias_v"] as $evento) { ?>
-                <div class="evento">
-                    <p class="evento__hora"><?php echo $evento->hora->hora; ?></p>
-                    <div class="evento__informacion">
-                        <p class="evento__nombre"><?php echo $evento->nombre; ?></p>
-                        <p class="evento__texto"><?php echo $evento->descripcion; ?></p>
-                        <div class="evento__ponente">
-                            <picture >
-                                <source srcset="<?php echo '/img/speakers/' . $evento->ponente->imagen . '.webp' ?>" type="image/webp">
-                                <source srcset="<?php echo '/img/speakers/' . $evento->ponente->imagen . '.png' ?>" type="image/png">
-                                <img class="evento__ponente--imagen" width="200" height="300" src="<?php echo '/img/speakers/' . $evento->ponente->imagen . '.png' ?>" alt="Imagen Ponente">
-                            </picture>
-                            <p class="evento__ponente--nombre"><?php echo $evento->ponente->nombre . " " . $evento->ponente->apellido; ?></p>
-                        </div>
-                    </div>
-                </div>
-            <?php } ?>
+        <div class="eventos__listado slider swiper">
+            <div class="swiper-wrapper">
+                <?php foreach ($eventos["conferencias_v"] as $evento) { ?>
+                    <?php include __DIR__ . '../../templates/evento.php'; ?>
+                <?php } ?>
+            </div>
+
+            <div class="flecha-contenedor">
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
         </div>
 
         <p class="eventos__fecha">Sábado 6 de Octubre</p>
 
-        <div class="eventos__listado">
+                <div class="eventos__listado slider swiper">
+            <div class="swiper-wrapper">
+                <?php foreach ($eventos["conferencias_s"] as $evento) { ?>
+                    <?php include __DIR__ . '../../templates/evento.php'; ?>
+                <?php } ?>
+            </div>
 
+            <div class="flecha-contenedor">
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
         </div>
     </div>
 
     <div class="eventos eventos--workshops">
         <h3 class="eventos__heading">&lt;Workshops /></h3>
+
         <p class="eventos__fecha">Viernes 5 de Octubre</p>
 
         <div class="eventos__listado slider swiper">
+            <div class="swiper-wrapper">
+                <?php foreach ($eventos["workshops_v"] as $evento) { ?>
+                    <?php include __DIR__ . '../../templates/evento.php'; ?>
+                <?php } ?>
+            </div>
 
+            <div class="flecha-contenedor">
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
         </div>
 
         <p class="eventos__fecha">Sábado 6 de Octubre</p>
 
         <div class="eventos__listado slider swiper">
+            <div class="swiper-wrapper">
+                <?php foreach ($eventos["workshops_s"] as $evento) { ?>
+                    <?php include __DIR__ . '../../templates/evento.php'; ?>
+                <?php } ?>
+            </div>
 
-
+            <div class="flecha-contenedor">
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
         </div>
     </div>
 </main>

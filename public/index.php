@@ -31,6 +31,7 @@ $router->post('/reestablecer', [AuthController::class, 'reestablecer']);
 $router->post('/api/usuarios/registro', [AuthController::class, 'registro']);
 $router->post('/api/usuarios/login', [AuthController::class, 'login']);
 $router->post('/api/usuarios/olvidePassword', [AuthController::class, 'olvide']);
+$router->post('/logout', [AuthController::class, 'logout']);
 
 // APIs
 $router->get('/api/eventos-horario', [APIEventos::class, 'index']);

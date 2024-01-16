@@ -42,8 +42,8 @@
         font-size: 1.3rem;
         color: v.$blanco;
         position: relative;
-        
-        &::after {
+        padding: 1rem;
+        &::before {
             content: "|"; /* Contenido del pseudoelemento (la línea vertical) */
             position: absolute;
             right: -12px; /* Ajusta la posición de la línea vertical */
@@ -53,9 +53,25 @@
             pointer-events: none;
         }
 
-        &:last-child::after {
+        &:last-child::before {
         content: none; /* Elimina la línea vertical después del último enlace */
         }
+
+        &:hover {
+            color: lighten(white, 40);
+        }
+        &::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 1.5px;
+            background: lighten(white, 20);
+            transition: width .5s;
+        }
+        &:hover::after {
+            width: 50%;
+        }
+        
     }
 
     &__contenido {

@@ -16,7 +16,7 @@
         justify-content: center;
         align-items: center;
         height: 4rem;
-        padding: 0 .5rem;
+        padding: 0 1rem;
         color: v.$blanco;
         font-weight: 900;
         text-transform: uppercase;
@@ -25,13 +25,23 @@
         transition: all .3s;
         
         &:hover {
-            background-color: v.$blanco;
-            color: v.$azul;
+            background-color: rgba(255, 255, 255, 0.253);
+            color: v.$blanco;
         }
 
         @include m.desktop {
             height: 6rem;
             width: auto;
+        }
+
+        &--activo {
+            background-color: v.$blanco;
+            color: v.$azul;
+
+            &:hover {
+                background-color: v.$blanco;
+            color: v.$azul;
+            }
         }
     }
 }

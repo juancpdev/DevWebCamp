@@ -3,10 +3,26 @@
 
 .agenda {
     padding: 5rem 0;
-    @include m.contenedor;
+    @include m.contenedor-xl;
 }
 .eventos {
     $modificador: &;
+
+    &--workshops {
+
+        #{$modificador}__heading {
+            color: v.$secundario;
+        }
+
+        .evento__informacion {
+            background-color: v.$secundario !important;
+            transition: all .3s ease;
+
+            &:hover {
+                background-color: darken(v.$secundario, 10) !important;
+            }
+        }
+    }
 
     &__heading {
         color: v.$azul;
@@ -20,87 +36,74 @@
         margin: 3rem 0 1rem 0;
     }
 
-    &--workshops {
-
-        #{$modificador}__heading {
-            color: v.$secundario;
-        }
+    .flecha-contenedor {
+        height: 4rem;
     }
 
-    &__listado {
-        display: flex;
-        flex-direction: column;
-        gap: 5rem;
-    }
-
-    .evento {
+    .swiper-button-next,
+    .swiper-button-prev {
         color: v.$blanco;
-
-        &__hora {
-            color: v.$negro;
-            font-weight: bold;
-        }
-
-        &__informacion {
-            position: relative;
-            border-radius: 2rem;
-            padding: 2.5rem;
-            overflow: hidden;
-            cursor: pointer;
-        
-            &::before {
-                content: "";
-                position: absolute;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
-                background: linear-gradient(45deg, v.$azul, #011c35);
-                border-radius: 2rem;
-                transition: opacity 0.3s ease;
-                z-index: -1;
-                opacity: .9;
-            }
-        
-            &:hover::before {
-                opacity: 1;
-            }
-        }
-
-        &__nombre {
-            font-weight: bold;
-        }
-
-        &__texto {
-            color: v.$blanco;
-            display: -webkit-box;
-            -webkit-line-clamp: 4;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            
-            @include m.tablet {
-                -webkit-line-clamp: 2;
-            }
-        }
-
-        &__ponente {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            &--imagen {
-                width: 6rem;
-                background-color: v.$blanco;
-                border-radius: 50%;
-            }
-
-            &--nombre {
-                font-weight: bold;
-            }
-        }
     }
-    
     
 }
 
+.evento {
+    color: v.$blanco;
 
+    &__hora {
+        color: v.$negro;
+        font-weight: bold;
+    }
+
+    &__informacion {
+        border-radius: 2rem;
+        padding: 2.5rem 4.5rem;
+        cursor: pointer;
+        background-color: v.$azul;
+        transition: all .3s ease;
+
+        &:hover {
+            background-color: darken(v.$azul, 10);
+        }
+    }
+
+    &__nombre {
+        font-size: 2rem;
+        font-weight: bold;
+        margin: 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    &__texto {
+        font-size: 1.5rem;
+        color: v.$blanco;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        
+        @include m.tablet {
+            -webkit-line-clamp: 2;
+        }
+    }
+
+    &__ponente {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        &--imagen {
+            width: 5rem;
+            background-color: v.$blanco;
+            border-radius: 50%;
+        }
+
+        &--nombre {
+            font-weight: bold;
+            font-size: 1.6rem;
+        }
+    }
+}

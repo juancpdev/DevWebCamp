@@ -1,8 +1,21 @@
 <header class="header">
     <div class="header__contenedor">
         <nav class="header__navegacion">
-            <a class="header__enlaces login">Iniciar Sesion</a>
-            <a class="header__enlaces registro">Registrarse</a>
+
+            <?php if (is_auth()) { ?>
+                <a href="<?php echo is_admin() ? '/admin/dashboard' : '/finalizar-registro' ?>" class="header__enlaces">Administrar</a>
+                <nav class="dashboard__nav">
+                    <form action="/logout" method="POST" class="dashboard__form">
+                        <div class="dashboard__submit--logout">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                            <input type="submit" value="Cerrar Sesión" class="dashboard__submit--logout">
+                        </div>
+                    </form>
+                </nav>
+            <?php } else { ?>
+                <a class="header__enlaces login">Iniciar Sesion</a>
+                <a class="header__enlaces registro">Registrarse</a>
+            <?php } ?>
         </nav>
 
         <div class="header__contenido">
@@ -29,10 +42,10 @@
         </a>
 
         <nav class="navegacion">
-            <a class="navegacion__enlace" href="/evento">Evento</a>
-            <a class="navegacion__enlace" href="/paquetes">Paquetes</a>
-            <a class="navegacion__enlace" href="/conferencias">Workshops/Conferencias</a>
-            <a class="navegacion__enlace" href="/comprar-pase">Comprar Pase</a>
+            <a class="navegacion__enlace <?php echo pagina_actual("/evento") ? "navegacion__enlace--activo" : "" ?>" href="/evento">Evento</a>
+            <a class="navegacion__enlace <?php echo pagina_actual("/paquetes") ? "navegacion__enlace--activo" : "" ?>" href="/paquetes">Paquetes</a>
+            <a class="navegacion__enlace <?php echo pagina_actual("/conferencias") ? "navegacion__enlace--activo" : "" ?>" href="/conferencias">Workshops/Conferencias</a>
+            <a class="navegacion__enlace <?php echo pagina_actual("/registro") ? "navegacion__enlace--activo" : "" ?>" href="/comprar-pase">Comprar Pase</a>
         </nav>
     </div>
 </div>

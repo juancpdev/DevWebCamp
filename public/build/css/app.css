@@ -393,6 +393,7 @@ h3 {
 
 #login, #registro, #olvide {
   display: none;
+  z-index: 100;
 }
 
 .login, .registro, .olvide {
@@ -747,10 +748,20 @@ h3 {
 
 .agenda {
   padding: 5rem 0;
-  width: min(95%, 120rem);
+  width: min(95%, 160rem);
   margin: 0 auto;
 }
 
+.eventos--workshops .eventos__heading {
+  color: #00c8c2;
+}
+.eventos--workshops .evento__informacion {
+  background-color: #00c8c2 !important;
+  transition: all 0.3s ease;
+}
+.eventos--workshops .evento__informacion:hover {
+  background-color: #009591 !important;
+}
 .eventos__heading {
   color: #007df4;
   margin: 5rem 0;
@@ -761,48 +772,42 @@ h3 {
   color: #64748B;
   margin: 3rem 0 1rem 0;
 }
-.eventos--workshops .eventos__heading {
-  color: #00c8c2;
+.eventos .flecha-contenedor {
+  height: 4rem;
 }
-.eventos__listado {
-  display: flex;
-  flex-direction: column;
-  gap: 5rem;
-}
-.eventos .evento {
+.eventos .swiper-button-next,
+.eventos .swiper-button-prev {
   color: #FFFFFF;
 }
-.eventos .evento__hora {
+
+.evento {
+  color: #FFFFFF;
+}
+.evento__hora {
   color: #1a1b15;
   font-weight: bold;
 }
-.eventos .evento__informacion {
-  position: relative;
+.evento__informacion {
   border-radius: 2rem;
-  padding: 2.5rem;
-  overflow: hidden;
+  padding: 2.5rem 4.5rem;
   cursor: pointer;
+  background-color: #007df4;
+  transition: all 0.3s ease;
 }
-.eventos .evento__informacion::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: linear-gradient(45deg, #007df4, #011c35);
-  border-radius: 2rem;
-  transition: opacity 0.3s ease;
-  z-index: -1;
-  opacity: 0.9;
+.evento__informacion:hover {
+  background-color: #0063c1;
 }
-.eventos .evento__informacion:hover::before {
-  opacity: 1;
-}
-.eventos .evento__nombre {
+.evento__nombre {
+  font-size: 2rem;
   font-weight: bold;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
-.eventos .evento__texto {
+.evento__texto {
+  font-size: 1.5rem;
   color: #FFFFFF;
   display: -webkit-box;
   -webkit-line-clamp: 4;
@@ -810,22 +815,23 @@ h3 {
   overflow: hidden;
 }
 @media (min-width: 768px) {
-  .eventos .evento__texto {
+  .evento__texto {
     -webkit-line-clamp: 2;
   }
 }
-.eventos .evento__ponente {
+.evento__ponente {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.eventos .evento__ponente--imagen {
-  width: 6rem;
+.evento__ponente--imagen {
+  width: 5rem;
   background-color: #FFFFFF;
   border-radius: 50%;
 }
-.eventos .evento__ponente--nombre {
+.evento__ponente--nombre {
   font-weight: bold;
+  font-size: 1.6rem;
 }
 
 .formulario__fieldset {
@@ -1309,8 +1315,9 @@ h3 {
   font-size: 1.3rem;
   color: #FFFFFF;
   position: relative;
+  padding: 1rem;
 }
-.header__enlaces::after {
+.header__enlaces::before {
   content: "|"; /* Contenido del pseudoelemento (la línea vertical) */
   position: absolute;
   right: -12px; /* Ajusta la posición de la línea vertical */
@@ -1319,8 +1326,22 @@ h3 {
   color: #FFFFFF; /* Color de la línea vertical */
   pointer-events: none;
 }
-.header__enlaces:last-child::after {
+.header__enlaces:last-child::before {
   content: none; /* Elimina la línea vertical después del último enlace */
+}
+.header__enlaces:hover {
+  color: white;
+}
+.header__enlaces::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 1.5px;
+  background: white;
+  transition: width 0.5s;
+}
+.header__enlaces:hover::after {
+  width: 50%;
 }
 .header__contenido {
   display: flex;
@@ -1423,7 +1444,7 @@ h3 {
   justify-content: center;
   align-items: center;
   height: 4rem;
-  padding: 0 0.5rem;
+  padding: 0 1rem;
   color: #FFFFFF;
   font-weight: 900;
   text-transform: uppercase;
@@ -1432,14 +1453,22 @@ h3 {
   transition: all 0.3s;
 }
 .navegacion__enlace:hover {
-  background-color: #FFFFFF;
-  color: #007df4;
+  background-color: rgba(255, 255, 255, 0.253);
+  color: #FFFFFF;
 }
 @media (min-width: 1024px) {
   .navegacion__enlace {
     height: 6rem;
     width: auto;
   }
+}
+.navegacion__enlace--activo {
+  background-color: #FFFFFF;
+  color: #007df4;
+}
+.navegacion__enlace--activo:hover {
+  background-color: #FFFFFF;
+  color: #007df4;
 }
 
 .menu-redes {
@@ -1604,15 +1633,20 @@ h3 {
   display: flex;
   justify-content: center;
 }
+.dashboard__nav {
+  padding: 1rem;
+  transition: all 0.3s ease;
+}
+.dashboard__nav:hover {
+  cursor: pointer;
+  background-color: rgb(161, 1, 1);
+  border-radius: 2rem;
+}
 .dashboard__submit--logout {
   all: unset;
   font-size: 1.3rem;
   color: #FFFFFF;
   text-transform: uppercase;
-}
-.dashboard__submit--logout:hover {
-  cursor: pointer;
-  color: red;
 }
 @media (min-width: 768px) {
   .dashboard__grid {

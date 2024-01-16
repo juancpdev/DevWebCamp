@@ -8,10 +8,10 @@
 
         <nav class="dashboard__nav">
             <form action="/logout" method="POST" class="dashboard__form">
-                <a class="dashboard__submit--logout" href="/logout">
+                <div class="dashboard__submit--logout">
                     <i class="fa-solid fa-right-from-bracket"></i>
-                    Cerrar Sesión
-                </a>
+                    <input type="submit" value="Cerrar Sesión" class="dashboard__submit--logout">
+                </div>
             </form>
         </nav>
     </div>
