@@ -748,7 +748,7 @@ h3 {
 
 .agenda {
   padding: 5rem 0;
-  width: min(95%, 160rem);
+  width: min(95%, 120rem);
   margin: 0 auto;
 }
 
@@ -774,10 +774,6 @@ h3 {
 }
 .eventos .flecha-contenedor {
   height: 4rem;
-}
-.eventos .swiper-button-next,
-.eventos .swiper-button-prev {
-  color: #FFFFFF;
 }
 
 .evento {
@@ -832,6 +828,63 @@ h3 {
 .evento__ponente--nombre {
   font-weight: bold;
   font-size: 1.6rem;
+}
+
+.slider-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.slides {
+  display: flex;
+}
+
+.slide {
+  flex: 0 0 100%;
+  box-sizing: border-box;
+  padding: 0 2.5rem;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .slide {
+    flex: 0 0 50%;
+  }
+}
+@media (min-width: 1024px) {
+  .slide {
+    flex: 0 0 33.33%;
+  }
+}
+
+.prev-btn,
+.next-btn {
+  position: absolute;
+  top: 60%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 3rem;
+  z-index: 100;
+}
+
+/* Agrega estas clases a tu archivo CSS con los estilos correspondientes */
+.arrow-disabled {
+  cursor: default;
+  opacity: 0.2;
+}
+
+/* Opcional: Puedes agregar estilos para cuando las flechas son activas */
+.arrow-enabled {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.prev-btn {
+  left: 0;
+}
+
+.next-btn {
+  right: 0;
 }
 
 .formulario__fieldset {

@@ -3,7 +3,7 @@
 
 .agenda {
     padding: 5rem 0;
-    @include m.contenedor-xl;
+    @include m.contenedor;
 }
 .eventos {
     $modificador: &;
@@ -40,11 +40,6 @@
         height: 4rem;
     }
 
-    .swiper-button-next,
-    .swiper-button-prev {
-        color: v.$blanco;
-    }
-    
 }
 
 .evento {
@@ -106,4 +101,60 @@
             font-size: 1.6rem;
         }
     }
+}
+
+.slider-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+.slides {
+    display: flex;
+}
+
+.slide {
+    flex: 0 0 100%; // Ajusta esto según tus necesidades
+    box-sizing: border-box;
+    padding: 0 2.5rem;
+    text-align: center;
+
+    @include m.tablet {
+        flex: 0 0 50%; // Ajusta esto según tus necesidades
+    }
+
+    @include m.desktop {
+        flex: 0 0 33.33%; // Ajusta esto según tus necesidades
+    }
+    
+}
+
+.prev-btn,
+.next-btn {
+    position: absolute;
+    top: 60%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 3rem;
+    z-index: 100;
+}
+
+/* Agrega estas clases a tu archivo CSS con los estilos correspondientes */
+.arrow-disabled {
+    cursor: default;
+    opacity: .2;
+  }
+  
+  /* Opcional: Puedes agregar estilos para cuando las flechas son activas */
+  .arrow-enabled {
+    cursor: pointer;
+    opacity: 1;
+  }
+
+.prev-btn {
+    left: 0;
+}
+
+.next-btn {
+    right: 0;
 }

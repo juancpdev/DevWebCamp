@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" href="build/img/icono.svg" type="image/png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DevWebCamp - <?php echo $titulo; ?></title>
@@ -18,7 +19,7 @@
         echo $contenido;
         include_once __DIR__ .'/templates/footer.php'; 
     ?>
-    <script src="/build/js/bundle.min.js" defer></script>
+    <script src="/build/js/bundle.js" defer></script>
     <script src='//cdn.jsdelivr.net/npm/sweetalert2@10'></script>
 </body>
 </html>

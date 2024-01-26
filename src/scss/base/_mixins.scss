@@ -11,6 +11,11 @@
         @content;
     }
 }
+@mixin xl_tablet {
+    @media (min-width: v.$xl_tablet) {
+        @content;
+    }
+}
 @mixin desktop {
     @media (min-width: v.$desktop) {
         @content;
