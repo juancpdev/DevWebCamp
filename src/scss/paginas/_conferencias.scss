@@ -2,8 +2,12 @@
 @use 'base/variables' as v;
 
 .agenda {
-    padding: 5rem 0;
+    padding: 5rem 2rem;
     @include m.contenedor;
+
+    @include m.desktop {
+        padding: 5rem 0;
+    }
 }
 .eventos {
     $modificador: &;
@@ -27,8 +31,11 @@
     &__heading {
         color: v.$azul;
         margin: 5rem 0;
-        text-align: left;
         font-size: clamp(2rem, 8vw, 6rem);
+
+        @include m.tablet {
+            text-align: left;
+        }
     }
 
     &__fecha {

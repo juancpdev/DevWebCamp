@@ -39,9 +39,21 @@ class PaginasController {
             }
         }
 
+        // Obtener total de cada bloque
+        $ponentes_total = Ponente::total();
+        $conferencias_total = Evento::total('categoria_id', 1);
+        $workshops_total = Evento::total('categoria_id', 2);
+
+        // Obtener todos los ponentes
+        $ponentes = Ponente::all();
+
         $router->render("paginas/index", [
             'titulo' => 'Página Principal',
-            'eventos' => $eventos_formatedos
+            'eventos' => $eventos_formatedos,
+            'ponentes_total' => $ponentes_total,
+            'conferencias_total' => $conferencias_total,
+            'workshops_total' => $workshops_total,
+            'ponentes' => $ponentes
         ]);
     }
 
