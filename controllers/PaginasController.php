@@ -108,4 +108,10 @@ class PaginasController {
             'titulo' => 'Comprar Pase'
         ]);
     }
+
+    public static function error(Router $router) {
+        $router->render("paginas/error", [
+            'titulo' => 'Página no encontrada'
+        ]);
+    }
 }

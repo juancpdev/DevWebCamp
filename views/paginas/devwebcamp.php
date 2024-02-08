@@ -1,6 +1,6 @@
 <?php include_once __DIR__ . "/../auth/auth_includes.php" ?>
 
-<main class="devwebcamp principal">
+<main class="devwebcamp principal pagina">
     <h2 class="devwebcamp__heading"> <?php echo $titulo; ?> </h2>
     <p class="devwebcamp__descripcion">Conoce la conferencia más importante de Latinoamerica</p>
 

@@ -2,15 +2,16 @@
 
 require_once __DIR__ . '/../includes/app.php';
 
+use MVC\Router;
 use Controllers\APIEventos;
 use Controllers\APIPonentes;
-use MVC\Router;
 use Controllers\AuthController;
-use Controllers\DashboardController;
 use Controllers\EventosController;
 use Controllers\PaginasController;
-use Controllers\PonentesController;
 use Controllers\RegalosController;
+use Controllers\PonentesController;
+use Controllers\RegistroController;
+use Controllers\DashboardController;
 use Controllers\RegistradosController;
 
 $router = new Router();
@@ -21,6 +22,17 @@ $router->get('/evento', [PaginasController::class, 'evento']);
 $router->get('/paquetes', [PaginasController::class, 'paquetes']);
 $router->get('/conferencias', [PaginasController::class, 'conferencias']);
 $router->get('/comprar-pase', [PaginasController::class, 'pase']);
+$router->get('/404', [PaginasController::class, 'error']);
+
+// Registro de Usuarios
+$router->get('/finalizar-registro', [RegistroController::class, 'crear']);
+$router->post('/finalizar-registro/gratis', [RegistroController::class, 'gratis']);
+$router->post('/finalizar-registro/pagar', [RegistroController::class, 'pagar']);
+$router->get('/finalizar-registro/conferencias', [RegistroController::class, 'conferencias']);
+$router->post('/finalizar-registro/conferencias', [RegistroController::class, 'conferencias']);
+
+// Boleto virtual
+$router->get('/boleto', [RegistroController::class, 'boleto']);
 
 // Paginas
 $router->get('/confirmar-cuenta', [AuthController::class, 'confirmar']);
@@ -55,9 +67,9 @@ $router->get('/admin/eventos/editar', [EventosController::class, 'editar']);
 $router->post('/admin/eventos/editar', [EventosController::class, 'editar']);
 $router->post('/admin/eventos/eliminar', [EventosController::class, 'eliminar']);
 
-
 $router->get('/admin/registrados', [RegistradosController::class, 'index']);
 
 $router->get('/admin/regalos', [RegalosController::class, 'index']);
+
 
 $router->comprobarRutas();

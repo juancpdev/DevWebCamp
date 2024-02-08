@@ -45,6 +45,26 @@
     }
 }
 
+@mixin boton2($bgColor, $colorTexto : white) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.2rem 3rem;
+    border: none;
+    cursor: pointer;
+    background-color: $bgColor;
+    color: $colorTexto;
+    font-size: 1.6rem;
+    border-radius: 1rem;
+    transition: all .3s ease-in-out;
+    text-align: center;
+
+    &:hover {
+        transform: scale(.985);
+        background-color: darken($bgColor, 10);
+    }
+}
+
 @mixin grid($columnas, $espaciado ) {
     display: grid;
     gap: $espaciado;
@@ -95,7 +115,7 @@
     text-align: center;
     margin-bottom: 2rem;
     white-space: nowrap;
-    @include desktop {
+    @include tablet {
         text-align: left;
         margin: 0;
     }
@@ -131,7 +151,6 @@
         &[href*="github.com"]::before {
             content: "\f09b";
         }
-        
         &[href*="tiktok.com"]::before {
             content: "\e07b";
         }

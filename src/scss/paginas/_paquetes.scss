@@ -1,8 +1,8 @@
 @use 'base/mixins' as m;
 @use 'base/variables' as v;
 
+
 .paquetes {
-    margin: 5rem 3rem 7rem 3rem;
 
     &__grid {
         @include m.contenedor;
@@ -17,6 +17,12 @@
             @include m.grid(3, 5rem);
         }
 
+    }
+
+    &__submit {
+        @include m.boton2(v.$azul, v.$blanco);
+        width: 100%;
+        margin-top: 3rem;
     }
 }
 

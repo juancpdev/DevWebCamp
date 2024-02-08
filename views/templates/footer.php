@@ -12,7 +12,6 @@
             <a class="menu-redes__enlace" href="https://www.facebook.com/profile.php?id=100004539246218" target="_blank" rel="noopener noreferrer"></a>
             <a class="menu-redes__enlace" href="https://www.instagram.com/juancruzpinedaa/" target="_blank" rel="noopener noreferrer"></a>
             <a class="menu-redes__enlace" href="https://github.com/juancpdev" target="_blank" rel="noopener noreferrer"></a>
-            <a class="menu-redes__enlace" href="https://www.linkedin.com/in/juancpdev/" target="_blank" rel="noopener noreferrer"></a>
             <a class="menu-redes__enlace" href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer"></a>
         </nav>
     </div>
