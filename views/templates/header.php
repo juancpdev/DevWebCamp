@@ -44,7 +44,7 @@
         <nav class="navegacion">
             <a class="navegacion__enlace <?php echo pagina_actual("/evento") ? "navegacion__enlace--activo" : "" ?>" href="/evento">Evento</a>
             <a class="navegacion__enlace <?php echo pagina_actual("/paquetes") ? "navegacion__enlace--activo" : "" ?>" href="/paquetes">Paquetes</a>
-            <a class="navegacion__enlace <?php echo pagina_actual("/conferencias") ? "navegacion__enlace--activo" : "" ?>" href="/conferencias">Workshops/Conferencias</a>
+            <a class="navegacion__enlace <?php echo pagina_actual("/workshops-conferencias") ? "navegacion__enlace--activo" : "" ?>" href="/workshops-conferencias">Workshops/Conferencias</a>
             <a class="navegacion__enlace <?php echo pagina_actual("/registro") ? "navegacion__enlace--activo" : "" ?>" href="/comprar-pase">Comprar Pase</a>
         </nav>
     </div>

@@ -2,7 +2,7 @@
 @use 'base/variables' as v;
 
 .speakers {
-    padding: 5rem 0;
+    padding-bottom: 5rem;
     &__grid {
         @include m.contenedor;
         @include m.grid(1, 5rem);

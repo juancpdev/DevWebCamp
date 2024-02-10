@@ -20,7 +20,7 @@ $router = new Router();
 $router->get('/', [PaginasController::class, 'index']);
 $router->get('/evento', [PaginasController::class, 'evento']);
 $router->get('/paquetes', [PaginasController::class, 'paquetes']);
-$router->get('/conferencias', [PaginasController::class, 'conferencias']);
+$router->get('/workshops-conferencias', [PaginasController::class, 'conferencias']);
 $router->get('/comprar-pase', [PaginasController::class, 'pase']);
 $router->get('/404', [PaginasController::class, 'error']);
 

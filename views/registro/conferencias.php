@@ -1,4 +1,4 @@
-
+<main class="pagina">
 <h2 class="pagina__heading"><?php echo $titulo; ?></h2>
 <p class="pagina__descripcion">Elige hasta 5 eventos para asistir de forma presencial.</p>
 
@@ -38,26 +38,26 @@
 
     </main>
 
-    <aside class="registro">
-        <h2 class="registro__heading">Tu Registro</h2>
+    <aside class="registros">
+        <h2 class="registros__heading">Tu Registro</h2>
 
-        <div id="registro-resumen" class="registro__resumen"></div>
+        <div id="registro-resumen" class="registros__resumen"></div>
 
-        <div class="registro__regalo">
-            <label for="regalo" class="registro__label">Selecciona un regalo</label>
-            <select id="regalo" class="registro__select">
-                <option value="">-- Selecciona tu regalo --</option>
+        <div class="registros__regalo">
+            <label for="regalo" class="registros__label">Selecciona un regalo</label>
+            <select id="regalo" class="registros__select">
+                <option value="" selected disabled>-- Selecciona tu regalo --</option>
                 <?php foreach($regalos as $regalo) { ?>
                     <option value="<?php echo $regalo->id; ?>"><?php echo $regalo->nombre; ?></option>
                 <?php } ?>
             </select>
         </div>
 
-        <form id="registro" class="formulario">
+        <form id="registros" class="formulario">
             <div class="formulario__campo">
                 <input type="submit" class="formulario__submit formulario__submit--full" value="Registrarme">
             </div>
         </form>
     </aside>
 </div>
-  
+</main>

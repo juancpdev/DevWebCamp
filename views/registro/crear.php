@@ -1,6 +1,6 @@
-<main class="paquetes__registro pagina">
-    <h2 class="registro__heading"><?php echo $titulo; ?></h2>
-    <p class="registro__descripcion">Elige tu plan</p>
+<main class="paquetes__registros pagina">
+    <h2 class="registros__heading"><?php echo $titulo; ?></h2>
+    <p class="registros__descripcion">Elige tu plan</p>
 
     <div class="paquetes__grid">
         <div class="paquete">
@@ -58,7 +58,7 @@
     </div>
 </main>
 
-  <script src="https://www.paypal.com/sdk/js?client-id=Adc6YGqAvfmtD_7WCDB9mf3AidMfM18ZQr49mGkIHEOF8XuFTW7aAMFuB09wVfMsKy54lOoFfpWqL3HS&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>
+  <script src="https://www.paypal.com/sdk/js?client-id=Ads56fEWo-WXUPbGBKXDVzPN_bIwpN7yLskGZ8S_AodcjT6uZuCyB8Hv1p7txF5a-wzFYRoBDN4T__lE&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>
 
   <script>
     function initPayPalButton() {
@@ -90,7 +90,7 @@
                 .then( respuesta => respuesta.json())
                 .then(resultado => {
                     if(resultado.resultado) {
-                        actions.redirect('http://localhost:3000/finalizar-registro/conferencias');
+                        actions.redirect('http://localhost:3001/finalizar-registro/conferencias');
                     }
                 })
             
@@ -132,7 +132,7 @@
                 .then( respuesta => respuesta.json())
                 .then(resultado => {
                     if(resultado.resultado) {
-                        actions.redirect('http://localhost:3000/finalizar-registro/conferencias');
+                        actions.redirect('http://localhost:3001/finalizar-registro/conferencias');
                     }
                 })
                 

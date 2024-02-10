@@ -40,7 +40,6 @@ class RegistroController {
             'titulo' => 'Finalizar Registro'
         ]);
     }
-
     public static function gratis() {
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -71,12 +70,11 @@ class RegistroController {
 
             if($resultado) {
                 header('Location: /boleto?id=' . urlencode($registro->token));
-                
+                return;
             }
 
         }
     }
-
     public static function boleto(Router $router) {
 
         // Validar la URL
@@ -104,7 +102,7 @@ class RegistroController {
     }
 
 
-    public static function pagar(Router $router) {
+    public static function pagar() {
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
             if(!is_auth()) {
@@ -137,8 +135,6 @@ class RegistroController {
         }
     }
 
-
-
     public static function conferencias(Router $router) {
 
         if(!is_auth()) {
@@ -161,10 +157,10 @@ class RegistroController {
         }
 
         // Redireccionar a boleto virtual en caso de haber finalizado su registro
-        // if(isset($registro->regalo_id) && $registro->paquete_id === "1") {
-        //     header('Location: /boleto?id=' . urlencode($registro->token));
-        //     return;
-        // }
+        if(isset($registro->regalo_id) && $registro->paquete_id === "1") {
+            header('Location: /boleto?id=' . urlencode($registro->token));
+            return;
+        }
 
         $eventos = Evento::ordenar('hora_id', 'ASC');
 
@@ -257,7 +253,6 @@ class RegistroController {
 
             return;
         }
-
 
         $router->render('registro/conferencias', [
             'titulo' => 'Elige Workshops y Conferencias',

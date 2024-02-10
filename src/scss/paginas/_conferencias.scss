@@ -58,8 +58,8 @@
     }
 
     &__informacion {
-        border-radius: 2rem;
-        padding: 2.5rem 4.5rem;
+        border-radius: 1rem;
+        padding: 2.5rem;
         cursor: pointer;
         background-color: v.$azul;
         transition: all .3s ease;
@@ -106,6 +106,23 @@
         &--nombre {
             font-weight: bold;
             font-size: 1.6rem;
+        }
+    }
+
+    &__agregar {
+        @include m.boton2(v.$blanco, v.$negro);
+        margin-top: 1.5rem;
+        width: 100%;
+        font-weight: bold;
+        border-radius: 0;
+        padding: 1.2rem .6rem;
+        &:hover {
+            transform: none;
+        }
+
+        &:disabled {
+            opacity: .5;
+            cursor: not-allowed;
         }
     }
 }

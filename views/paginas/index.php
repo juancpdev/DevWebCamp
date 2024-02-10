@@ -106,9 +106,11 @@
     </div>
 </section>
 
-<div id="mapa" class="mapa"></div>
+<section>
+    <div id="mapa" class="mapa"></div>
+</section>
 
-<section class="boletos">
+<section class="boletos pagina">
     <h2 class="boletos__heading">Boletos & Precios</h2>
     <p class="boletos__descripcion">Precios para DevWebCamp</p>
 

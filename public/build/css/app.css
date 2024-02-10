@@ -811,8 +811,8 @@ h3 {
   font-weight: bold;
 }
 .evento__informacion {
-  border-radius: 2rem;
-  padding: 2.5rem 4.5rem;
+  border-radius: 1rem;
+  padding: 2.5rem;
   cursor: pointer;
   background-color: #007df4;
   transition: all 0.3s ease;
@@ -855,6 +855,36 @@ h3 {
 .evento__ponente--nombre {
   font-weight: bold;
   font-size: 1.6rem;
+}
+.evento__agregar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.2rem 3rem;
+  border: none;
+  cursor: pointer;
+  background-color: #FFFFFF;
+  color: #1a1b15;
+  font-size: 1.6rem;
+  border-radius: 1rem;
+  transition: all 0.3s ease-in-out;
+  text-align: center;
+  margin-top: 1.5rem;
+  width: 100%;
+  font-weight: bold;
+  border-radius: 0;
+  padding: 1.2rem 0.6rem;
+}
+.evento__agregar:hover {
+  transform: scale(0.985);
+  background-color: #e6e6e6;
+}
+.evento__agregar:hover {
+  transform: none;
+}
+.evento__agregar:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .slider-container {
@@ -954,7 +984,7 @@ h3 {
 }
 
 .speakers {
-  padding: 5rem 0;
+  padding-bottom: 5rem;
 }
 .speakers__grid {
   width: min(95%, 120rem);
@@ -1482,7 +1512,7 @@ h3 {
   background-color: #0063c1;
   cursor: pointer;
 }
-.formulario__submit--registrar {
+.formulario__submit--registrar, .formulario__submit--full {
   width: 100%;
   border-radius: 0.5rem;
 }
@@ -2355,5 +2385,104 @@ h3 {
 .listado-ponentes__no-resultado {
   text-align: center;
   font-size: 1.6rem;
+}
+
+.eventos-registro {
+  width: min(95%, 120rem);
+  margin: 0 auto;
+}
+@media (min-width: 768px) {
+  .eventos-registro {
+    display: flex;
+    align-items: flex-start;
+    gap: 5rem;
+  }
+}
+@media (min-width: 768px) {
+  .eventos-registro__listado {
+    flex: 0 0 60%;
+  }
+}
+.eventos-registro__grid {
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: repeat(1, 1fr);
+}
+@media (min-width: 1024px) {
+  .eventos-registro__grid {
+    display: grid;
+    gap: 3rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.eventos-registro__heading--conferencias, .eventos-registro__heading--workshops {
+  white-space: nowrap;
+  font-size: clamp(2rem, -0.8rem + 10vw, 5rem);
+}
+.eventos-registro__heading--conferencias {
+  color: #007df4;
+}
+.eventos-registro__heading--workshops {
+  color: #00c8c2;
+  margin-top: 5rem;
+}
+.eventos-registro__fecha {
+  margin: 6rem 0 3rem 0;
+}
+
+.registros {
+  background-color: #F8FAFC;
+  padding: 3rem;
+  border-radius: 1rem;
+}
+@media (min-width: 768px) {
+  .registros {
+    flex: 0 0 40%;
+    position: sticky;
+    top: 3rem;
+  }
+}
+.registros__heading {
+  margin: 0 0 3rem 0;
+}
+.registros__evento {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+.registros__evento:nth-child(even) {
+  background-color: #edf2f7;
+}
+.registros__nombre {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+.registros__eliminar {
+  all: unset;
+  color: rgb(169, 0, 0);
+}
+.registros__eliminar:hover {
+  cursor: pointer;
+}
+.registros__texto {
+  text-align: center;
+}
+.registros__regalo {
+  margin-top: 3rem;
+}
+.registros__label {
+  display: block;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.registros__select {
+  width: 100%;
+  background-color: #FFFFFF;
+  border: 1px solid #64748B;
+  padding: 1rem;
+  border-radius: 0.5rem;
 }
 /*# sourceMappingURL=app.css.map */
