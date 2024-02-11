@@ -155,4 +155,8 @@
         @include m.contenedor-sm;
         margin: 5rem auto;
     }
+
+    &__grafica {
+        @include m.contenedor-sm;
+    }
 }
