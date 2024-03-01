@@ -61,6 +61,12 @@
   <script src="https://www.paypal.com/sdk/js?client-id=Ads56fEWo-WXUPbGBKXDVzPN_bIwpN7yLskGZ8S_AodcjT6uZuCyB8Hv1p7txF5a-wzFYRoBDN4T__lE&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>
 
   <script>
+    // Obtenemos el valor de la variable de entorno HOST en PHP
+    <?php $host = $_ENV['HOST']; ?>
+
+    // Pasamos el valor de la variable de entorno a una variable de JavaScript
+    var host = "<?php echo $host; ?>";
+
     function initPayPalButton() {
       paypal.Buttons({
         style: {
@@ -90,7 +96,7 @@
                 .then( respuesta => respuesta.json())
                 .then(resultado => {
                     if(resultado.resultado) {
-                        actions.redirect('http://localhost:3001/finalizar-registro/conferencias');
+                        actions.redirect(host + '/finalizar-registro/conferencias');
                     }
                 })
             
@@ -132,7 +138,7 @@
                 .then( respuesta => respuesta.json())
                 .then(resultado => {
                     if(resultado.resultado) {
-                        actions.redirect('http://localhost:3001/finalizar-registro/conferencias');
+                        actions.redirect(host +'/finalizar-registro/conferencias');
                     }
                 })
                 

@@ -28,7 +28,9 @@
             <p class="header__texto">Octubre 5-6 - 2023 </p>
             <p class="header__texto header__texto--modalidad">En Linea - Presencial</p>
 
-            <a class="header__boton" href="/registro">Comprar Pase</a>
+            <?php if(!isset($_SESSION['id'])) { ?>
+                <a class="header__boton registro">Comprar Pase</a>
+                <?php }?>
         </div>
     </div>
 </header>
@@ -45,7 +47,6 @@
             <a class="navegacion__enlace <?php echo pagina_actual("/evento") ? "navegacion__enlace--activo" : "" ?>" href="/evento">Evento</a>
             <a class="navegacion__enlace <?php echo pagina_actual("/paquetes") ? "navegacion__enlace--activo" : "" ?>" href="/paquetes">Paquetes</a>
             <a class="navegacion__enlace <?php echo pagina_actual("/workshops-conferencias") ? "navegacion__enlace--activo" : "" ?>" href="/workshops-conferencias">Workshops/Conferencias</a>
-            <a class="navegacion__enlace <?php echo pagina_actual("/registro") ? "navegacion__enlace--activo" : "" ?>" href="/comprar-pase">Comprar Pase</a>
         </nav>
     </div>
 </div>

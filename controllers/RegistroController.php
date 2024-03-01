@@ -146,19 +146,23 @@ class RegistroController {
         $usuario_id = $_SESSION['id'];
         $registro = Registro::where('usuario_id', $usuario_id);
 
+        // Aquí validas si el registro se ha completado o no
+        $registroFinalizado = EventosRegistros::where('registro_id', $registro->id);
+
+
         if(isset($registro) && $registro->paquete_id === "2") {
             header('Location: /boleto?id=' . urlencode($registro->token));
             return;
         }
-        
-        if($registro->paquete_id !== "1") {
-            header('Location: /');
+
+        // Aqui validas si el registro se ha completado o no
+        if(isset($registroFinalizado)) {
+            header('Location: /boleto?id=' . urlencode($registro->token));
             return;
         }
-
-        // Redireccionar a boleto virtual en caso de haber finalizado su registro
-        if(isset($registro->regalo_id) && $registro->paquete_id === "1") {
-            header('Location: /boleto?id=' . urlencode($registro->token));
+            
+        if($registro->paquete_id !== "1") {
+            header('Location: /');
             return;
         }
 
